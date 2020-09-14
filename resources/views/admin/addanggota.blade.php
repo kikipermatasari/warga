@@ -420,12 +420,12 @@
                     <label for="example-search-input" class="form-control-label">Penghasilan / Bulan</label>
                      <select class="form-control form-control" required name="gaji">
                         <option value="">-- Pilih Kisaran Gaji --</option>
-                        <option value=" < Rp500.000" > < Rp500.000</option>
-                        <option value="Rp 500.000 - Rp 1500.000"  >Rp 500.000 - Rp 1500.000</option>
-                        <option value="Rp 1500.000 - Rp 2500.000"  >Rp 1500.000 - Rp 2500.000</option>
-                        <option value="Rp 2500.000 - Rp 3500.000"  >Rp 2500.000 - Rp 3500.000</option>
-                        <option value="Rp 3500.000 - Rp 4500.000"  >Rp 3500.000 - Rp 4500.000</option>
-                        <option value="> Rp 4500.000" >> Rp 4500.000</option>
+                        <option value="0-1 Juta" > 0-1 Juta</option>
+                        <option value="1 Juta- 2 Juta"  >1 Juta-  Juta</option>
+                        <option value="2 Juta - 3 Juta"  >2 Juta - 3 Juta</option>
+                        <option value="3 Juta - 4 Juta"  >3 Juta - 4 Juta</option>
+                        <option value="4 Juta - 5 Juta"  >4 Juta - 5 Juta</option>
+                        <option value="> 5 Juta" >> 5Juta </option>
                       </select>                 
                     </div>
               </div>

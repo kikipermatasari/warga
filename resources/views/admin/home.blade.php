@@ -248,7 +248,7 @@ var ctx = document.getElementById('chart-penghasilan').getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: [' < Rp500.000', 'Rp 500.000 - Rp 1500.000', 'Rp 1500.000 - Rp 2500.000', 'Rp 2500.000 - Rp 3500.000', 'Rp 3500.000 - Rp 4500.000', '> Rp 4500.000'],
+        labels: [' 0-1 Juta', '1 Juta- 2 Juta', '2 Juta - 3 Juta', '3 Juta - 4 Juta', '4 Juta - 5 Juta', '> 5 Juta'],
         datasets: [{
             label: 'Jumlah Penduduk Menurut Penghasilan',
             data: [{{$penghasilan1}}, {{$penghasilan2}}, {{$penghasilan3}}, {{$penghasilan4}}, {{$penghasilan5}}, {{$penghasilan6}}],
@@ -480,7 +480,7 @@ var ctx = document.getElementById('chart-penghasilan').getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: [' < Rp500.000', 'Rp 500.000 - Rp 1500.000', 'Rp 1500.000 - Rp 2500.000', 'Rp 2500.000 - Rp 3500.000', 'Rp 3500.000 - Rp 4500.000', '> Rp 4500.000'],
+        labels: [' 0-1 Juta', '1 Juta- 2 Juta', '2 Juta - 3 Juta', '3 Juta - 4 Juta', '4 Juta - 5 Juta', '> 5 Juta'],
         datasets: [{
             label: 'Jumlah Penduduk Menurut Penghasilan',
             data: [{{$penghasilan1}}, {{$penghasilan2}}, {{$penghasilan3}}, {{$penghasilan4}}, {{$penghasilan5}}, {{$penghasilan6}}],
@@ -579,7 +579,7 @@ var ctx = document.getElementById('chart-penghasilan').getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: [' < Rp500.000', 'Rp 500.000 - Rp 1500.000', 'Rp 1500.000 - Rp 2500.000', 'Rp 2500.000 - Rp 3500.000', 'Rp 3500.000 - Rp 4500.000', '> Rp 4500.000'],
+        labels: [' 0-1 Juta', '1 Juta- 2 Juta', '2 Juta - 3 Juta', '3 Juta - 4 Juta', '4 Juta - 5 Juta', '> 5 Juta'],
         datasets: [{
             label: 'Jumlah Penduduk Menurut Penghasilan',
             data: [{{$penghasilan1}}, {{$penghasilan2}}, {{$penghasilan3}}, {{$penghasilan4}}, {{$penghasilan5}}, {{$penghasilan6}}],

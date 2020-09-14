@@ -50,9 +50,9 @@
                     <label for="example-search-input" class="form-control-label">Foto Profile</label>
                     <input class="form-control" type="file" onchange="loadFile(event)" class="form-control-file" required="" placeholder="Masukan No. Pasport ... " required name="foto_rumah" >
                     @if($kepala_keluarga->foto_rumah == "")
-                    <img src="https://www.someltenthire.co.uk/wp-content/uploads/2016/02/blank-rows-img.jpg" id="output" class="gambar" alt="" style="max-height:250px;width:100%;margin-top:10px" >
+                    <img src="https://www.someltenthire.co.uk/wp-content/uploads/2016/02/blank-rows-img.jpg" id="output" class="gambar" alt="" style="max-height:350px;width:100%;margin-top:10px" >
                     @else
-                    <img src="{{url('public/warga')}}/{{ $kepala_keluarga->foto_rumah}}" id="output" class="gambar" alt="" style="max-height:250px;width:100%;margin-top:10px" >
+                    <img src="{{url('public/warga')}}/{{ $kepala_keluarga->foto_rumah}}" id="output" class="gambar" alt="" style="max-height:350px;width:100%;margin-top:10px" >
                     @endif
                 </div>
               </div>  

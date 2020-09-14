@@ -421,12 +421,12 @@
               <div class="form-group">
                     <label for="example-email-input" class="form-control-label">Penghasilan / Bulan</label>
                      <select class="form-control form-control"  name="gaji">
-                        <option value=" < Rp500.000" @if ($kepala_keluarga->gaji ==' < Rp500.00') selected @endif> < Rp500.000</option>
-                        <option value="Rp 500.000 - Rp 1500.000" @if ($kepala_keluarga->gaji =='Rp 500.000 - Rp 1500.000') selected @endif >Rp 500.000 - Rp 1500.000</option>
-                        <option value="Rp 1500.000 - Rp 2500.000" @if ($kepala_keluarga->gaji =='Rp 1500.000 - Rp 2500.000') selected @endif >Rp 1500.000 - Rp 2500.000</option>
-                        <option value="Rp 2500.000 - Rp 3500.000" @if ($kepala_keluarga->gaji =='Rp 2500.000 - Rp 3500.000') selected @endif >Rp 2500.000 - Rp 3500.000</option>
-                        <option value="Rp 3500.000 - Rp 4500.000" @if ($kepala_keluarga->gaji =='Rp 3500.000 - Rp 4500.000') selected @endif >Rp 3500.000 - Rp 4500.000</option>
-                        <option value="> Rp 4500.000" @if ($kepala_keluarga->gaji =='> Rp 4500.000') selected @endif >> Rp 4500.000</option>                        
+                        <option value="0-1 Juta" @if ($kepala_keluarga->gaji =='0-1 Juta') selected @endif> 0-1 Juta</option>
+                        <option value="1 Juta- 2 Juta" @if ($kepala_keluarga->gaji =='1 Juta- 2 Juta') selected @endif   >1 Juta- 2 Juta</option>
+                        <option value="2 Juta - 3 Juta" @if ($kepala_keluarga->gaji =='2 Juta - 3 Juta') selected @endif  >2 Juta - 3 Juta</option>
+                        <option value="3 Juta - 4 Juta" @if ($kepala_keluarga->gaji =='3 Juta - 4 Juta') selected @endif  >3 Juta - 4 Juta</option>
+                        <option value="4 Juta - 5 Juta" @if ($kepala_keluarga->gaji =='4 Juta - 5 Juta') selected @endif  >4 Juta - 5 Juta</option>
+                        <option value="> 5 Juta"  @if ($kepala_keluarga->gaji =='> 5 Juta') selected @endif >> 5Juta </option>                       
                       </select>  
                 </div>
               </div>
@@ -452,7 +452,7 @@
               <div class="col-md-4">
                 <div class="form-group">
                     <label for="example-search-input" class="form-control-label">Foto Profile</label>
-                    <input class="form-control" type="file" onchange="loadFile(event)" class="form-control-file" required="" placeholder="Masukan No. Pasport ... " required name="foto_profile" >
+                    <input class="form-control" type="file" onchange="loadFile(event)" class="form-control-file" placeholder="Masukan No. Pasport ... "  name="foto_profile" >
                     <img src="{{url('public/warga')}}/{{ $kepala_keluarga->foto_profile}}" id="output" class="gambar" alt="" style="max-height:100px;max-width:150px;margin-top:10px" >
                 </div>
               </div>

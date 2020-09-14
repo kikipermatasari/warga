@@ -66,7 +66,8 @@
                 <form role="form" action="/kartu-keluarga/anggota/create" method="POST" enctype="multipart/form-data">
                           {{ csrf_field() }}
                 <div class="row">
-                  <table border="0" width="100%" class="ml-5">
+                    <div class="col-md-9">
+                  <table border="0" width="100%">
                                 <tr>
                                     <td width="40%"><b>Nomor Kartu Keluarga</b></td>
                                     <td width="3%"> : </td>
@@ -215,13 +216,17 @@
                                 </tr>
 
                             </table> 
-                
-            </div>    
-            <hr>    
-                <br>
-              </div>
-            </div>
-          </div>
-        </div>
+                        </div>
+                        <div class="col-md-3">
+                            <img src="{{url('public/warga')}}/{{ $kepala_keluarga->foto_profile}}" width="70%" >
+                        </div>
+
+                            </div>    
+                            <hr>    
+                                <br>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
 
 @endsection
