@@ -31,6 +31,7 @@ Route::get('/kartu-keluarga/delete/{id}', 'KepalakeluargaController@delete');
 Route::get('/kartu-keluarga/detail/{id}', 'KepalakeluargaController@detailkepala');
 Route::post('/kartu-keluarga/foto-rumah/update/{id}', 'KepalakeluargaController@updaterumah');
 Route::get('/kartu-keluarga/foto-rumah/{id}', 'KepalakeluargaController@rumah');
+Route::get('/kartu-keluarga/cetak/{id}', 'KepalakeluargaController@cetak_kepala');
 
 Route::get('/kartu-keluarga/anggota/{id}', 'KepalakeluargaController@anggota');
 Route::get('/kartu-keluarga/anggota/tambah/{id}', 'KepalakeluargaController@tambah_anggota');
@@ -39,6 +40,7 @@ Route::get('/kartu-keluarga/anggota/edit/{id}', 'KepalakeluargaController@editan
 Route::post('/kartu-keluarga/anggota/update/{id}', 'KepalakeluargaController@updateanggota');
 Route::get('/kartu-keluarga/anggota/delete/{id}', 'KepalakeluargaController@delete_anggota');
 Route::get('/kartu-keluarga/anggota/detail/{id}', 'KepalakeluargaController@detailanggota');
+Route::get('/kartu-keluarga/anggota/cetak/{id}', 'KepalakeluargaController@cetak_anggota');
 
 Route::get('/data-warga', 'WargaController@warga');
 Route::get('/data-warga/tambah', 'WargaController@tambah');

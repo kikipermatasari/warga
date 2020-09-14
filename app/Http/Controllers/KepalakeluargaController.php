@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Kepala_keluarga;
 use Illuminate\Support\Facades\Auth;
+use PDF;
 
 class KepalakeluargaController extends Controller
 {
@@ -690,6 +691,19 @@ class KepalakeluargaController extends Controller
     {
       DB::table('kartu_keluarga')->where('id',$id)->delete();
       return redirect()->back();
+    }
+
+
+     public function cetak_kepala ($id){
+        $kepala_keluarga= DB::table('kartu_keluarga')->find($id);
+        $pdf = PDF::loadview('admin/cetakkepala',['kepala_keluarga'=>$kepala_keluarga]);
+        return $pdf->stream();
+    }
+
+    public function cetak_anggota ($id){
+        $anggota= DB::table('anggota')->find($id);
+        $pdf = PDF::loadview('admin/cetakanggota',['anggota'=>$anggota]);
+        return $pdf->stream();
     }
 
 

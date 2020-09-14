@@ -59,7 +59,7 @@
                 <div class="col">
                   <h2 class="card-title"><i class="fa fa-plus-circle"></i>&nbsp;&nbsp; Detail Data Kepala Keluarga
                     <div class="float-right">
-                      <a href="/kartu-keluarga" class="btn btn-primary btn-round btn-sm mb-3 mr-3"><i class="fa fa-print"></i>&nbsp;Cetak</a>
+                      <a href="/kartu-keluarga/cetak/{{$kepala_keluarga->id}}" target="_blank" class="btn btn-primary btn-round btn-sm mb-3 mr-3"><i class="fa fa-print"></i>&nbsp;Cetak</a>
                       <a href="/kartu-keluarga" class="btn btn-secondary btn-round btn-sm mb-3 mr-3"><i class="fa fa-arrow-left"></i>&nbsp;Back</a>
                     </div>
                   </h2><hr>
