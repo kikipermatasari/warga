@@ -109,6 +109,40 @@
             </div>
           </div>
         </div>
+        <div class="col-xl-6 mt-4">
+          <div class="card shadow">
+            <div class="card-header bg-transparent">
+              <div class="row align-items-center">
+                <div class="col">
+                  <h6 class="text-uppercase text-muted ls-1 mb-1">Grafik</h6>
+                  <h2 class="mb-0">Jumlah Penduduk Menurut Penghasilan </h2>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="chart">
+                <canvas class="pb-5" id="chart-penghasilan" width="400" height="400" ></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-6 mt-4">
+          <div class="card shadow">
+            <div class="card-header bg-transparent">
+              <div class="row align-items-center">
+                <div class="col">
+                  <h6 class="text-uppercase text-muted ls-1 mb-1">Grafik</h6>
+                  <h2 class="mb-0">Jumlah Penduduk Menurut Jenis Kelamin </h2>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="chart">
+                <canvas class="pb-5" id="chart-jekel" width="400" height="400" ></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <script>
 var ctx = document.getElementById('chart-kelurahan').getContext('2d');
@@ -207,6 +241,67 @@ var myChart = new Chart(ctx, {
                 }
             }]
         }
+    }
+});
+
+var ctx = document.getElementById('chart-penghasilan').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: [' < Rp500.000', 'Rp 500.000 - Rp 1500.000', 'Rp 1500.000 - Rp 2500.000', 'Rp 2500.000 - Rp 3500.000', 'Rp 3500.000 - Rp 4500.000', '> Rp 4500.000'],
+        datasets: [{
+            label: 'Jumlah Penduduk Menurut Penghasilan',
+            data: [{{$penghasilan1}}, {{$penghasilan2}}, {{$penghasilan3}}, {{$penghasilan4}}, {{$penghasilan5}}, {{$penghasilan6}}],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(54, 162, 235, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(153, 102, 255, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+
+var ctx = document.getElementById('chart-jekel').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+        labels: ['Laki-Laki', 'Perempuan'],
+        datasets: [{
+            label: 'Jenis Kelamin',
+            data: [{{$jml_laki_laki + $jml_laki_laki1}}, {{$jml_perempuan + $jml_perempuan1}}],
+            backgroundColor: [
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 99, 132, 0.2)'
+            ],
+            borderColor: [
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 99, 132, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
     }
 });
 </script>
@@ -246,6 +341,40 @@ var myChart = new Chart(ctx, {
             </div>
           </div>
         </div>
+        <div class="col-xl-6 mt-4">
+          <div class="card shadow">
+            <div class="card-header bg-transparent">
+              <div class="row align-items-center">
+                <div class="col">
+                  <h6 class="text-uppercase text-muted ls-1 mb-1">Grafik</h6>
+                  <h2 class="mb-0">Jumlah Penduduk Menurut Penghasilan </h2>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="chart">
+                <canvas class="pb-5" id="chart-penghasilan" width="400" height="400" ></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-6 mt-4">
+          <div class="card shadow">
+            <div class="card-header bg-transparent">
+              <div class="row align-items-center">
+                <div class="col">
+                  <h6 class="text-uppercase text-muted ls-1 mb-1">Grafik</h6>
+                  <h2 class="mb-0">Jumlah Penduduk Menurut Jenis Kelamin </h2>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="chart">
+                <canvas class="pb-5" id="chart-jekel" width="400" height="400" ></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <script>
 var ctx = document.getElementById('chart-kelurahan').getContext('2d');
@@ -346,22 +475,167 @@ var myChart = new Chart(ctx, {
         }
     }
 });
+
+var ctx = document.getElementById('chart-penghasilan').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: [' < Rp500.000', 'Rp 500.000 - Rp 1500.000', 'Rp 1500.000 - Rp 2500.000', 'Rp 2500.000 - Rp 3500.000', 'Rp 3500.000 - Rp 4500.000', '> Rp 4500.000'],
+        datasets: [{
+            label: 'Jumlah Penduduk Menurut Penghasilan',
+            data: [{{$penghasilan1}}, {{$penghasilan2}}, {{$penghasilan3}}, {{$penghasilan4}}, {{$penghasilan5}}, {{$penghasilan6}}],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(54, 162, 235, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(153, 102, 255, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+
+var ctx = document.getElementById('chart-jekel').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+        labels: ['Laki-Laki', 'Perempuan'],
+        datasets: [{
+            label: 'Jenis Kelamin',
+            data: [{{$jml_laki_laki + $jml_laki_laki1}}, {{$jml_perempuan + $jml_perempuan1}}],
+            backgroundColor: [
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 99, 132, 0.2)'
+            ],
+            borderColor: [
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 99, 132, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+    }
+});
 </script>
       @else
       <div class="row">
-        <div class="col-12">
+        <div class="col-xl-6 mt-4">
           <div class="card shadow">
             <div class="card-header bg-transparent">
               <div class="row align-items-center">
                 <div class="col">
-                  <h6 class="text-uppercase text-muted ls-1 mb-1">Welcome To Administrator</h6><hr>
-                  <h2 class="mb-0">Anda Login Sebagai {{Auth::User()->level}}</h2><br>
+                  <h6 class="text-uppercase text-muted ls-1 mb-1">Grafik</h6>
+                  <h2 class="mb-0">Jumlah Penduduk Menurut Penghasilan </h2>
                 </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="chart">
+                <canvas class="pb-5" id="chart-penghasilan" width="400" height="400" ></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-6 mt-4">
+          <div class="card shadow">
+            <div class="card-header bg-transparent">
+              <div class="row align-items-center">
+                <div class="col">
+                  <h6 class="text-uppercase text-muted ls-1 mb-1">Grafik</h6>
+                  <h2 class="mb-0">Jumlah Penduduk Menurut Jenis Kelamin </h2>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="chart">
+                <canvas class="pb-5" id="chart-jekel" width="400" height="400" ></canvas>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <script>
+var ctx = document.getElementById('chart-penghasilan').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: [' < Rp500.000', 'Rp 500.000 - Rp 1500.000', 'Rp 1500.000 - Rp 2500.000', 'Rp 2500.000 - Rp 3500.000', 'Rp 3500.000 - Rp 4500.000', '> Rp 4500.000'],
+        datasets: [{
+            label: 'Jumlah Penduduk Menurut Penghasilan',
+            data: [{{$penghasilan1}}, {{$penghasilan2}}, {{$penghasilan3}}, {{$penghasilan4}}, {{$penghasilan5}}, {{$penghasilan6}}],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(54, 162, 235, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(153, 102, 255, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+
+var ctx = document.getElementById('chart-jekel').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+        labels: ['Laki-Laki', 'Perempuan'],
+        datasets: [{
+            label: 'Jenis Kelamin',
+            data: [{{$jml_laki_laki + $jml_laki_laki1}}, {{$jml_perempuan + $jml_perempuan1}}],
+            backgroundColor: [
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 99, 132, 0.2)'
+            ],
+            borderColor: [
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 99, 132, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+    }
+});
+</script>
       @endif
             @endsection
 
