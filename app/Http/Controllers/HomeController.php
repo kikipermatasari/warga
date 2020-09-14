@@ -121,7 +121,7 @@ class HomeController extends Controller
                 }
             }
 
-            $hasil = "[".$a.",".$b.",".$c.",".$e.",".$e.",".$f.",".$g.",".$h.",".$i.",".$j.",".$k.",".$l.",".$m.",".$n.",".$o.",".$p."]";
+            $hasil = "[".$a.",".$b.",".$c.",".$d.",".$e.",".$f.",".$g.",".$h.",".$i.",".$j.",".$k.",".$l.",".$m.",".$n.",".$o.",".$p."]";
 
             $jml_penduduk = DB::table('kartu_keluarga')->count();
             $jml_penduduk1 = DB::table('anggota')->count();
@@ -134,33 +134,33 @@ class HomeController extends Controller
 
             //Data Penghasilan
 
-            $jml_penghasilan = DB::table('kartu_keluarga')->where('gaji',' < Rp500.000')->count();
-            $jml_penghasilan1 = DB::table('anggota')->where('gaji',' < Rp500.000')->count();
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('gaji','0-1 Juta')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('gaji','0-1 Juta')->count();
 
             $penghasilan1 = $jml_penghasilan + $jml_penghasilan1;
 
-            $jml_penghasilan = DB::table('kartu_keluarga')->where('gaji','Rp 500.000 - Rp 1500.000')->count();
-            $jml_penghasilan1 = DB::table('anggota')->where('gaji','Rp 500.000 - Rp 1500.000')->count();
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('gaji','1 Juta- 2 Juta')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('gaji','1 Juta- 2 Juta')->count();
 
             $penghasilan2 = $jml_penghasilan + $jml_penghasilan1;
 
-            $jml_penghasilan = DB::table('kartu_keluarga')->where('gaji','Rp 1500.000 - Rp 2500.000')->count();
-            $jml_penghasilan1 = DB::table('anggota')->where('gaji','Rp 1500.000 - Rp 2500.000')->count();
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('gaji','2 Juta - 3 Juta')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('gaji','2 Juta - 3 Juta')->count();
 
             $penghasilan3 = $jml_penghasilan + $jml_penghasilan1;
 
-            $jml_penghasilan = DB::table('kartu_keluarga')->where('gaji','Rp 2500.000 - Rp 3500.000')->count();
-            $jml_penghasilan1 = DB::table('anggota')->where('gaji','Rp 2500.000 - Rp 3500.000')->count();
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('gaji','3 Juta - 4 Juta')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('gaji','3 Juta - 4 Juta')->count();
 
             $penghasilan4 = $jml_penghasilan + $jml_penghasilan1;
 
-            $jml_penghasilan = DB::table('kartu_keluarga')->where('gaji','Rp 3500.000 - Rp 4500.000')->count();
-            $jml_penghasilan1 = DB::table('anggota')->where('gaji','Rp 3500.000 - Rp 4500.000')->count();
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('gaji','4 Juta - 5 Juta')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('gaji','4 Juta - 5 Juta')->count();
 
             $penghasilan5 = $jml_penghasilan + $jml_penghasilan1;
 
-            $jml_penghasilan = DB::table('kartu_keluarga')->where('gaji','> Rp 4500.000')->count();
-            $jml_penghasilan1 = DB::table('anggota')->where('gaji','> Rp 4500.000')->count();
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('gaji','> 5 Juta')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('gaji','> 5 Juta')->count();
 
             $penghasilan6 = $jml_penghasilan + $jml_penghasilan1;
 
@@ -203,12 +203,12 @@ class HomeController extends Controller
             $jml_domisili = DB::table('kartu_keluarga')->where('domisili','Ya')->count();
             $jml_domisili1 = DB::table('anggota')->where('domisili','Ya')->count();
 
-            $domisili_ya = $jml_domisili = $jml_domisili1;
+            $domisili_ya = $jml_domisili + $jml_domisili1;
 
             $jml_domisili = DB::table('kartu_keluarga')->where('domisili','Tidak')->count();
             $jml_domisili1 = DB::table('anggota')->where('domisili','Tidak')->count();
 
-            $domisili_tidak = $jml_domisili = $jml_domisili1;
+            $domisili_tidak = $jml_domisili + $jml_domisili1;
 
             $domisili = "[".$domisili_ya.",".$domisili_tidak."]";
 
@@ -308,7 +308,7 @@ class HomeController extends Controller
                 }
             }
 
-            $hasil = "[".$a.",".$b.",".$c.",".$e.",".$e.",".$f.",".$g.",".$h.",".$i.",".$j.",".$k.",".$l.",".$m.",".$n.",".$o.",".$p."]";
+            $hasil = "[".$a.",".$b.",".$c.",".$d.",".$e.",".$f.",".$g.",".$h.",".$i.",".$j.",".$k.",".$l.",".$m.",".$n.",".$o.",".$p."]";
 
             $jml_penduduk = DB::table('kartu_keluarga')->count();
             $jml_penduduk1 = DB::table('anggota')->count();
@@ -321,33 +321,33 @@ class HomeController extends Controller
               
             //Data Penghasilan
             
-            $jml_penghasilan = DB::table('kartu_keluarga')->where('gaji',' < Rp500.000')->count();
-            $jml_penghasilan1 = DB::table('anggota')->where('gaji',' < Rp500.000')->count();
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('gaji','0-1 Juta')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('gaji','0-1 Juta')->count();
 
             $penghasilan1 = $jml_penghasilan + $jml_penghasilan1;
 
-            $jml_penghasilan = DB::table('kartu_keluarga')->where('gaji','Rp 500.000 - Rp 1500.000')->count();
-            $jml_penghasilan1 = DB::table('anggota')->where('gaji','Rp 500.000 - Rp 1500.000')->count();
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('gaji','1 Juta- 2 Juta')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('gaji','1 Juta- 2 Juta')->count();
 
             $penghasilan2 = $jml_penghasilan + $jml_penghasilan1;
 
-            $jml_penghasilan = DB::table('kartu_keluarga')->where('gaji','Rp 1500.000 - Rp 2500.000')->count();
-            $jml_penghasilan1 = DB::table('anggota')->where('gaji','Rp 1500.000 - Rp 2500.000')->count();
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('gaji','2 Juta - 3 Juta')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('gaji','2 Juta - 3 Juta')->count();
 
             $penghasilan3 = $jml_penghasilan + $jml_penghasilan1;
 
-            $jml_penghasilan = DB::table('kartu_keluarga')->where('gaji','Rp 2500.000 - Rp 3500.000')->count();
-            $jml_penghasilan1 = DB::table('anggota')->where('gaji','Rp 2500.000 - Rp 3500.000')->count();
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('gaji','3 Juta - 4 Juta')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('gaji','3 Juta - 4 Juta')->count();
 
             $penghasilan4 = $jml_penghasilan + $jml_penghasilan1;
 
-            $jml_penghasilan = DB::table('kartu_keluarga')->where('gaji','Rp 3500.000 - Rp 4500.000')->count();
-            $jml_penghasilan1 = DB::table('anggota')->where('gaji','Rp 3500.000 - Rp 4500.000')->count();
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('gaji','4 Juta - 5 Juta')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('gaji','4 Juta - 5 Juta')->count();
 
             $penghasilan5 = $jml_penghasilan + $jml_penghasilan1;
 
-            $jml_penghasilan = DB::table('kartu_keluarga')->where('gaji','> Rp 4500.000')->count();
-            $jml_penghasilan1 = DB::table('anggota')->where('gaji','> Rp 4500.000')->count();
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('gaji','> 5 Juta')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('gaji','> 5 Juta')->count();
 
             $penghasilan6 = $jml_penghasilan + $jml_penghasilan1;
 
@@ -390,12 +390,12 @@ class HomeController extends Controller
             $jml_domisili = DB::table('kartu_keluarga')->where('domisili','Ya')->count();
             $jml_domisili1 = DB::table('anggota')->where('domisili','Ya')->count();
 
-            $domisili_ya = $jml_domisili = $jml_domisili1;
+            $domisili_ya = $jml_domisili + $jml_domisili1;
 
             $jml_domisili = DB::table('kartu_keluarga')->where('domisili','Tidak')->count();
             $jml_domisili1 = DB::table('anggota')->where('domisili','Tidak')->count();
 
-            $domisili_tidak = $jml_domisili = $jml_domisili1;
+            $domisili_tidak = $jml_domisili + $jml_domisili1;
 
             $domisili = "[".$domisili_ya.",".$domisili_tidak."]";
 
@@ -495,7 +495,7 @@ class HomeController extends Controller
                 }
             }
 
-            $hasil = "[".$a.",".$b.",".$c.",".$e.",".$e.",".$f.",".$g.",".$h.",".$i.",".$j.",".$k.",".$l.",".$m.",".$n.",".$o.",".$p."]";
+            $hasil = "[".$a.",".$b.",".$c.",".$d.",".$e.",".$f.",".$g.",".$h.",".$i.",".$j.",".$k.",".$l.",".$m.",".$n.",".$o.",".$p."]";
 
             $jml_penduduk = DB::table('kartu_keluarga')->where('kelurahan','Balai-Balai')->count();
             $jml_penduduk1 = DB::table('anggota')->where('kelurahan','Balai-Balai')->count();
@@ -508,33 +508,33 @@ class HomeController extends Controller
 
             //Data Penghasilan
             
-            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Balai-Balai')->where('gaji',' < Rp500.000')->count();
-            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Balai-Balai')->where('gaji',' < Rp500.000')->count();
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Balai-Balai')->where('gaji','0-1 Juta')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Balai-Balai')->where('gaji','0-1 Juta')->count();
 
             $penghasilan1 = $jml_penghasilan + $jml_penghasilan1;
 
-            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Balai-Balai')->where('gaji','Rp 500.000 - Rp 1500.000')->count();
-            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Balai-Balai')->where('gaji','Rp 500.000 - Rp 1500.000')->count();
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Balai-Balai')->where('gaji','1 Juta- 2 Juta')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Balai-Balai')->where('gaji','1 Juta- 2 Juta')->count();
 
             $penghasilan2 = $jml_penghasilan + $jml_penghasilan1;
 
-            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Balai-Balai')->where('gaji','Rp 1500.000 - Rp 2500.000')->count();
-            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Balai-Balai')->where('gaji','Rp 1500.000 - Rp 2500.000')->count();
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Balai-Balai')->where('gaji','2 Juta - 3 Juta')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Balai-Balai')->where('gaji','2 Juta - 3 Juta')->count();
 
             $penghasilan3 = $jml_penghasilan + $jml_penghasilan1;
 
-            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Balai-Balai')->where('gaji','Rp 2500.000 - Rp 3500.000')->count();
-            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Balai-Balai')->where('gaji','Rp 2500.000 - Rp 3500.000')->count();
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Balai-Balai')->where('gaji','3 Juta - 4 Juta')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Balai-Balai')->where('gaji','3 Juta - 4 Juta')->count();
 
             $penghasilan4 = $jml_penghasilan + $jml_penghasilan1;
 
-            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Balai-Balai')->where('gaji','Rp 3500.000 - Rp 4500.000')->count();
-            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Balai-Balai')->where('gaji','Rp 3500.000 - Rp 4500.000')->count();
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Balai-Balai')->where('gaji','4 Juta - 5 Juta')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Balai-Balai')->where('gaji','4 Juta - 5 Juta')->count();
 
             $penghasilan5 = $jml_penghasilan + $jml_penghasilan1;
 
-            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Balai-Balai')->where('gaji','> Rp 4500.000')->count();
-            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Balai-Balai')->where('gaji','> Rp 4500.000')->count();
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Balai-Balai')->where('gaji','> 5 Juta')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Balai-Balai')->where('gaji','> 5 Juta')->count();
 
             $penghasilan6 = $jml_penghasilan + $jml_penghasilan1;
 
@@ -543,12 +543,12 @@ class HomeController extends Controller
             $jml_domisili = DB::table('kartu_keluarga')->where('kelurahan','Balai-Balai')->where('domisili','Ya')->count();
             $jml_domisili1 = DB::table('anggota')->where('kelurahan','Balai-Balai')->where('domisili','Ya')->count();
 
-            $domisili_ya = $jml_domisili = $jml_domisili1;
+            $domisili_ya = $jml_domisili + $jml_domisili1;
 
             $jml_domisili = DB::table('kartu_keluarga')->where('kelurahan','Balai-Balai')->where('domisili','Tidak')->count();
             $jml_domisili1 = DB::table('anggota')->where('kelurahan','Balai-Balai')->where('domisili','Tidak')->count();
 
-            $domisili_tidak = $jml_domisili = $jml_domisili1;
+            $domisili_tidak = $jml_domisili + $jml_domisili1;
 
             $domisili = "[".$domisili_ya.",".$domisili_tidak."]";
 
@@ -648,7 +648,7 @@ class HomeController extends Controller
                 }
             }
 
-            $hasil = "[".$a.",".$b.",".$c.",".$e.",".$e.",".$f.",".$g.",".$h.",".$i.",".$j.",".$k.",".$l.",".$m.",".$n.",".$o.",".$p."]";
+            $hasil = "[".$a.",".$b.",".$c.",".$d.",".$e.",".$f.",".$g.",".$h.",".$i.",".$j.",".$k.",".$l.",".$m.",".$n.",".$o.",".$p."]";
 
             $jml_penduduk = DB::table('kartu_keluarga')->where('kelurahan','Bukit Surungan')->count();
             $jml_penduduk1 = DB::table('anggota')->where('kelurahan','Bukit Surungan')->count();
@@ -661,33 +661,33 @@ class HomeController extends Controller
 
             //Data Penghasilan
             
-            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Bukit Surungan')->where('gaji',' < Rp500.000')->count();
-            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Bukit Surungan')->where('gaji',' < Rp500.000')->count();
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Bukit Surungan')->where('gaji','0-1 Juta')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Bukit Surungan')->where('gaji','0-1 Juta')->count();
 
             $penghasilan1 = $jml_penghasilan + $jml_penghasilan1;
 
-            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Bukit Surungan')->where('gaji','Rp 500.000 - Rp 1500.000')->count();
-            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Bukit Surungan')->where('gaji','Rp 500.000 - Rp 1500.000')->count();
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Bukit Surungan')->where('gaji','1 Juta- 2 Juta')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Bukit Surungan')->where('gaji','1 Juta- 2 Juta')->count();
 
             $penghasilan2 = $jml_penghasilan + $jml_penghasilan1;
 
-            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Bukit Surungan')->where('gaji','Rp 1500.000 - Rp 2500.000')->count();
-            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Bukit Surungan')->where('gaji','Rp 1500.000 - Rp 2500.000')->count();
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Bukit Surungan')->where('gaji','2 Juta - 3 Juta')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Bukit Surungan')->where('gaji','2 Juta - 3 Juta')->count();
 
             $penghasilan3 = $jml_penghasilan + $jml_penghasilan1;
 
-            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Bukit Surungan')->where('gaji','Rp 2500.000 - Rp 3500.000')->count();
-            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Bukit Surungan')->where('gaji','Rp 2500.000 - Rp 3500.000')->count();
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Bukit Surungan')->where('gaji','3 Juta - 4 Juta')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Bukit Surungan')->where('gaji','3 Juta - 4 Juta')->count();
 
             $penghasilan4 = $jml_penghasilan + $jml_penghasilan1;
 
-            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Bukit Surungan')->where('gaji','Rp 3500.000 - Rp 4500.000')->count();
-            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Bukit Surungan')->where('gaji','Rp 3500.000 - Rp 4500.000')->count();
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Bukit Surungan')->where('gaji','4 Juta - 5 Juta')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Bukit Surungan')->where('gaji','4 Juta - 5 Juta')->count();
 
             $penghasilan5 = $jml_penghasilan + $jml_penghasilan1;
 
-            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Bukit Surungan')->where('gaji','> Rp 4500.000')->count();
-            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Bukit Surungan')->where('gaji','> Rp 4500.000')->count();
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Bukit Surungan')->where('gaji','> 5 Juta')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Bukit Surungan')->where('gaji','> 5 Juta')->count();
 
             $penghasilan6 = $jml_penghasilan + $jml_penghasilan1;
 
@@ -696,12 +696,12 @@ class HomeController extends Controller
             $jml_domisili = DB::table('kartu_keluarga')->where('kelurahan','Bukit Surungan')->where('domisili','Ya')->count();
             $jml_domisili1 = DB::table('anggota')->where('kelurahan','Bukit Surungan')->where('domisili','Ya')->count();
 
-            $domisili_ya = $jml_domisili = $jml_domisili1;
+            $domisili_ya = $jml_domisili + $jml_domisili1;
 
             $jml_domisili = DB::table('kartu_keluarga')->where('kelurahan','Bukit Surungan')->where('domisili','Tidak')->count();
             $jml_domisili1 = DB::table('anggota')->where('kelurahan','Bukit Surungan')->where('domisili','Tidak')->count();
 
-            $domisili_tidak = $jml_domisili = $jml_domisili1;
+            $domisili_tidak = $jml_domisili + $jml_domisili1;
 
             $domisili = "[".$domisili_ya.",".$domisili_tidak."]";
 
@@ -801,7 +801,7 @@ class HomeController extends Controller
                 }
             }
 
-            $hasil = "[".$a.",".$b.",".$c.",".$e.",".$e.",".$f.",".$g.",".$h.",".$i.",".$j.",".$k.",".$l.",".$m.",".$n.",".$o.",".$p."]";
+            $hasil = "[".$a.",".$b.",".$c.",".$d.",".$e.",".$f.",".$g.",".$h.",".$i.",".$j.",".$k.",".$l.",".$m.",".$n.",".$o.",".$p."]";
 
             $jml_penduduk = DB::table('kartu_keluarga')->where('kelurahan','Kampung Manggis')->count();
             $jml_penduduk1 = DB::table('anggota')->where('kelurahan','Kampung Manggis')->count();
@@ -814,33 +814,33 @@ class HomeController extends Controller
 
             //Data Penghasilan
             
-            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Kampung Manggis')->where('gaji',' < Rp500.000')->count();
-            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Kampung Manggis')->where('gaji',' < Rp500.000')->count();
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Kampung Manggis')->where('gaji','0-1 Juta')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Kampung Manggis')->where('gaji','0-1 Juta')->count();
 
             $penghasilan1 = $jml_penghasilan + $jml_penghasilan1;
 
-            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Kampung Manggis')->where('gaji','Rp 500.000 - Rp 1500.000')->count();
-            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Kampung Manggis')->where('gaji','Rp 500.000 - Rp 1500.000')->count();
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Kampung Manggis')->where('gaji','1 Juta- 2 Juta')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Kampung Manggis')->where('gaji','1 Juta- 2 Juta')->count();
 
             $penghasilan2 = $jml_penghasilan + $jml_penghasilan1;
 
-            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Kampung Manggis')->where('gaji','Rp 1500.000 - Rp 2500.000')->count();
-            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Kampung Manggis')->where('gaji','Rp 1500.000 - Rp 2500.000')->count();
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Kampung Manggis')->where('gaji','2 Juta - 3 Juta')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Kampung Manggis')->where('gaji','2 Juta - 3 Juta')->count();
 
             $penghasilan3 = $jml_penghasilan + $jml_penghasilan1;
 
-            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Kampung Manggis')->where('gaji','Rp 2500.000 - Rp 3500.000')->count();
-            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Kampung Manggis')->where('gaji','Rp 2500.000 - Rp 3500.000')->count();
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Kampung Manggis')->where('gaji','3 Juta - 4 Juta')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Kampung Manggis')->where('gaji','3 Juta - 4 Juta')->count();
 
             $penghasilan4 = $jml_penghasilan + $jml_penghasilan1;
 
-            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Kampung Manggis')->where('gaji','Rp 3500.000 - Rp 4500.000')->count();
-            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Kampung Manggis')->where('gaji','Rp 3500.000 - Rp 4500.000')->count();
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Kampung Manggis')->where('gaji','4 Juta - 5 Juta')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Kampung Manggis')->where('gaji','4 Juta - 5 Juta')->count();
 
             $penghasilan5 = $jml_penghasilan + $jml_penghasilan1;
 
-            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Kampung Manggis')->where('gaji','> Rp 4500.000')->count();
-            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Kampung Manggis')->where('gaji','> Rp 4500.000')->count();
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Kampung Manggis')->where('gaji','> 5 Juta')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Kampung Manggis')->where('gaji','> 5 Juta')->count();
 
             $penghasilan6 = $jml_penghasilan + $jml_penghasilan1;
 
@@ -849,12 +849,12 @@ class HomeController extends Controller
             $jml_domisili = DB::table('kartu_keluarga')->where('kelurahan','Kampung Manggis')->where('domisili','Ya')->count();
             $jml_domisili1 = DB::table('anggota')->where('kelurahan','Kampung Manggis')->where('domisili','Ya')->count();
 
-            $domisili_ya = $jml_domisili = $jml_domisili1;
+            $domisili_ya = $jml_domisili + $jml_domisili1;
 
             $jml_domisili = DB::table('kartu_keluarga')->where('kelurahan','Kampung Manggis')->where('domisili','Tidak')->count();
             $jml_domisili1 = DB::table('anggota')->where('kelurahan','Kampung Manggis')->where('domisili','Tidak')->count();
 
-            $domisili_tidak = $jml_domisili = $jml_domisili1;
+            $domisili_tidak = $jml_domisili + $jml_domisili1;
 
             $domisili = "[".$domisili_ya.",".$domisili_tidak."]";
 
@@ -954,7 +954,7 @@ class HomeController extends Controller
                 }
             }
 
-            $hasil = "[".$a.",".$b.",".$c.",".$e.",".$e.",".$f.",".$g.",".$h.",".$i.",".$j.",".$k.",".$l.",".$m.",".$n.",".$o.",".$p."]";
+            $hasil = "[".$a.",".$b.",".$c.",".$d.",".$e.",".$f.",".$g.",".$h.",".$i.",".$j.",".$k.",".$l.",".$m.",".$n.",".$o.",".$p."]";
 
             $jml_penduduk = DB::table('kartu_keluarga')->where('kelurahan','Pasar Baru')->count();
             $jml_penduduk1 = DB::table('anggota')->where('kelurahan','Pasar Baru')->count();
@@ -967,33 +967,33 @@ class HomeController extends Controller
 
             //Data Penghasilan
             
-            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Pasar Baru')->where('gaji',' < Rp500.000')->count();
-            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Pasar Baru')->where('gaji',' < Rp500.000')->count();
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Pasar Baru')->where('gaji','0-1 Juta')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Pasar Baru')->where('gaji','0-1 Juta')->count();
 
             $penghasilan1 = $jml_penghasilan + $jml_penghasilan1;
 
-            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Pasar Baru')->where('gaji','Rp 500.000 - Rp 1500.000')->count();
-            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Pasar Baru')->where('gaji','Rp 500.000 - Rp 1500.000')->count();
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Pasar Baru')->where('gaji','1 Juta- 2 Juta')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Pasar Baru')->where('gaji','1 Juta- 2 Juta')->count();
 
             $penghasilan2 = $jml_penghasilan + $jml_penghasilan1;
 
-            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Pasar Baru')->where('gaji','Rp 1500.000 - Rp 2500.000')->count();
-            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Pasar Baru')->where('gaji','Rp 1500.000 - Rp 2500.000')->count();
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Pasar Baru')->where('gaji','2 Juta - 3 Juta')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Pasar Baru')->where('gaji','2 Juta - 3 Juta')->count();
 
             $penghasilan3 = $jml_penghasilan + $jml_penghasilan1;
 
-            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Pasar Baru')->where('gaji','Rp 2500.000 - Rp 3500.000')->count();
-            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Pasar Baru')->where('gaji','Rp 2500.000 - Rp 3500.000')->count();
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Pasar Baru')->where('gaji','3 Juta - 4 Juta')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Pasar Baru')->where('gaji','3 Juta - 4 Juta')->count();
 
             $penghasilan4 = $jml_penghasilan + $jml_penghasilan1;
 
-            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Pasar Baru')->where('gaji','Rp 3500.000 - Rp 4500.000')->count();
-            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Pasar Baru')->where('gaji','Rp 3500.000 - Rp 4500.000')->count();
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Pasar Baru')->where('gaji','4 Juta - 5 Juta')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Pasar Baru')->where('gaji','4 Juta - 5 Juta')->count();
 
             $penghasilan5 = $jml_penghasilan + $jml_penghasilan1;
 
-            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Pasar Baru')->where('gaji','> Rp 4500.000')->count();
-            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Pasar Baru')->where('gaji','> Rp 4500.000')->count();
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Pasar Baru')->where('gaji','> 5 Juta')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Pasar Baru')->where('gaji','> 5 Juta')->count();
 
             $penghasilan6 = $jml_penghasilan + $jml_penghasilan1;
 
@@ -1002,12 +1002,12 @@ class HomeController extends Controller
             $jml_domisili = DB::table('kartu_keluarga')->where('kelurahan','Pasar Baru')->where('domisili','Ya')->count();
             $jml_domisili1 = DB::table('anggota')->where('kelurahan','Pasar Baru')->where('domisili','Ya')->count();
 
-            $domisili_ya = $jml_domisili = $jml_domisili1;
+            $domisili_ya = $jml_domisili + $jml_domisili1;
 
             $jml_domisili = DB::table('kartu_keluarga')->where('kelurahan','Pasar Baru')->where('domisili','Tidak')->count();
             $jml_domisili1 = DB::table('anggota')->where('kelurahan','Pasar Baru')->where('domisili','Tidak')->count();
 
-            $domisili_tidak = $jml_domisili = $jml_domisili1;
+            $domisili_tidak = $jml_domisili + $jml_domisili1;
 
             $domisili = "[".$domisili_ya.",".$domisili_tidak."]";
 
@@ -1107,7 +1107,7 @@ class HomeController extends Controller
                 }
             }
 
-            $hasil = "[".$a.",".$b.",".$c.",".$e.",".$e.",".$f.",".$g.",".$h.",".$i.",".$j.",".$k.",".$l.",".$m.",".$n.",".$o.",".$p."]";
+            $hasil = "[".$a.",".$b.",".$c.",".$d.",".$e.",".$f.",".$g.",".$h.",".$i.",".$j.",".$k.",".$l.",".$m.",".$n.",".$o.",".$p."]";
 
             $jml_penduduk = DB::table('kartu_keluarga')->where('kelurahan','Pasar Usang')->count();
             $jml_penduduk1 = DB::table('anggota')->where('kelurahan','Pasar Usang')->count();
@@ -1120,33 +1120,33 @@ class HomeController extends Controller
 
             //Data Penghasilan
             
-            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Pasar Usang')->where('gaji',' < Rp500.000')->count();
-            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Pasar Usang')->where('gaji',' < Rp500.000')->count();
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Pasar Usang')->where('gaji','0-1 Juta')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Pasar Usang')->where('gaji','0-1 Juta')->count();
 
             $penghasilan1 = $jml_penghasilan + $jml_penghasilan1;
 
-            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Pasar Usang')->where('gaji','Rp 500.000 - Rp 1500.000')->count();
-            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Pasar Usang')->where('gaji','Rp 500.000 - Rp 1500.000')->count();
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Pasar Usang')->where('gaji','1 Juta- 2 Juta')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Pasar Usang')->where('gaji','1 Juta- 2 Juta')->count();
 
             $penghasilan2 = $jml_penghasilan + $jml_penghasilan1;
 
-            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Pasar Usang')->where('gaji','Rp 1500.000 - Rp 2500.000')->count();
-            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Pasar Usang')->where('gaji','Rp 1500.000 - Rp 2500.000')->count();
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Pasar Usang')->where('gaji','2 Juta - 3 Juta')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Pasar Usang')->where('gaji','2 Juta - 3 Juta')->count();
 
             $penghasilan3 = $jml_penghasilan + $jml_penghasilan1;
 
-            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Pasar Usang')->where('gaji','Rp 2500.000 - Rp 3500.000')->count();
-            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Pasar Usang')->where('gaji','Rp 2500.000 - Rp 3500.000')->count();
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Pasar Usang')->where('gaji','3 Juta - 4 Juta')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Pasar Usang')->where('gaji','3 Juta - 4 Juta')->count();
 
             $penghasilan4 = $jml_penghasilan + $jml_penghasilan1;
 
-            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Pasar Usang')->where('gaji','Rp 3500.000 - Rp 4500.000')->count();
-            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Pasar Usang')->where('gaji','Rp 3500.000 - Rp 4500.000')->count();
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Pasar Usang')->where('gaji','4 Juta - 5 Juta')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Pasar Usang')->where('gaji','4 Juta - 5 Juta')->count();
 
             $penghasilan5 = $jml_penghasilan + $jml_penghasilan1;
 
-            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Pasar Usang')->where('gaji','> Rp 4500.000')->count();
-            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Pasar Usang')->where('gaji','> Rp 4500.000')->count();
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Pasar Usang')->where('gaji','> 5 Juta')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Pasar Usang')->where('gaji','> 5 Juta')->count();
 
             $penghasilan6 = $jml_penghasilan + $jml_penghasilan1;
 
@@ -1155,12 +1155,12 @@ class HomeController extends Controller
             $jml_domisili = DB::table('kartu_keluarga')->where('kelurahan','Pasar Usang')->where('domisili','Ya')->count();
             $jml_domisili1 = DB::table('anggota')->where('kelurahan','Pasar Usang')->where('domisili','Ya')->count();
 
-            $domisili_ya = $jml_domisili = $jml_domisili1;
+            $domisili_ya = $jml_domisili + $jml_domisili1;
 
             $jml_domisili = DB::table('kartu_keluarga')->where('kelurahan','Pasar Usang')->where('domisili','Tidak')->count();
             $jml_domisili1 = DB::table('anggota')->where('kelurahan','Pasar Usang')->where('domisili','Tidak')->count();
 
-            $domisili_tidak = $jml_domisili = $jml_domisili1;
+            $domisili_tidak = $jml_domisili + $jml_domisili1;
 
             $domisili = "[".$domisili_ya.",".$domisili_tidak."]";
 
@@ -1168,8 +1168,8 @@ class HomeController extends Controller
 
         } else if(Auth::User()->level == "Admin Kelurahan Silaing Atas"){
         
-            $penduduk = DB::table('kartu_keluarga')->selectRaw('TIMESTAMPDIFF(YEAR, DATE(tgl_lahir), current_date) AS age')->where('kelurahan','Silang Atas')->get();
-            $anggota = DB::table('anggota')->selectRaw('TIMESTAMPDIFF(YEAR, DATE(tgl_lahir), current_date) AS age')->where('kelurahan','Silang Atas')->get();
+            $penduduk = DB::table('kartu_keluarga')->selectRaw('TIMESTAMPDIFF(YEAR, DATE(tgl_lahir), current_date) AS age')->where('kelurahan','Silaing Atas')->get();
+            $anggota = DB::table('anggota')->selectRaw('TIMESTAMPDIFF(YEAR, DATE(tgl_lahir), current_date) AS age')->where('kelurahan','Silaing Atas')->get();
 
             $a=0;
             $b=0;
@@ -1260,7 +1260,7 @@ class HomeController extends Controller
                 }
             }
 
-            $hasil = "[".$a.",".$b.",".$c.",".$e.",".$e.",".$f.",".$g.",".$h.",".$i.",".$j.",".$k.",".$l.",".$m.",".$n.",".$o.",".$p."]";
+            $hasil = "[".$a.",".$b.",".$c.",".$d.",".$e.",".$f.",".$g.",".$h.",".$i.",".$j.",".$k.",".$l.",".$m.",".$n.",".$o.",".$p."]";
 
             $jml_penduduk = DB::table('kartu_keluarga')->where('kelurahan','Silaing Atas')->count();
             $jml_penduduk1 = DB::table('anggota')->where('kelurahan','Silaing Atas')->count();
@@ -1273,33 +1273,33 @@ class HomeController extends Controller
 
             //Data Penghasilan
             
-            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Silaing Atas')->where('gaji',' < Rp500.000')->count();
-            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Silaing Atas')->where('gaji',' < Rp500.000')->count();
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Silaing Atas')->where('gaji','0-1 Juta')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Silaing Atas')->where('gaji','0-1 Juta')->count();
 
             $penghasilan1 = $jml_penghasilan + $jml_penghasilan1;
 
-            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Silaing Atas')->where('gaji','Rp 500.000 - Rp 1500.000')->count();
-            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Silaing Atas')->where('gaji','Rp 500.000 - Rp 1500.000')->count();
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Silaing Atas')->where('gaji','1 Juta- 2 Juta')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Silaing Atas')->where('gaji','1 Juta- 2 Juta')->count();
 
             $penghasilan2 = $jml_penghasilan + $jml_penghasilan1;
 
-            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Silaing Atas')->where('gaji','Rp 1500.000 - Rp 2500.000')->count();
-            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Silaing Atas')->where('gaji','Rp 1500.000 - Rp 2500.000')->count();
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Silaing Atas')->where('gaji','2 Juta - 3 Juta')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Silaing Atas')->where('gaji','2 Juta - 3 Juta')->count();
 
             $penghasilan3 = $jml_penghasilan + $jml_penghasilan1;
 
-            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Silaing Atas')->where('gaji','Rp 2500.000 - Rp 3500.000')->count();
-            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Silaing Atas')->where('gaji','Rp 2500.000 - Rp 3500.000')->count();
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Silaing Atas')->where('gaji','3 Juta - 4 Juta')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Silaing Atas')->where('gaji','3 Juta - 4 Juta')->count();
 
             $penghasilan4 = $jml_penghasilan + $jml_penghasilan1;
 
-            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Silaing Atas')->where('gaji','Rp 3500.000 - Rp 4500.000')->count();
-            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Silaing Atas')->where('gaji','Rp 3500.000 - Rp 4500.000')->count();
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Silaing Atas')->where('gaji','4 Juta - 5 Juta')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Silaing Atas')->where('gaji','4 Juta - 5 Juta')->count();
 
             $penghasilan5 = $jml_penghasilan + $jml_penghasilan1;
 
-            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Silaing Atas')->where('gaji','> Rp 4500.000')->count();
-            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Silaing Atas')->where('gaji','> Rp 4500.000')->count();
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Silaing Atas')->where('gaji','> 5 Juta')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Silaing Atas')->where('gaji','> 5 Juta')->count();
 
             $penghasilan6 = $jml_penghasilan + $jml_penghasilan1;
 
@@ -1308,12 +1308,12 @@ class HomeController extends Controller
             $jml_domisili = DB::table('kartu_keluarga')->where('kelurahan','Silaing Atas')->where('domisili','Ya')->count();
             $jml_domisili1 = DB::table('anggota')->where('kelurahan','Silaing Atas')->where('domisili','Ya')->count();
 
-            $domisili_ya = $jml_domisili = $jml_domisili1;
+            $domisili_ya = $jml_domisili + $jml_domisili1;
 
             $jml_domisili = DB::table('kartu_keluarga')->where('kelurahan','Silaing Atas')->where('domisili','Tidak')->count();
             $jml_domisili1 = DB::table('anggota')->where('kelurahan','Silaing Atas')->where('domisili','Tidak')->count();
 
-            $domisili_tidak = $jml_domisili = $jml_domisili1;
+            $domisili_tidak = $jml_domisili + $jml_domisili1;
 
             $domisili = "[".$domisili_ya.",".$domisili_tidak."]";
 
@@ -1413,7 +1413,7 @@ class HomeController extends Controller
                 }
             }
 
-            $hasil = "[".$a.",".$b.",".$c.",".$e.",".$e.",".$f.",".$g.",".$h.",".$i.",".$j.",".$k.",".$l.",".$m.",".$n.",".$o.",".$p."]";
+            $hasil = "[".$a.",".$b.",".$c.",".$d.",".$e.",".$f.",".$g.",".$h.",".$i.",".$j.",".$k.",".$l.",".$m.",".$n.",".$o.",".$p."]";
 
             $jml_penduduk = DB::table('kartu_keluarga')->where('kelurahan','Tanah Hitam')->count();
             $jml_penduduk1 = DB::table('anggota')->where('kelurahan','Tanah Hitam')->count();
@@ -1426,33 +1426,33 @@ class HomeController extends Controller
 
             //Data Penghasilan
             
-            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Tanah Hitam')->where('gaji',' < Rp500.000')->count();
-            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Tanah Hitam')->where('gaji',' < Rp500.000')->count();
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Tanah Hitam')->where('gaji','0-1 Juta')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Tanah Hitam')->where('gaji','0-1 Juta')->count();
 
             $penghasilan1 = $jml_penghasilan + $jml_penghasilan1;
 
-            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Tanah Hitam')->where('gaji','Rp 500.000 - Rp 1500.000')->count();
-            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Tanah Hitam')->where('gaji','Rp 500.000 - Rp 1500.000')->count();
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Tanah Hitam')->where('gaji','1 Juta- 2 Juta')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Tanah Hitam')->where('gaji','1 Juta- 2 Juta')->count();
 
             $penghasilan2 = $jml_penghasilan + $jml_penghasilan1;
 
-            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Tanah Hitam')->where('gaji','Rp 1500.000 - Rp 2500.000')->count();
-            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Tanah Hitam')->where('gaji','Rp 1500.000 - Rp 2500.000')->count();
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Tanah Hitam')->where('gaji','2 Juta - 3 Juta')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Tanah Hitam')->where('gaji','2 Juta - 3 Juta')->count();
 
             $penghasilan3 = $jml_penghasilan + $jml_penghasilan1;
 
-            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Tanah Hitam')->where('gaji','Rp 2500.000 - Rp 3500.000')->count();
-            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Tanah Hitam')->where('gaji','Rp 2500.000 - Rp 3500.000')->count();
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Tanah Hitam')->where('gaji','3 Juta - 4 Juta')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Tanah Hitam')->where('gaji','3 Juta - 4 Juta')->count();
 
             $penghasilan4 = $jml_penghasilan + $jml_penghasilan1;
 
-            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Tanah Hitam')->where('gaji','Rp 3500.000 - Rp 4500.000')->count();
-            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Tanah Hitam')->where('gaji','Rp 3500.000 - Rp 4500.000')->count();
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Tanah Hitam')->where('gaji','4 Juta - 5 Juta')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Tanah Hitam')->where('gaji','4 Juta - 5 Juta')->count();
 
             $penghasilan5 = $jml_penghasilan + $jml_penghasilan1;
 
-            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Tanah Hitam')->where('gaji','> Rp 4500.000')->count();
-            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Tanah Hitam')->where('gaji','> Rp 4500.000')->count();
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Tanah Hitam')->where('gaji','> 5 Juta')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Tanah Hitam')->where('gaji','> 5 Juta')->count();
 
             $penghasilan6 = $jml_penghasilan + $jml_penghasilan1;
 
@@ -1461,12 +1461,12 @@ class HomeController extends Controller
             $jml_domisili = DB::table('kartu_keluarga')->where('kelurahan','Tanah Hitam')->where('domisili','Ya')->count();
             $jml_domisili1 = DB::table('anggota')->where('kelurahan','Tanah Hitam')->where('domisili','Ya')->count();
 
-            $domisili_ya = $jml_domisili = $jml_domisili1;
+            $domisili_ya = $jml_domisili + $jml_domisili1;
 
             $jml_domisili = DB::table('kartu_keluarga')->where('kelurahan','Tanah Hitam')->where('domisili','Tidak')->count();
             $jml_domisili1 = DB::table('anggota')->where('kelurahan','Tanah Hitam')->where('domisili','Tidak')->count();
 
-            $domisili_tidak = $jml_domisili = $jml_domisili1;
+            $domisili_tidak = $jml_domisili + $jml_domisili1;
 
             $domisili = "[".$domisili_ya.",".$domisili_tidak."]";
 
@@ -1566,7 +1566,7 @@ class HomeController extends Controller
                 }
             }
 
-            $hasil = "[".$a.",".$b.",".$c.",".$e.",".$e.",".$f.",".$g.",".$h.",".$i.",".$j.",".$k.",".$l.",".$m.",".$n.",".$o.",".$p."]";
+            $hasil = "[".$a.",".$b.",".$c.",".$d.",".$e.",".$f.",".$g.",".$h.",".$i.",".$j.",".$k.",".$l.",".$m.",".$n.",".$o.",".$p."]";
 
             $jml_penduduk = DB::table('kartu_keluarga')->where('kelurahan','Silaing Bawah')->count();
             $jml_penduduk1 = DB::table('anggota')->where('kelurahan','Silaing Bawah')->count();
@@ -1579,33 +1579,33 @@ class HomeController extends Controller
 
             //Data Penghasilan
             
-            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Silaing Bawah')->where('gaji',' < Rp500.000')->count();
-            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Silaing Bawah')->where('gaji',' < Rp500.000')->count();
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Silaing Bawah')->where('gaji','0-1 Juta')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Silaing Bawah')->where('gaji','0-1 Juta')->count();
 
             $penghasilan1 = $jml_penghasilan + $jml_penghasilan1;
 
-            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Silaing Bawah')->where('gaji','Rp 500.000 - Rp 1500.000')->count();
-            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Silaing Bawah')->where('gaji','Rp 500.000 - Rp 1500.000')->count();
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Silaing Bawah')->where('gaji','1 Juta- 2 Juta')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Silaing Bawah')->where('gaji','1 Juta- 2 Juta')->count();
 
             $penghasilan2 = $jml_penghasilan + $jml_penghasilan1;
 
-            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Silaing Bawah')->where('gaji','Rp 1500.000 - Rp 2500.000')->count();
-            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Silaing Bawah')->where('gaji','Rp 1500.000 - Rp 2500.000')->count();
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Silaing Bawah')->where('gaji','2 Juta - 3 Juta')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Silaing Bawah')->where('gaji','2 Juta - 3 Juta')->count();
 
             $penghasilan3 = $jml_penghasilan + $jml_penghasilan1;
 
-            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Silaing Bawah')->where('gaji','Rp 2500.000 - Rp 3500.000')->count();
-            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Silaing Bawah')->where('gaji','Rp 2500.000 - Rp 3500.000')->count();
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Silaing Bawah')->where('gaji','3 Juta - 4 Juta')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Silaing Bawah')->where('gaji','3 Juta - 4 Juta')->count();
 
             $penghasilan4 = $jml_penghasilan + $jml_penghasilan1;
 
-            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Silaing Bawah')->where('gaji','Rp 3500.000 - Rp 4500.000')->count();
-            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Silaing Bawah')->where('gaji','Rp 3500.000 - Rp 4500.000')->count();
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Silaing Bawah')->where('gaji','4 Juta - 5 Juta')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Silaing Bawah')->where('gaji','4 Juta - 5 Juta')->count();
 
             $penghasilan5 = $jml_penghasilan + $jml_penghasilan1;
 
-            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Silaing Bawah')->where('gaji','> Rp 4500.000')->count();
-            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Silaing Bawah')->where('gaji','> Rp 4500.000')->count();
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Silaing Bawah')->where('gaji','> 5 Juta')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Silaing Bawah')->where('gaji','> 5 Juta')->count();
 
             $penghasilan6 = $jml_penghasilan + $jml_penghasilan1;
 
@@ -1614,12 +1614,12 @@ class HomeController extends Controller
             $jml_domisili = DB::table('kartu_keluarga')->where('kelurahan','Silaing Bawah')->where('domisili','Ya')->count();
             $jml_domisili1 = DB::table('anggota')->where('kelurahan','Silaing Bawah')->where('domisili','Ya')->count();
 
-            $domisili_ya = $jml_domisili = $jml_domisili1;
+            $domisili_ya = $jml_domisili + $jml_domisili1;
 
             $jml_domisili = DB::table('kartu_keluarga')->where('kelurahan','Silaing Bawah')->where('domisili','Tidak')->count();
             $jml_domisili1 = DB::table('anggota')->where('kelurahan','Silaing Bawah')->where('domisili','Tidak')->count();
 
-            $domisili_tidak = $jml_domisili = $jml_domisili1;
+            $domisili_tidak = $jml_domisili + $jml_domisili1;
 
             $domisili = "[".$domisili_ya.",".$domisili_tidak."]";
 

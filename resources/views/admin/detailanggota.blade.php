@@ -59,7 +59,7 @@
                 <div class="col">
                   <h2 class="card-title"><i class="fa fa-plus-circle"></i>&nbsp;&nbsp; Detail Data Kepala Keluarga
                     <div class="float-right">
-                     <!--  <a href="/kartu-keluarga" class="btn btn-primary btn-round btn-sm mb-3 mr-3"><i class="fa fa-print"></i>&nbsp;Cetak</a> -->
+                      <a href="/kartu-keluarga" class="btn btn-primary btn-round btn-sm mb-3 mr-3"><i class="fa fa-print"></i>&nbsp;Cetak</a>
                       <a href="/kartu-keluarga" class="btn btn-secondary btn-round btn-sm mb-3 mr-3"><i class="fa fa-arrow-left"></i>&nbsp;Back</a>
                     </div>
                   </h2><hr>
@@ -135,7 +135,7 @@
                                     <?php
                                       $tgl_lahir = $anggota->tgl_lahir;
                                       $diff  = date_diff( date_create($tgl_lahir), date_create() );
-                                      echo $diff->format('%Y tahun %d hari');
+                                      echo $diff->format('%Y tahun %m bulan');
                                     ?></td>
                                 </tr>
                                 <tr>
