@@ -29,6 +29,100 @@ class HomeController extends Controller
     {
         if(Auth::User()->level == "Admin Camat"){
 
+            $penduduk = DB::table('kartu_keluarga')->selectRaw('TIMESTAMPDIFF(YEAR, DATE(tgl_lahir), current_date) AS age')->get();
+            $anggota = DB::table('anggota')->selectRaw('TIMESTAMPDIFF(YEAR, DATE(tgl_lahir), current_date) AS age')->get();
+
+            $a=0;
+            $b=0;
+            $c=0;
+            $d=0;
+            $e=0;
+            $f=0;
+            $g=0;
+            $h=0;
+            $i=0;
+            $j=0;
+            $k=0;
+            $l=0;
+            $m=0;
+            $n=0;
+            $o=0;
+            $p=0;
+
+            foreach($penduduk as $data) {
+                if($data->age >= 0 && $data->age <= 4){
+                    $a = $a + 1;
+                } else if($data->age >= 5 && $data->age <= 9){
+                    $b = $b + 1;
+                } else if($data->age >= 10 && $data->age <= 14){
+                    $c = $c + 1;
+                } else if($data->age >= 15 && $data->age <= 19){
+                    $d = $d + 1;
+                } else if($data->age >= 20 && $data->age <= 24){
+                    $e = $e + 1;
+                } else if($data->age >= 25 && $data->age <= 29){
+                    $f = $f + 1;
+                } else if($data->age >= 30 && $data->age <= 34){
+                    $g = $g + 1;
+                } else if($data->age >= 35 && $data->age <= 39){
+                    $h = $h + 1;
+                } else if($data->age >= 40 && $data->age <= 44){
+                    $i = $i + 1;
+                } else if($data->age >= 45 && $data->age <= 49){
+                    $j = $j + 1;
+                } else if($data->age >= 50 && $data->age <= 54){
+                    $k = $k + 1;
+                } else if($data->age >= 55 && $data->age <= 59){
+                    $l = $l + 1;
+                } else if($data->age >= 60 && $data->age <= 64){
+                    $m = $m + 1;
+                } else if($data->age >= 65 && $data->age <= 69){
+                    $n = $n + 1;
+                } else if($data->age >= 70 && $data->age <= 74){
+                    $o = $o + 1;
+                } else if($data->age >= 75){
+                    $p = $p + 1;
+                }
+            }
+
+            foreach($anggota as $data) {
+                if($data->age >= 0 && $data->age <= 4){
+                    $a = $a + 1;
+                } else if($data->age >= 5 && $data->age <= 9){
+                    $b = $b + 1;
+                } else if($data->age >= 10 && $data->age <= 14){
+                    $c = $c + 1;
+                } else if($data->age >= 15 && $data->age <= 19){
+                    $d = $d + 1;
+                } else if($data->age >= 20 && $data->age <= 24){
+                    $e = $e + 1;
+                } else if($data->age >= 25 && $data->age <= 29){
+                    $f = $f + 1;
+                } else if($data->age >= 30 && $data->age <= 34){
+                    $g = $g + 1;
+                } else if($data->age >= 35 && $data->age <= 39){
+                    $h = $h + 1;
+                } else if($data->age >= 40 && $data->age <= 44){
+                    $i = $i + 1;
+                } else if($data->age >= 45 && $data->age <= 49){
+                    $j = $j + 1;
+                } else if($data->age >= 50 && $data->age <= 54){
+                    $k = $k + 1;
+                } else if($data->age >= 55 && $data->age <= 59){
+                    $l = $l + 1;
+                } else if($data->age >= 60 && $data->age <= 64){
+                    $m = $m + 1;
+                } else if($data->age >= 65 && $data->age <= 69){
+                    $n = $n + 1;
+                } else if($data->age >= 70 && $data->age <= 74){
+                    $o = $o + 1;
+                } else if($data->age >= 75){
+                    $p = $p + 1;
+                }
+            }
+
+            $hasil = "[".$a.",".$b.",".$c.",".$e.",".$e.",".$f.",".$g.",".$h.",".$i.",".$j.",".$k.",".$l.",".$m.",".$n.",".$o.",".$p."]";
+
             $jml_penduduk = DB::table('kartu_keluarga')->count();
             $jml_penduduk1 = DB::table('anggota')->count();
 
@@ -104,11 +198,118 @@ class HomeController extends Controller
             $jml_bukit_anggota = DB::table('anggota')->where('kelurahan','Bukit Surungan')->count();
             $total_bukit = $jml_bukit_kk + $jml_bukit_anggota;
             
+            //Domisili
 
-            return view('/admin/home',['jml_penduduk'=>$jml_penduduk,'jml_penduduk1'=>$jml_penduduk1,'jml_laki_laki'=>$jml_laki_laki,'jml_laki_laki1'=>$jml_laki_laki1,'jml_perempuan'=>$jml_perempuan,'jml_perempuan1'=>$jml_perempuan1,'total_manggis'=>$total_manggis,'total_bukit'=>$total_bukit,'total_tanah'=>$total_tanah,'total_silat'=>$total_silat,'total_silba'=>$total_silba,'total_paus'=>$total_paus,'total_pabar'=>$total_pabar,'total_balai'=>$total_balai,'penghasilan1'=>$penghasilan1,'penghasilan2'=>$penghasilan2,'penghasilan3'=>$penghasilan3,'penghasilan4'=>$penghasilan4,'penghasilan5'=>$penghasilan5,'penghasilan6'=>$penghasilan6]);
+            $jml_domisili = DB::table('kartu_keluarga')->where('domisili','Ya')->count();
+            $jml_domisili1 = DB::table('anggota')->where('domisili','Ya')->count();
+
+            $domisili_ya = $jml_domisili = $jml_domisili1;
+
+            $jml_domisili = DB::table('kartu_keluarga')->where('domisili','Tidak')->count();
+            $jml_domisili1 = DB::table('anggota')->where('domisili','Tidak')->count();
+
+            $domisili_tidak = $jml_domisili = $jml_domisili1;
+
+            $domisili = "[".$domisili_ya.",".$domisili_tidak."]";
+
+            return view('/admin/home',['domisili'=>$domisili,'hasil'=>$hasil,'jml_penduduk'=>$jml_penduduk,'jml_penduduk1'=>$jml_penduduk1,'jml_laki_laki'=>$jml_laki_laki,'jml_laki_laki1'=>$jml_laki_laki1,'jml_perempuan'=>$jml_perempuan,'jml_perempuan1'=>$jml_perempuan1,'total_manggis'=>$total_manggis,'total_bukit'=>$total_bukit,'total_tanah'=>$total_tanah,'total_silat'=>$total_silat,'total_silba'=>$total_silba,'total_paus'=>$total_paus,'total_pabar'=>$total_pabar,'total_balai'=>$total_balai,'penghasilan1'=>$penghasilan1,'penghasilan2'=>$penghasilan2,'penghasilan3'=>$penghasilan3,'penghasilan4'=>$penghasilan4,'penghasilan5'=>$penghasilan5,'penghasilan6'=>$penghasilan6]);
         
         } else if(Auth::User()->level == "SuperAdmin"){
         
+            $penduduk = DB::table('kartu_keluarga')->selectRaw('TIMESTAMPDIFF(YEAR, DATE(tgl_lahir), current_date) AS age')->get();
+            $anggota = DB::table('anggota')->selectRaw('TIMESTAMPDIFF(YEAR, DATE(tgl_lahir), current_date) AS age')->get();
+
+            $a=0;
+            $b=0;
+            $c=0;
+            $d=0;
+            $e=0;
+            $f=0;
+            $g=0;
+            $h=0;
+            $i=0;
+            $j=0;
+            $k=0;
+            $l=0;
+            $m=0;
+            $n=0;
+            $o=0;
+            $p=0;
+
+            foreach($penduduk as $data) {
+                if($data->age >= 0 && $data->age <= 4){
+                    $a = $a + 1;
+                } else if($data->age >= 5 && $data->age <= 9){
+                    $b = $b + 1;
+                } else if($data->age >= 10 && $data->age <= 14){
+                    $c = $c + 1;
+                } else if($data->age >= 15 && $data->age <= 19){
+                    $d = $d + 1;
+                } else if($data->age >= 20 && $data->age <= 24){
+                    $e = $e + 1;
+                } else if($data->age >= 25 && $data->age <= 29){
+                    $f = $f + 1;
+                } else if($data->age >= 30 && $data->age <= 34){
+                    $g = $g + 1;
+                } else if($data->age >= 35 && $data->age <= 39){
+                    $h = $h + 1;
+                } else if($data->age >= 40 && $data->age <= 44){
+                    $i = $i + 1;
+                } else if($data->age >= 45 && $data->age <= 49){
+                    $j = $j + 1;
+                } else if($data->age >= 50 && $data->age <= 54){
+                    $k = $k + 1;
+                } else if($data->age >= 55 && $data->age <= 59){
+                    $l = $l + 1;
+                } else if($data->age >= 60 && $data->age <= 64){
+                    $m = $m + 1;
+                } else if($data->age >= 65 && $data->age <= 69){
+                    $n = $n + 1;
+                } else if($data->age >= 70 && $data->age <= 74){
+                    $o = $o + 1;
+                } else if($data->age >= 75){
+                    $p = $p + 1;
+                }
+            }
+
+            foreach($anggota as $data) {
+                if($data->age >= 0 && $data->age <= 4){
+                    $a = $a + 1;
+                } else if($data->age >= 5 && $data->age <= 9){
+                    $b = $b + 1;
+                } else if($data->age >= 10 && $data->age <= 14){
+                    $c = $c + 1;
+                } else if($data->age >= 15 && $data->age <= 19){
+                    $d = $d + 1;
+                } else if($data->age >= 20 && $data->age <= 24){
+                    $e = $e + 1;
+                } else if($data->age >= 25 && $data->age <= 29){
+                    $f = $f + 1;
+                } else if($data->age >= 30 && $data->age <= 34){
+                    $g = $g + 1;
+                } else if($data->age >= 35 && $data->age <= 39){
+                    $h = $h + 1;
+                } else if($data->age >= 40 && $data->age <= 44){
+                    $i = $i + 1;
+                } else if($data->age >= 45 && $data->age <= 49){
+                    $j = $j + 1;
+                } else if($data->age >= 50 && $data->age <= 54){
+                    $k = $k + 1;
+                } else if($data->age >= 55 && $data->age <= 59){
+                    $l = $l + 1;
+                } else if($data->age >= 60 && $data->age <= 64){
+                    $m = $m + 1;
+                } else if($data->age >= 65 && $data->age <= 69){
+                    $n = $n + 1;
+                } else if($data->age >= 70 && $data->age <= 74){
+                    $o = $o + 1;
+                } else if($data->age >= 75){
+                    $p = $p + 1;
+                }
+            }
+
+            $hasil = "[".$a.",".$b.",".$c.",".$e.",".$e.",".$f.",".$g.",".$h.",".$i.",".$j.",".$k.",".$l.",".$m.",".$n.",".$o.",".$p."]";
+
             $jml_penduduk = DB::table('kartu_keluarga')->count();
             $jml_penduduk1 = DB::table('anggota')->count();
 
@@ -184,11 +385,118 @@ class HomeController extends Controller
             $jml_bukit_anggota = DB::table('anggota')->where('kelurahan','Bukit Surungan')->count();
             $total_bukit = $jml_bukit_kk + $jml_bukit_anggota;
             
+            //Domisili
 
-            return view('/admin/home',['jml_penduduk'=>$jml_penduduk,'jml_penduduk1'=>$jml_penduduk1,'jml_laki_laki'=>$jml_laki_laki,'jml_laki_laki1'=>$jml_laki_laki1,'jml_perempuan'=>$jml_perempuan,'jml_perempuan1'=>$jml_perempuan1,'total_manggis'=>$total_manggis,'total_bukit'=>$total_bukit,'total_tanah'=>$total_tanah,'total_silat'=>$total_silat,'total_silba'=>$total_silba,'total_paus'=>$total_paus,'total_pabar'=>$total_pabar,'total_balai'=>$total_balai,'penghasilan1'=>$penghasilan1,'penghasilan2'=>$penghasilan2,'penghasilan3'=>$penghasilan3,'penghasilan4'=>$penghasilan4,'penghasilan5'=>$penghasilan5,'penghasilan6'=>$penghasilan6]);
+            $jml_domisili = DB::table('kartu_keluarga')->where('domisili','Ya')->count();
+            $jml_domisili1 = DB::table('anggota')->where('domisili','Ya')->count();
+
+            $domisili_ya = $jml_domisili = $jml_domisili1;
+
+            $jml_domisili = DB::table('kartu_keluarga')->where('domisili','Tidak')->count();
+            $jml_domisili1 = DB::table('anggota')->where('domisili','Tidak')->count();
+
+            $domisili_tidak = $jml_domisili = $jml_domisili1;
+
+            $domisili = "[".$domisili_ya.",".$domisili_tidak."]";
+
+            return view('/admin/home',['domisili'=>$domisili,'hasil'=>$hasil,'jml_penduduk'=>$jml_penduduk,'jml_penduduk1'=>$jml_penduduk1,'jml_laki_laki'=>$jml_laki_laki,'jml_laki_laki1'=>$jml_laki_laki1,'jml_perempuan'=>$jml_perempuan,'jml_perempuan1'=>$jml_perempuan1,'total_manggis'=>$total_manggis,'total_bukit'=>$total_bukit,'total_tanah'=>$total_tanah,'total_silat'=>$total_silat,'total_silba'=>$total_silba,'total_paus'=>$total_paus,'total_pabar'=>$total_pabar,'total_balai'=>$total_balai,'penghasilan1'=>$penghasilan1,'penghasilan2'=>$penghasilan2,'penghasilan3'=>$penghasilan3,'penghasilan4'=>$penghasilan4,'penghasilan5'=>$penghasilan5,'penghasilan6'=>$penghasilan6]);
         
         } else if(Auth::User()->level == "Admin Kelurahan Balai-Balai"){
         
+            $penduduk = DB::table('kartu_keluarga')->selectRaw('TIMESTAMPDIFF(YEAR, DATE(tgl_lahir), current_date) AS age')->where('kelurahan','Balai-Balai')->get();
+            $anggota = DB::table('anggota')->selectRaw('TIMESTAMPDIFF(YEAR, DATE(tgl_lahir), current_date) AS age')->where('kelurahan','Balai-Balai')->get();
+
+            $a=0;
+            $b=0;
+            $c=0;
+            $d=0;
+            $e=0;
+            $f=0;
+            $g=0;
+            $h=0;
+            $i=0;
+            $j=0;
+            $k=0;
+            $l=0;
+            $m=0;
+            $n=0;
+            $o=0;
+            $p=0;
+
+            foreach($penduduk as $data) {
+                if($data->age >= 0 && $data->age <= 4){
+                    $a = $a + 1;
+                } else if($data->age >= 5 && $data->age <= 9){
+                    $b = $b + 1;
+                } else if($data->age >= 10 && $data->age <= 14){
+                    $c = $c + 1;
+                } else if($data->age >= 15 && $data->age <= 19){
+                    $d = $d + 1;
+                } else if($data->age >= 20 && $data->age <= 24){
+                    $e = $e + 1;
+                } else if($data->age >= 25 && $data->age <= 29){
+                    $f = $f + 1;
+                } else if($data->age >= 30 && $data->age <= 34){
+                    $g = $g + 1;
+                } else if($data->age >= 35 && $data->age <= 39){
+                    $h = $h + 1;
+                } else if($data->age >= 40 && $data->age <= 44){
+                    $i = $i + 1;
+                } else if($data->age >= 45 && $data->age <= 49){
+                    $j = $j + 1;
+                } else if($data->age >= 50 && $data->age <= 54){
+                    $k = $k + 1;
+                } else if($data->age >= 55 && $data->age <= 59){
+                    $l = $l + 1;
+                } else if($data->age >= 60 && $data->age <= 64){
+                    $m = $m + 1;
+                } else if($data->age >= 65 && $data->age <= 69){
+                    $n = $n + 1;
+                } else if($data->age >= 70 && $data->age <= 74){
+                    $o = $o + 1;
+                } else if($data->age >= 75){
+                    $p = $p + 1;
+                }
+            }
+
+            foreach($anggota as $data) {
+                if($data->age >= 0 && $data->age <= 4){
+                    $a = $a + 1;
+                } else if($data->age >= 5 && $data->age <= 9){
+                    $b = $b + 1;
+                } else if($data->age >= 10 && $data->age <= 14){
+                    $c = $c + 1;
+                } else if($data->age >= 15 && $data->age <= 19){
+                    $d = $d + 1;
+                } else if($data->age >= 20 && $data->age <= 24){
+                    $e = $e + 1;
+                } else if($data->age >= 25 && $data->age <= 29){
+                    $f = $f + 1;
+                } else if($data->age >= 30 && $data->age <= 34){
+                    $g = $g + 1;
+                } else if($data->age >= 35 && $data->age <= 39){
+                    $h = $h + 1;
+                } else if($data->age >= 40 && $data->age <= 44){
+                    $i = $i + 1;
+                } else if($data->age >= 45 && $data->age <= 49){
+                    $j = $j + 1;
+                } else if($data->age >= 50 && $data->age <= 54){
+                    $k = $k + 1;
+                } else if($data->age >= 55 && $data->age <= 59){
+                    $l = $l + 1;
+                } else if($data->age >= 60 && $data->age <= 64){
+                    $m = $m + 1;
+                } else if($data->age >= 65 && $data->age <= 69){
+                    $n = $n + 1;
+                } else if($data->age >= 70 && $data->age <= 74){
+                    $o = $o + 1;
+                } else if($data->age >= 75){
+                    $p = $p + 1;
+                }
+            }
+
+            $hasil = "[".$a.",".$b.",".$c.",".$e.",".$e.",".$f.",".$g.",".$h.",".$i.",".$j.",".$k.",".$l.",".$m.",".$n.",".$o.",".$p."]";
+
             $jml_penduduk = DB::table('kartu_keluarga')->where('kelurahan','Balai-Balai')->count();
             $jml_penduduk1 = DB::table('anggota')->where('kelurahan','Balai-Balai')->count();
 
@@ -230,10 +538,118 @@ class HomeController extends Controller
 
             $penghasilan6 = $jml_penghasilan + $jml_penghasilan1;
 
-            return view('/admin/home',['jml_penduduk'=>$jml_penduduk,'jml_penduduk1'=>$jml_penduduk1,'jml_laki_laki'=>$jml_laki_laki,'jml_laki_laki1'=>$jml_laki_laki1,'jml_perempuan'=>$jml_perempuan,'jml_perempuan1'=>$jml_perempuan1,'penghasilan1'=>$penghasilan1,'penghasilan2'=>$penghasilan2,'penghasilan3'=>$penghasilan3,'penghasilan4'=>$penghasilan4,'penghasilan5'=>$penghasilan5,'penghasilan6'=>$penghasilan6]);
+            //Domisili
+
+            $jml_domisili = DB::table('kartu_keluarga')->where('kelurahan','Balai-Balai')->where('domisili','Ya')->count();
+            $jml_domisili1 = DB::table('anggota')->where('kelurahan','Balai-Balai')->where('domisili','Ya')->count();
+
+            $domisili_ya = $jml_domisili = $jml_domisili1;
+
+            $jml_domisili = DB::table('kartu_keluarga')->where('kelurahan','Balai-Balai')->where('domisili','Tidak')->count();
+            $jml_domisili1 = DB::table('anggota')->where('kelurahan','Balai-Balai')->where('domisili','Tidak')->count();
+
+            $domisili_tidak = $jml_domisili = $jml_domisili1;
+
+            $domisili = "[".$domisili_ya.",".$domisili_tidak."]";
+
+            return view('/admin/home',['domisili'=>$domisili,'hasil'=>$hasil,'jml_penduduk'=>$jml_penduduk,'jml_penduduk1'=>$jml_penduduk1,'jml_laki_laki'=>$jml_laki_laki,'jml_laki_laki1'=>$jml_laki_laki1,'jml_perempuan'=>$jml_perempuan,'jml_perempuan1'=>$jml_perempuan1,'penghasilan1'=>$penghasilan1,'penghasilan2'=>$penghasilan2,'penghasilan3'=>$penghasilan3,'penghasilan4'=>$penghasilan4,'penghasilan5'=>$penghasilan5,'penghasilan6'=>$penghasilan6]);
         
         } else if(Auth::User()->level == "Admin Kelurahan Bukit Surungan"){
         
+            $penduduk = DB::table('kartu_keluarga')->selectRaw('TIMESTAMPDIFF(YEAR, DATE(tgl_lahir), current_date) AS age')->where('kelurahan','Bukit Surungan')->get();
+            $anggota = DB::table('anggota')->selectRaw('TIMESTAMPDIFF(YEAR, DATE(tgl_lahir), current_date) AS age')->where('kelurahan','Bukit Surungan')->get();
+
+            $a=0;
+            $b=0;
+            $c=0;
+            $d=0;
+            $e=0;
+            $f=0;
+            $g=0;
+            $h=0;
+            $i=0;
+            $j=0;
+            $k=0;
+            $l=0;
+            $m=0;
+            $n=0;
+            $o=0;
+            $p=0;
+
+            foreach($penduduk as $data) {
+                if($data->age >= 0 && $data->age <= 4){
+                    $a = $a + 1;
+                } else if($data->age >= 5 && $data->age <= 9){
+                    $b = $b + 1;
+                } else if($data->age >= 10 && $data->age <= 14){
+                    $c = $c + 1;
+                } else if($data->age >= 15 && $data->age <= 19){
+                    $d = $d + 1;
+                } else if($data->age >= 20 && $data->age <= 24){
+                    $e = $e + 1;
+                } else if($data->age >= 25 && $data->age <= 29){
+                    $f = $f + 1;
+                } else if($data->age >= 30 && $data->age <= 34){
+                    $g = $g + 1;
+                } else if($data->age >= 35 && $data->age <= 39){
+                    $h = $h + 1;
+                } else if($data->age >= 40 && $data->age <= 44){
+                    $i = $i + 1;
+                } else if($data->age >= 45 && $data->age <= 49){
+                    $j = $j + 1;
+                } else if($data->age >= 50 && $data->age <= 54){
+                    $k = $k + 1;
+                } else if($data->age >= 55 && $data->age <= 59){
+                    $l = $l + 1;
+                } else if($data->age >= 60 && $data->age <= 64){
+                    $m = $m + 1;
+                } else if($data->age >= 65 && $data->age <= 69){
+                    $n = $n + 1;
+                } else if($data->age >= 70 && $data->age <= 74){
+                    $o = $o + 1;
+                } else if($data->age >= 75){
+                    $p = $p + 1;
+                }
+            }
+
+            foreach($anggota as $data) {
+                if($data->age >= 0 && $data->age <= 4){
+                    $a = $a + 1;
+                } else if($data->age >= 5 && $data->age <= 9){
+                    $b = $b + 1;
+                } else if($data->age >= 10 && $data->age <= 14){
+                    $c = $c + 1;
+                } else if($data->age >= 15 && $data->age <= 19){
+                    $d = $d + 1;
+                } else if($data->age >= 20 && $data->age <= 24){
+                    $e = $e + 1;
+                } else if($data->age >= 25 && $data->age <= 29){
+                    $f = $f + 1;
+                } else if($data->age >= 30 && $data->age <= 34){
+                    $g = $g + 1;
+                } else if($data->age >= 35 && $data->age <= 39){
+                    $h = $h + 1;
+                } else if($data->age >= 40 && $data->age <= 44){
+                    $i = $i + 1;
+                } else if($data->age >= 45 && $data->age <= 49){
+                    $j = $j + 1;
+                } else if($data->age >= 50 && $data->age <= 54){
+                    $k = $k + 1;
+                } else if($data->age >= 55 && $data->age <= 59){
+                    $l = $l + 1;
+                } else if($data->age >= 60 && $data->age <= 64){
+                    $m = $m + 1;
+                } else if($data->age >= 65 && $data->age <= 69){
+                    $n = $n + 1;
+                } else if($data->age >= 70 && $data->age <= 74){
+                    $o = $o + 1;
+                } else if($data->age >= 75){
+                    $p = $p + 1;
+                }
+            }
+
+            $hasil = "[".$a.",".$b.",".$c.",".$e.",".$e.",".$f.",".$g.",".$h.",".$i.",".$j.",".$k.",".$l.",".$m.",".$n.",".$o.",".$p."]";
+
             $jml_penduduk = DB::table('kartu_keluarga')->where('kelurahan','Bukit Surungan')->count();
             $jml_penduduk1 = DB::table('anggota')->where('kelurahan','Bukit Surungan')->count();
 
@@ -275,10 +691,118 @@ class HomeController extends Controller
 
             $penghasilan6 = $jml_penghasilan + $jml_penghasilan1;
 
-            return view('/admin/home',['jml_penduduk'=>$jml_penduduk,'jml_penduduk1'=>$jml_penduduk1,'jml_laki_laki'=>$jml_laki_laki,'jml_laki_laki1'=>$jml_laki_laki1,'jml_perempuan'=>$jml_perempuan,'jml_perempuan1'=>$jml_perempuan1,'penghasilan1'=>$penghasilan1,'penghasilan2'=>$penghasilan2,'penghasilan3'=>$penghasilan3,'penghasilan4'=>$penghasilan4,'penghasilan5'=>$penghasilan5,'penghasilan6'=>$penghasilan6]);
+            //Domisili
+
+            $jml_domisili = DB::table('kartu_keluarga')->where('kelurahan','Bukit Surungan')->where('domisili','Ya')->count();
+            $jml_domisili1 = DB::table('anggota')->where('kelurahan','Bukit Surungan')->where('domisili','Ya')->count();
+
+            $domisili_ya = $jml_domisili = $jml_domisili1;
+
+            $jml_domisili = DB::table('kartu_keluarga')->where('kelurahan','Bukit Surungan')->where('domisili','Tidak')->count();
+            $jml_domisili1 = DB::table('anggota')->where('kelurahan','Bukit Surungan')->where('domisili','Tidak')->count();
+
+            $domisili_tidak = $jml_domisili = $jml_domisili1;
+
+            $domisili = "[".$domisili_ya.",".$domisili_tidak."]";
+
+            return view('/admin/home',['domisili'=>$domisili,'hasil'=>$hasil,'jml_penduduk'=>$jml_penduduk,'jml_penduduk1'=>$jml_penduduk1,'jml_laki_laki'=>$jml_laki_laki,'jml_laki_laki1'=>$jml_laki_laki1,'jml_perempuan'=>$jml_perempuan,'jml_perempuan1'=>$jml_perempuan1,'penghasilan1'=>$penghasilan1,'penghasilan2'=>$penghasilan2,'penghasilan3'=>$penghasilan3,'penghasilan4'=>$penghasilan4,'penghasilan5'=>$penghasilan5,'penghasilan6'=>$penghasilan6]);
         
         } else if(Auth::User()->level == "Admin Kelurahan Kampung Manggis"){
         
+            $penduduk = DB::table('kartu_keluarga')->selectRaw('TIMESTAMPDIFF(YEAR, DATE(tgl_lahir), current_date) AS age')->where('kelurahan','Kampung Manggis')->get();
+            $anggota = DB::table('anggota')->selectRaw('TIMESTAMPDIFF(YEAR, DATE(tgl_lahir), current_date) AS age')->where('kelurahan','Kampung Manggis')->get();
+
+            $a=0;
+            $b=0;
+            $c=0;
+            $d=0;
+            $e=0;
+            $f=0;
+            $g=0;
+            $h=0;
+            $i=0;
+            $j=0;
+            $k=0;
+            $l=0;
+            $m=0;
+            $n=0;
+            $o=0;
+            $p=0;
+
+            foreach($penduduk as $data) {
+                if($data->age >= 0 && $data->age <= 4){
+                    $a = $a + 1;
+                } else if($data->age >= 5 && $data->age <= 9){
+                    $b = $b + 1;
+                } else if($data->age >= 10 && $data->age <= 14){
+                    $c = $c + 1;
+                } else if($data->age >= 15 && $data->age <= 19){
+                    $d = $d + 1;
+                } else if($data->age >= 20 && $data->age <= 24){
+                    $e = $e + 1;
+                } else if($data->age >= 25 && $data->age <= 29){
+                    $f = $f + 1;
+                } else if($data->age >= 30 && $data->age <= 34){
+                    $g = $g + 1;
+                } else if($data->age >= 35 && $data->age <= 39){
+                    $h = $h + 1;
+                } else if($data->age >= 40 && $data->age <= 44){
+                    $i = $i + 1;
+                } else if($data->age >= 45 && $data->age <= 49){
+                    $j = $j + 1;
+                } else if($data->age >= 50 && $data->age <= 54){
+                    $k = $k + 1;
+                } else if($data->age >= 55 && $data->age <= 59){
+                    $l = $l + 1;
+                } else if($data->age >= 60 && $data->age <= 64){
+                    $m = $m + 1;
+                } else if($data->age >= 65 && $data->age <= 69){
+                    $n = $n + 1;
+                } else if($data->age >= 70 && $data->age <= 74){
+                    $o = $o + 1;
+                } else if($data->age >= 75){
+                    $p = $p + 1;
+                }
+            }
+
+            foreach($anggota as $data) {
+                if($data->age >= 0 && $data->age <= 4){
+                    $a = $a + 1;
+                } else if($data->age >= 5 && $data->age <= 9){
+                    $b = $b + 1;
+                } else if($data->age >= 10 && $data->age <= 14){
+                    $c = $c + 1;
+                } else if($data->age >= 15 && $data->age <= 19){
+                    $d = $d + 1;
+                } else if($data->age >= 20 && $data->age <= 24){
+                    $e = $e + 1;
+                } else if($data->age >= 25 && $data->age <= 29){
+                    $f = $f + 1;
+                } else if($data->age >= 30 && $data->age <= 34){
+                    $g = $g + 1;
+                } else if($data->age >= 35 && $data->age <= 39){
+                    $h = $h + 1;
+                } else if($data->age >= 40 && $data->age <= 44){
+                    $i = $i + 1;
+                } else if($data->age >= 45 && $data->age <= 49){
+                    $j = $j + 1;
+                } else if($data->age >= 50 && $data->age <= 54){
+                    $k = $k + 1;
+                } else if($data->age >= 55 && $data->age <= 59){
+                    $l = $l + 1;
+                } else if($data->age >= 60 && $data->age <= 64){
+                    $m = $m + 1;
+                } else if($data->age >= 65 && $data->age <= 69){
+                    $n = $n + 1;
+                } else if($data->age >= 70 && $data->age <= 74){
+                    $o = $o + 1;
+                } else if($data->age >= 75){
+                    $p = $p + 1;
+                }
+            }
+
+            $hasil = "[".$a.",".$b.",".$c.",".$e.",".$e.",".$f.",".$g.",".$h.",".$i.",".$j.",".$k.",".$l.",".$m.",".$n.",".$o.",".$p."]";
+
             $jml_penduduk = DB::table('kartu_keluarga')->where('kelurahan','Kampung Manggis')->count();
             $jml_penduduk1 = DB::table('anggota')->where('kelurahan','Kampung Manggis')->count();
 
@@ -320,10 +844,118 @@ class HomeController extends Controller
 
             $penghasilan6 = $jml_penghasilan + $jml_penghasilan1;
 
-            return view('/admin/home',['jml_penduduk'=>$jml_penduduk,'jml_penduduk1'=>$jml_penduduk1,'jml_laki_laki'=>$jml_laki_laki,'jml_laki_laki1'=>$jml_laki_laki1,'jml_perempuan'=>$jml_perempuan,'jml_perempuan1'=>$jml_perempuan1,'penghasilan1'=>$penghasilan1,'penghasilan2'=>$penghasilan2,'penghasilan3'=>$penghasilan3,'penghasilan4'=>$penghasilan4,'penghasilan5'=>$penghasilan5,'penghasilan6'=>$penghasilan6]);
+            //Domisili
+
+            $jml_domisili = DB::table('kartu_keluarga')->where('kelurahan','Kampung Manggis')->where('domisili','Ya')->count();
+            $jml_domisili1 = DB::table('anggota')->where('kelurahan','Kampung Manggis')->where('domisili','Ya')->count();
+
+            $domisili_ya = $jml_domisili = $jml_domisili1;
+
+            $jml_domisili = DB::table('kartu_keluarga')->where('kelurahan','Kampung Manggis')->where('domisili','Tidak')->count();
+            $jml_domisili1 = DB::table('anggota')->where('kelurahan','Kampung Manggis')->where('domisili','Tidak')->count();
+
+            $domisili_tidak = $jml_domisili = $jml_domisili1;
+
+            $domisili = "[".$domisili_ya.",".$domisili_tidak."]";
+
+            return view('/admin/home',['domisili'=>$domisili,'hasil'=>$hasil,'jml_penduduk'=>$jml_penduduk,'jml_penduduk1'=>$jml_penduduk1,'jml_laki_laki'=>$jml_laki_laki,'jml_laki_laki1'=>$jml_laki_laki1,'jml_perempuan'=>$jml_perempuan,'jml_perempuan1'=>$jml_perempuan1,'penghasilan1'=>$penghasilan1,'penghasilan2'=>$penghasilan2,'penghasilan3'=>$penghasilan3,'penghasilan4'=>$penghasilan4,'penghasilan5'=>$penghasilan5,'penghasilan6'=>$penghasilan6]);
         
         } else if(Auth::User()->level == "Admin Kelurahan Pasar Baru"){
         
+            $penduduk = DB::table('kartu_keluarga')->selectRaw('TIMESTAMPDIFF(YEAR, DATE(tgl_lahir), current_date) AS age')->where('kelurahan','Pasar Baru')->get();
+            $anggota = DB::table('anggota')->selectRaw('TIMESTAMPDIFF(YEAR, DATE(tgl_lahir), current_date) AS age')->where('kelurahan','Pasar Baru')->get();
+
+            $a=0;
+            $b=0;
+            $c=0;
+            $d=0;
+            $e=0;
+            $f=0;
+            $g=0;
+            $h=0;
+            $i=0;
+            $j=0;
+            $k=0;
+            $l=0;
+            $m=0;
+            $n=0;
+            $o=0;
+            $p=0;
+
+            foreach($penduduk as $data) {
+                if($data->age >= 0 && $data->age <= 4){
+                    $a = $a + 1;
+                } else if($data->age >= 5 && $data->age <= 9){
+                    $b = $b + 1;
+                } else if($data->age >= 10 && $data->age <= 14){
+                    $c = $c + 1;
+                } else if($data->age >= 15 && $data->age <= 19){
+                    $d = $d + 1;
+                } else if($data->age >= 20 && $data->age <= 24){
+                    $e = $e + 1;
+                } else if($data->age >= 25 && $data->age <= 29){
+                    $f = $f + 1;
+                } else if($data->age >= 30 && $data->age <= 34){
+                    $g = $g + 1;
+                } else if($data->age >= 35 && $data->age <= 39){
+                    $h = $h + 1;
+                } else if($data->age >= 40 && $data->age <= 44){
+                    $i = $i + 1;
+                } else if($data->age >= 45 && $data->age <= 49){
+                    $j = $j + 1;
+                } else if($data->age >= 50 && $data->age <= 54){
+                    $k = $k + 1;
+                } else if($data->age >= 55 && $data->age <= 59){
+                    $l = $l + 1;
+                } else if($data->age >= 60 && $data->age <= 64){
+                    $m = $m + 1;
+                } else if($data->age >= 65 && $data->age <= 69){
+                    $n = $n + 1;
+                } else if($data->age >= 70 && $data->age <= 74){
+                    $o = $o + 1;
+                } else if($data->age >= 75){
+                    $p = $p + 1;
+                }
+            }
+
+            foreach($anggota as $data) {
+                if($data->age >= 0 && $data->age <= 4){
+                    $a = $a + 1;
+                } else if($data->age >= 5 && $data->age <= 9){
+                    $b = $b + 1;
+                } else if($data->age >= 10 && $data->age <= 14){
+                    $c = $c + 1;
+                } else if($data->age >= 15 && $data->age <= 19){
+                    $d = $d + 1;
+                } else if($data->age >= 20 && $data->age <= 24){
+                    $e = $e + 1;
+                } else if($data->age >= 25 && $data->age <= 29){
+                    $f = $f + 1;
+                } else if($data->age >= 30 && $data->age <= 34){
+                    $g = $g + 1;
+                } else if($data->age >= 35 && $data->age <= 39){
+                    $h = $h + 1;
+                } else if($data->age >= 40 && $data->age <= 44){
+                    $i = $i + 1;
+                } else if($data->age >= 45 && $data->age <= 49){
+                    $j = $j + 1;
+                } else if($data->age >= 50 && $data->age <= 54){
+                    $k = $k + 1;
+                } else if($data->age >= 55 && $data->age <= 59){
+                    $l = $l + 1;
+                } else if($data->age >= 60 && $data->age <= 64){
+                    $m = $m + 1;
+                } else if($data->age >= 65 && $data->age <= 69){
+                    $n = $n + 1;
+                } else if($data->age >= 70 && $data->age <= 74){
+                    $o = $o + 1;
+                } else if($data->age >= 75){
+                    $p = $p + 1;
+                }
+            }
+
+            $hasil = "[".$a.",".$b.",".$c.",".$e.",".$e.",".$f.",".$g.",".$h.",".$i.",".$j.",".$k.",".$l.",".$m.",".$n.",".$o.",".$p."]";
+
             $jml_penduduk = DB::table('kartu_keluarga')->where('kelurahan','Pasar Baru')->count();
             $jml_penduduk1 = DB::table('anggota')->where('kelurahan','Pasar Baru')->count();
 
@@ -365,10 +997,118 @@ class HomeController extends Controller
 
             $penghasilan6 = $jml_penghasilan + $jml_penghasilan1;
 
-            return view('/admin/home',['jml_penduduk'=>$jml_penduduk,'jml_penduduk1'=>$jml_penduduk1,'jml_laki_laki'=>$jml_laki_laki,'jml_laki_laki1'=>$jml_laki_laki1,'jml_perempuan'=>$jml_perempuan,'jml_perempuan1'=>$jml_perempuan1,'penghasilan1'=>$penghasilan1,'penghasilan2'=>$penghasilan2,'penghasilan3'=>$penghasilan3,'penghasilan4'=>$penghasilan4,'penghasilan5'=>$penghasilan5,'penghasilan6'=>$penghasilan6]);
+            //Domisili
+
+            $jml_domisili = DB::table('kartu_keluarga')->where('kelurahan','Pasar Baru')->where('domisili','Ya')->count();
+            $jml_domisili1 = DB::table('anggota')->where('kelurahan','Pasar Baru')->where('domisili','Ya')->count();
+
+            $domisili_ya = $jml_domisili = $jml_domisili1;
+
+            $jml_domisili = DB::table('kartu_keluarga')->where('kelurahan','Pasar Baru')->where('domisili','Tidak')->count();
+            $jml_domisili1 = DB::table('anggota')->where('kelurahan','Pasar Baru')->where('domisili','Tidak')->count();
+
+            $domisili_tidak = $jml_domisili = $jml_domisili1;
+
+            $domisili = "[".$domisili_ya.",".$domisili_tidak."]";
+
+            return view('/admin/home',['domisili'=>$domisili,'hasil'=>$hasil,'jml_penduduk'=>$jml_penduduk,'jml_penduduk1'=>$jml_penduduk1,'jml_laki_laki'=>$jml_laki_laki,'jml_laki_laki1'=>$jml_laki_laki1,'jml_perempuan'=>$jml_perempuan,'jml_perempuan1'=>$jml_perempuan1,'penghasilan1'=>$penghasilan1,'penghasilan2'=>$penghasilan2,'penghasilan3'=>$penghasilan3,'penghasilan4'=>$penghasilan4,'penghasilan5'=>$penghasilan5,'penghasilan6'=>$penghasilan6]);
 
         } else if(Auth::User()->level == "Admin Kelurahan Pasar Usang"){
         
+            $penduduk = DB::table('kartu_keluarga')->selectRaw('TIMESTAMPDIFF(YEAR, DATE(tgl_lahir), current_date) AS age')->where('kelurahan','Pasar Usang')->get();
+            $anggota = DB::table('anggota')->selectRaw('TIMESTAMPDIFF(YEAR, DATE(tgl_lahir), current_date) AS age')->where('kelurahan','Pasar Usang')->get();
+
+            $a=0;
+            $b=0;
+            $c=0;
+            $d=0;
+            $e=0;
+            $f=0;
+            $g=0;
+            $h=0;
+            $i=0;
+            $j=0;
+            $k=0;
+            $l=0;
+            $m=0;
+            $n=0;
+            $o=0;
+            $p=0;
+
+            foreach($penduduk as $data) {
+                if($data->age >= 0 && $data->age <= 4){
+                    $a = $a + 1;
+                } else if($data->age >= 5 && $data->age <= 9){
+                    $b = $b + 1;
+                } else if($data->age >= 10 && $data->age <= 14){
+                    $c = $c + 1;
+                } else if($data->age >= 15 && $data->age <= 19){
+                    $d = $d + 1;
+                } else if($data->age >= 20 && $data->age <= 24){
+                    $e = $e + 1;
+                } else if($data->age >= 25 && $data->age <= 29){
+                    $f = $f + 1;
+                } else if($data->age >= 30 && $data->age <= 34){
+                    $g = $g + 1;
+                } else if($data->age >= 35 && $data->age <= 39){
+                    $h = $h + 1;
+                } else if($data->age >= 40 && $data->age <= 44){
+                    $i = $i + 1;
+                } else if($data->age >= 45 && $data->age <= 49){
+                    $j = $j + 1;
+                } else if($data->age >= 50 && $data->age <= 54){
+                    $k = $k + 1;
+                } else if($data->age >= 55 && $data->age <= 59){
+                    $l = $l + 1;
+                } else if($data->age >= 60 && $data->age <= 64){
+                    $m = $m + 1;
+                } else if($data->age >= 65 && $data->age <= 69){
+                    $n = $n + 1;
+                } else if($data->age >= 70 && $data->age <= 74){
+                    $o = $o + 1;
+                } else if($data->age >= 75){
+                    $p = $p + 1;
+                }
+            }
+
+            foreach($anggota as $data) {
+                if($data->age >= 0 && $data->age <= 4){
+                    $a = $a + 1;
+                } else if($data->age >= 5 && $data->age <= 9){
+                    $b = $b + 1;
+                } else if($data->age >= 10 && $data->age <= 14){
+                    $c = $c + 1;
+                } else if($data->age >= 15 && $data->age <= 19){
+                    $d = $d + 1;
+                } else if($data->age >= 20 && $data->age <= 24){
+                    $e = $e + 1;
+                } else if($data->age >= 25 && $data->age <= 29){
+                    $f = $f + 1;
+                } else if($data->age >= 30 && $data->age <= 34){
+                    $g = $g + 1;
+                } else if($data->age >= 35 && $data->age <= 39){
+                    $h = $h + 1;
+                } else if($data->age >= 40 && $data->age <= 44){
+                    $i = $i + 1;
+                } else if($data->age >= 45 && $data->age <= 49){
+                    $j = $j + 1;
+                } else if($data->age >= 50 && $data->age <= 54){
+                    $k = $k + 1;
+                } else if($data->age >= 55 && $data->age <= 59){
+                    $l = $l + 1;
+                } else if($data->age >= 60 && $data->age <= 64){
+                    $m = $m + 1;
+                } else if($data->age >= 65 && $data->age <= 69){
+                    $n = $n + 1;
+                } else if($data->age >= 70 && $data->age <= 74){
+                    $o = $o + 1;
+                } else if($data->age >= 75){
+                    $p = $p + 1;
+                }
+            }
+
+            $hasil = "[".$a.",".$b.",".$c.",".$e.",".$e.",".$f.",".$g.",".$h.",".$i.",".$j.",".$k.",".$l.",".$m.",".$n.",".$o.",".$p."]";
+
             $jml_penduduk = DB::table('kartu_keluarga')->where('kelurahan','Pasar Usang')->count();
             $jml_penduduk1 = DB::table('anggota')->where('kelurahan','Pasar Usang')->count();
 
@@ -410,10 +1150,118 @@ class HomeController extends Controller
 
             $penghasilan6 = $jml_penghasilan + $jml_penghasilan1;
 
-            return view('/admin/home',['jml_penduduk'=>$jml_penduduk,'jml_penduduk1'=>$jml_penduduk1,'jml_laki_laki'=>$jml_laki_laki,'jml_laki_laki1'=>$jml_laki_laki1,'jml_perempuan'=>$jml_perempuan,'jml_perempuan1'=>$jml_perempuan1,'penghasilan1'=>$penghasilan1,'penghasilan2'=>$penghasilan2,'penghasilan3'=>$penghasilan3,'penghasilan4'=>$penghasilan4,'penghasilan5'=>$penghasilan5,'penghasilan6'=>$penghasilan6]);
+            //Domisili
+
+            $jml_domisili = DB::table('kartu_keluarga')->where('kelurahan','Pasar Usang')->where('domisili','Ya')->count();
+            $jml_domisili1 = DB::table('anggota')->where('kelurahan','Pasar Usang')->where('domisili','Ya')->count();
+
+            $domisili_ya = $jml_domisili = $jml_domisili1;
+
+            $jml_domisili = DB::table('kartu_keluarga')->where('kelurahan','Pasar Usang')->where('domisili','Tidak')->count();
+            $jml_domisili1 = DB::table('anggota')->where('kelurahan','Pasar Usang')->where('domisili','Tidak')->count();
+
+            $domisili_tidak = $jml_domisili = $jml_domisili1;
+
+            $domisili = "[".$domisili_ya.",".$domisili_tidak."]";
+
+            return view('/admin/home',['domisili'=>$domisili,'hasil'=>$hasil,'jml_penduduk'=>$jml_penduduk,'jml_penduduk1'=>$jml_penduduk1,'jml_laki_laki'=>$jml_laki_laki,'jml_laki_laki1'=>$jml_laki_laki1,'jml_perempuan'=>$jml_perempuan,'jml_perempuan1'=>$jml_perempuan1,'penghasilan1'=>$penghasilan1,'penghasilan2'=>$penghasilan2,'penghasilan3'=>$penghasilan3,'penghasilan4'=>$penghasilan4,'penghasilan5'=>$penghasilan5,'penghasilan6'=>$penghasilan6]);
 
         } else if(Auth::User()->level == "Admin Kelurahan Silaing Atas"){
         
+            $penduduk = DB::table('kartu_keluarga')->selectRaw('TIMESTAMPDIFF(YEAR, DATE(tgl_lahir), current_date) AS age')->where('kelurahan','Silang Atas')->get();
+            $anggota = DB::table('anggota')->selectRaw('TIMESTAMPDIFF(YEAR, DATE(tgl_lahir), current_date) AS age')->where('kelurahan','Silang Atas')->get();
+
+            $a=0;
+            $b=0;
+            $c=0;
+            $d=0;
+            $e=0;
+            $f=0;
+            $g=0;
+            $h=0;
+            $i=0;
+            $j=0;
+            $k=0;
+            $l=0;
+            $m=0;
+            $n=0;
+            $o=0;
+            $p=0;
+
+            foreach($penduduk as $data) {
+                if($data->age >= 0 && $data->age <= 4){
+                    $a = $a + 1;
+                } else if($data->age >= 5 && $data->age <= 9){
+                    $b = $b + 1;
+                } else if($data->age >= 10 && $data->age <= 14){
+                    $c = $c + 1;
+                } else if($data->age >= 15 && $data->age <= 19){
+                    $d = $d + 1;
+                } else if($data->age >= 20 && $data->age <= 24){
+                    $e = $e + 1;
+                } else if($data->age >= 25 && $data->age <= 29){
+                    $f = $f + 1;
+                } else if($data->age >= 30 && $data->age <= 34){
+                    $g = $g + 1;
+                } else if($data->age >= 35 && $data->age <= 39){
+                    $h = $h + 1;
+                } else if($data->age >= 40 && $data->age <= 44){
+                    $i = $i + 1;
+                } else if($data->age >= 45 && $data->age <= 49){
+                    $j = $j + 1;
+                } else if($data->age >= 50 && $data->age <= 54){
+                    $k = $k + 1;
+                } else if($data->age >= 55 && $data->age <= 59){
+                    $l = $l + 1;
+                } else if($data->age >= 60 && $data->age <= 64){
+                    $m = $m + 1;
+                } else if($data->age >= 65 && $data->age <= 69){
+                    $n = $n + 1;
+                } else if($data->age >= 70 && $data->age <= 74){
+                    $o = $o + 1;
+                } else if($data->age >= 75){
+                    $p = $p + 1;
+                }
+            }
+
+            foreach($anggota as $data) {
+                if($data->age >= 0 && $data->age <= 4){
+                    $a = $a + 1;
+                } else if($data->age >= 5 && $data->age <= 9){
+                    $b = $b + 1;
+                } else if($data->age >= 10 && $data->age <= 14){
+                    $c = $c + 1;
+                } else if($data->age >= 15 && $data->age <= 19){
+                    $d = $d + 1;
+                } else if($data->age >= 20 && $data->age <= 24){
+                    $e = $e + 1;
+                } else if($data->age >= 25 && $data->age <= 29){
+                    $f = $f + 1;
+                } else if($data->age >= 30 && $data->age <= 34){
+                    $g = $g + 1;
+                } else if($data->age >= 35 && $data->age <= 39){
+                    $h = $h + 1;
+                } else if($data->age >= 40 && $data->age <= 44){
+                    $i = $i + 1;
+                } else if($data->age >= 45 && $data->age <= 49){
+                    $j = $j + 1;
+                } else if($data->age >= 50 && $data->age <= 54){
+                    $k = $k + 1;
+                } else if($data->age >= 55 && $data->age <= 59){
+                    $l = $l + 1;
+                } else if($data->age >= 60 && $data->age <= 64){
+                    $m = $m + 1;
+                } else if($data->age >= 65 && $data->age <= 69){
+                    $n = $n + 1;
+                } else if($data->age >= 70 && $data->age <= 74){
+                    $o = $o + 1;
+                } else if($data->age >= 75){
+                    $p = $p + 1;
+                }
+            }
+
+            $hasil = "[".$a.",".$b.",".$c.",".$e.",".$e.",".$f.",".$g.",".$h.",".$i.",".$j.",".$k.",".$l.",".$m.",".$n.",".$o.",".$p."]";
+
             $jml_penduduk = DB::table('kartu_keluarga')->where('kelurahan','Silaing Atas')->count();
             $jml_penduduk1 = DB::table('anggota')->where('kelurahan','Silaing Atas')->count();
 
@@ -455,10 +1303,118 @@ class HomeController extends Controller
 
             $penghasilan6 = $jml_penghasilan + $jml_penghasilan1;
 
-            return view('/admin/home',['jml_penduduk'=>$jml_penduduk,'jml_penduduk1'=>$jml_penduduk1,'jml_laki_laki'=>$jml_laki_laki,'jml_laki_laki1'=>$jml_laki_laki1,'jml_perempuan'=>$jml_perempuan,'jml_perempuan1'=>$jml_perempuan1,'penghasilan1'=>$penghasilan1,'penghasilan2'=>$penghasilan2,'penghasilan3'=>$penghasilan3,'penghasilan4'=>$penghasilan4,'penghasilan5'=>$penghasilan5,'penghasilan6'=>$penghasilan6]);
+            //Domisili
+
+            $jml_domisili = DB::table('kartu_keluarga')->where('kelurahan','Silaing Atas')->where('domisili','Ya')->count();
+            $jml_domisili1 = DB::table('anggota')->where('kelurahan','Silaing Atas')->where('domisili','Ya')->count();
+
+            $domisili_ya = $jml_domisili = $jml_domisili1;
+
+            $jml_domisili = DB::table('kartu_keluarga')->where('kelurahan','Silaing Atas')->where('domisili','Tidak')->count();
+            $jml_domisili1 = DB::table('anggota')->where('kelurahan','Silaing Atas')->where('domisili','Tidak')->count();
+
+            $domisili_tidak = $jml_domisili = $jml_domisili1;
+
+            $domisili = "[".$domisili_ya.",".$domisili_tidak."]";
+
+            return view('/admin/home',['domisili'=>$domisili,'hasil'=>$hasil,'jml_penduduk'=>$jml_penduduk,'jml_penduduk1'=>$jml_penduduk1,'jml_laki_laki'=>$jml_laki_laki,'jml_laki_laki1'=>$jml_laki_laki1,'jml_perempuan'=>$jml_perempuan,'jml_perempuan1'=>$jml_perempuan1,'penghasilan1'=>$penghasilan1,'penghasilan2'=>$penghasilan2,'penghasilan3'=>$penghasilan3,'penghasilan4'=>$penghasilan4,'penghasilan5'=>$penghasilan5,'penghasilan6'=>$penghasilan6]);
             
         } else if(Auth::User()->level == "Admin Kelurahan Tanah Hitam"){
         
+            $penduduk = DB::table('kartu_keluarga')->selectRaw('TIMESTAMPDIFF(YEAR, DATE(tgl_lahir), current_date) AS age')->where('kelurahan','Tanah Hitam')->get();
+            $anggota = DB::table('anggota')->selectRaw('TIMESTAMPDIFF(YEAR, DATE(tgl_lahir), current_date) AS age')->where('kelurahan','Tanah Hitam')->get();
+
+            $a=0;
+            $b=0;
+            $c=0;
+            $d=0;
+            $e=0;
+            $f=0;
+            $g=0;
+            $h=0;
+            $i=0;
+            $j=0;
+            $k=0;
+            $l=0;
+            $m=0;
+            $n=0;
+            $o=0;
+            $p=0;
+
+            foreach($penduduk as $data) {
+                if($data->age >= 0 && $data->age <= 4){
+                    $a = $a + 1;
+                } else if($data->age >= 5 && $data->age <= 9){
+                    $b = $b + 1;
+                } else if($data->age >= 10 && $data->age <= 14){
+                    $c = $c + 1;
+                } else if($data->age >= 15 && $data->age <= 19){
+                    $d = $d + 1;
+                } else if($data->age >= 20 && $data->age <= 24){
+                    $e = $e + 1;
+                } else if($data->age >= 25 && $data->age <= 29){
+                    $f = $f + 1;
+                } else if($data->age >= 30 && $data->age <= 34){
+                    $g = $g + 1;
+                } else if($data->age >= 35 && $data->age <= 39){
+                    $h = $h + 1;
+                } else if($data->age >= 40 && $data->age <= 44){
+                    $i = $i + 1;
+                } else if($data->age >= 45 && $data->age <= 49){
+                    $j = $j + 1;
+                } else if($data->age >= 50 && $data->age <= 54){
+                    $k = $k + 1;
+                } else if($data->age >= 55 && $data->age <= 59){
+                    $l = $l + 1;
+                } else if($data->age >= 60 && $data->age <= 64){
+                    $m = $m + 1;
+                } else if($data->age >= 65 && $data->age <= 69){
+                    $n = $n + 1;
+                } else if($data->age >= 70 && $data->age <= 74){
+                    $o = $o + 1;
+                } else if($data->age >= 75){
+                    $p = $p + 1;
+                }
+            }
+
+            foreach($anggota as $data) {
+                if($data->age >= 0 && $data->age <= 4){
+                    $a = $a + 1;
+                } else if($data->age >= 5 && $data->age <= 9){
+                    $b = $b + 1;
+                } else if($data->age >= 10 && $data->age <= 14){
+                    $c = $c + 1;
+                } else if($data->age >= 15 && $data->age <= 19){
+                    $d = $d + 1;
+                } else if($data->age >= 20 && $data->age <= 24){
+                    $e = $e + 1;
+                } else if($data->age >= 25 && $data->age <= 29){
+                    $f = $f + 1;
+                } else if($data->age >= 30 && $data->age <= 34){
+                    $g = $g + 1;
+                } else if($data->age >= 35 && $data->age <= 39){
+                    $h = $h + 1;
+                } else if($data->age >= 40 && $data->age <= 44){
+                    $i = $i + 1;
+                } else if($data->age >= 45 && $data->age <= 49){
+                    $j = $j + 1;
+                } else if($data->age >= 50 && $data->age <= 54){
+                    $k = $k + 1;
+                } else if($data->age >= 55 && $data->age <= 59){
+                    $l = $l + 1;
+                } else if($data->age >= 60 && $data->age <= 64){
+                    $m = $m + 1;
+                } else if($data->age >= 65 && $data->age <= 69){
+                    $n = $n + 1;
+                } else if($data->age >= 70 && $data->age <= 74){
+                    $o = $o + 1;
+                } else if($data->age >= 75){
+                    $p = $p + 1;
+                }
+            }
+
+            $hasil = "[".$a.",".$b.",".$c.",".$e.",".$e.",".$f.",".$g.",".$h.",".$i.",".$j.",".$k.",".$l.",".$m.",".$n.",".$o.",".$p."]";
+
             $jml_penduduk = DB::table('kartu_keluarga')->where('kelurahan','Tanah Hitam')->count();
             $jml_penduduk1 = DB::table('anggota')->where('kelurahan','Tanah Hitam')->count();
 
@@ -500,10 +1456,118 @@ class HomeController extends Controller
 
             $penghasilan6 = $jml_penghasilan + $jml_penghasilan1;
 
-            return view('/admin/home',['jml_penduduk'=>$jml_penduduk,'jml_penduduk1'=>$jml_penduduk1,'jml_laki_laki'=>$jml_laki_laki,'jml_laki_laki1'=>$jml_laki_laki1,'jml_perempuan'=>$jml_perempuan,'jml_perempuan1'=>$jml_perempuan1,'penghasilan1'=>$penghasilan1,'penghasilan2'=>$penghasilan2,'penghasilan3'=>$penghasilan3,'penghasilan4'=>$penghasilan4,'penghasilan5'=>$penghasilan5,'penghasilan6'=>$penghasilan6]);
+            //Domisili
+
+            $jml_domisili = DB::table('kartu_keluarga')->where('kelurahan','Tanah Hitam')->where('domisili','Ya')->count();
+            $jml_domisili1 = DB::table('anggota')->where('kelurahan','Tanah Hitam')->where('domisili','Ya')->count();
+
+            $domisili_ya = $jml_domisili = $jml_domisili1;
+
+            $jml_domisili = DB::table('kartu_keluarga')->where('kelurahan','Tanah Hitam')->where('domisili','Tidak')->count();
+            $jml_domisili1 = DB::table('anggota')->where('kelurahan','Tanah Hitam')->where('domisili','Tidak')->count();
+
+            $domisili_tidak = $jml_domisili = $jml_domisili1;
+
+            $domisili = "[".$domisili_ya.",".$domisili_tidak."]";
+
+            return view('/admin/home',['domisili'=>$domisili,'hasil'=>$hasil,'jml_penduduk'=>$jml_penduduk,'jml_penduduk1'=>$jml_penduduk1,'jml_laki_laki'=>$jml_laki_laki,'jml_laki_laki1'=>$jml_laki_laki1,'jml_perempuan'=>$jml_perempuan,'jml_perempuan1'=>$jml_perempuan1,'penghasilan1'=>$penghasilan1,'penghasilan2'=>$penghasilan2,'penghasilan3'=>$penghasilan3,'penghasilan4'=>$penghasilan4,'penghasilan5'=>$penghasilan5,'penghasilan6'=>$penghasilan6]);
             
         } else if(Auth::User()->level == "Admin Kelurahan Silaing Bawah"){
         
+            $penduduk = DB::table('kartu_keluarga')->selectRaw('TIMESTAMPDIFF(YEAR, DATE(tgl_lahir), current_date) AS age')->where('kelurahan','Silaing Bawah')->get();
+            $anggota = DB::table('anggota')->selectRaw('TIMESTAMPDIFF(YEAR, DATE(tgl_lahir), current_date) AS age')->where('kelurahan','Silaing Bawah')->get();
+
+            $a=0;
+            $b=0;
+            $c=0;
+            $d=0;
+            $e=0;
+            $f=0;
+            $g=0;
+            $h=0;
+            $i=0;
+            $j=0;
+            $k=0;
+            $l=0;
+            $m=0;
+            $n=0;
+            $o=0;
+            $p=0;
+
+            foreach($penduduk as $data) {
+                if($data->age >= 0 && $data->age <= 4){
+                    $a = $a + 1;
+                } else if($data->age >= 5 && $data->age <= 9){
+                    $b = $b + 1;
+                } else if($data->age >= 10 && $data->age <= 14){
+                    $c = $c + 1;
+                } else if($data->age >= 15 && $data->age <= 19){
+                    $d = $d + 1;
+                } else if($data->age >= 20 && $data->age <= 24){
+                    $e = $e + 1;
+                } else if($data->age >= 25 && $data->age <= 29){
+                    $f = $f + 1;
+                } else if($data->age >= 30 && $data->age <= 34){
+                    $g = $g + 1;
+                } else if($data->age >= 35 && $data->age <= 39){
+                    $h = $h + 1;
+                } else if($data->age >= 40 && $data->age <= 44){
+                    $i = $i + 1;
+                } else if($data->age >= 45 && $data->age <= 49){
+                    $j = $j + 1;
+                } else if($data->age >= 50 && $data->age <= 54){
+                    $k = $k + 1;
+                } else if($data->age >= 55 && $data->age <= 59){
+                    $l = $l + 1;
+                } else if($data->age >= 60 && $data->age <= 64){
+                    $m = $m + 1;
+                } else if($data->age >= 65 && $data->age <= 69){
+                    $n = $n + 1;
+                } else if($data->age >= 70 && $data->age <= 74){
+                    $o = $o + 1;
+                } else if($data->age >= 75){
+                    $p = $p + 1;
+                }
+            }
+
+            foreach($anggota as $data) {
+                if($data->age >= 0 && $data->age <= 4){
+                    $a = $a + 1;
+                } else if($data->age >= 5 && $data->age <= 9){
+                    $b = $b + 1;
+                } else if($data->age >= 10 && $data->age <= 14){
+                    $c = $c + 1;
+                } else if($data->age >= 15 && $data->age <= 19){
+                    $d = $d + 1;
+                } else if($data->age >= 20 && $data->age <= 24){
+                    $e = $e + 1;
+                } else if($data->age >= 25 && $data->age <= 29){
+                    $f = $f + 1;
+                } else if($data->age >= 30 && $data->age <= 34){
+                    $g = $g + 1;
+                } else if($data->age >= 35 && $data->age <= 39){
+                    $h = $h + 1;
+                } else if($data->age >= 40 && $data->age <= 44){
+                    $i = $i + 1;
+                } else if($data->age >= 45 && $data->age <= 49){
+                    $j = $j + 1;
+                } else if($data->age >= 50 && $data->age <= 54){
+                    $k = $k + 1;
+                } else if($data->age >= 55 && $data->age <= 59){
+                    $l = $l + 1;
+                } else if($data->age >= 60 && $data->age <= 64){
+                    $m = $m + 1;
+                } else if($data->age >= 65 && $data->age <= 69){
+                    $n = $n + 1;
+                } else if($data->age >= 70 && $data->age <= 74){
+                    $o = $o + 1;
+                } else if($data->age >= 75){
+                    $p = $p + 1;
+                }
+            }
+
+            $hasil = "[".$a.",".$b.",".$c.",".$e.",".$e.",".$f.",".$g.",".$h.",".$i.",".$j.",".$k.",".$l.",".$m.",".$n.",".$o.",".$p."]";
+
             $jml_penduduk = DB::table('kartu_keluarga')->where('kelurahan','Silaing Bawah')->count();
             $jml_penduduk1 = DB::table('anggota')->where('kelurahan','Silaing Bawah')->count();
 
@@ -545,7 +1609,21 @@ class HomeController extends Controller
 
             $penghasilan6 = $jml_penghasilan + $jml_penghasilan1;
 
-            return view('/admin/home',['jml_penduduk'=>$jml_penduduk,'jml_penduduk1'=>$jml_penduduk1,'jml_laki_laki'=>$jml_laki_laki,'jml_laki_laki1'=>$jml_laki_laki1,'jml_perempuan'=>$jml_perempuan,'jml_perempuan1'=>$jml_perempuan1,'penghasilan1'=>$penghasilan1,'penghasilan2'=>$penghasilan2,'penghasilan3'=>$penghasilan3,'penghasilan4'=>$penghasilan4,'penghasilan5'=>$penghasilan5,'penghasilan6'=>$penghasilan6]);
+            //Domisili
+
+            $jml_domisili = DB::table('kartu_keluarga')->where('kelurahan','Silaing Bawah')->where('domisili','Ya')->count();
+            $jml_domisili1 = DB::table('anggota')->where('kelurahan','Silaing Bawah')->where('domisili','Ya')->count();
+
+            $domisili_ya = $jml_domisili = $jml_domisili1;
+
+            $jml_domisili = DB::table('kartu_keluarga')->where('kelurahan','Silaing Bawah')->where('domisili','Tidak')->count();
+            $jml_domisili1 = DB::table('anggota')->where('kelurahan','Silaing Bawah')->where('domisili','Tidak')->count();
+
+            $domisili_tidak = $jml_domisili = $jml_domisili1;
+
+            $domisili = "[".$domisili_ya.",".$domisili_tidak."]";
+
+            return view('/admin/home',['domisili'=>$domisili,'hasil'=>$hasil,'jml_penduduk'=>$jml_penduduk,'jml_penduduk1'=>$jml_penduduk1,'jml_laki_laki'=>$jml_laki_laki,'jml_laki_laki1'=>$jml_laki_laki1,'jml_perempuan'=>$jml_perempuan,'jml_perempuan1'=>$jml_perempuan1,'penghasilan1'=>$penghasilan1,'penghasilan2'=>$penghasilan2,'penghasilan3'=>$penghasilan3,'penghasilan4'=>$penghasilan4,'penghasilan5'=>$penghasilan5,'penghasilan6'=>$penghasilan6]);
             
         }
     }

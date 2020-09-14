@@ -75,7 +75,7 @@
 <div class="container-fluid mt--7">
       @if(Auth::User()->level == "Admin Camat")
       <div class="row">
-        <div class="col-xl-6">
+        <div class="col-xl-12">
           <div class="card shadow">
             <div class="card-header bg-transparent">
               <div class="row align-items-center">
@@ -86,13 +86,11 @@
               </div>
             </div>
             <div class="card-body">
-              <div class="chart">
-                <canvas class="pb-5" id="chart-kelurahan" width="400" height="400"></canvas>
-              </div>
+                <canvas class="pb-5" id="chart-kelurahan" width="100%" height="100%"></canvas>
             </div>
           </div>
         </div>
-        <div class="col-xl-6">
+        <div class="col-xl-6 mt-4">
           <div class="card shadow">
             <div class="card-header bg-transparent">
               <div class="row align-items-center">
@@ -104,7 +102,7 @@
             </div>
             <div class="card-body">
               <div class="chart">
-                <canvas class="pb-5" id="chart-umur" width="400" height="400" ></canvas>
+                <canvas class="pb-5" id="chart-umur" width="100%" height="100%" ></canvas>
               </div>
             </div>
           </div>
@@ -121,7 +119,24 @@
             </div>
             <div class="card-body">
               <div class="chart">
-                <canvas class="pb-5" id="chart-penghasilan" width="400" height="400" ></canvas>
+                <canvas class="pb-5" id="chart-penghasilan" width="100%" height="100%" ></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-6 mt-4">
+          <div class="card shadow">
+            <div class="card-header bg-transparent">
+              <div class="row align-items-center">
+                <div class="col">
+                  <h6 class="text-uppercase text-muted ls-1 mb-1">Grafik</h6>
+                  <h2 class="mb-0">Jumlah Penduduk Menurut Domisili </h2>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="chart">
+                <canvas class="pb-5" id="chart-domisili" width="100%" height="100%" ></canvas>
               </div>
             </div>
           </div>
@@ -138,7 +153,7 @@
             </div>
             <div class="card-body">
               <div class="chart">
-                <canvas class="pb-5" id="chart-jekel" width="400" height="400" ></canvas>
+                <canvas class="pb-5" id="chart-jekel" width="100%" height="100%" ></canvas>
               </div>
             </div>
           </div>
@@ -195,7 +210,7 @@ var myChart = new Chart(ctx, {
         labels: ['(0-4)', '(5-9)', '(10-14)', '(15-19)', '(20-24)', '(25-29)','(30-34)','(35-39)','(45-49)','(50-54)','(55-59)','(60-64)','(65-70)','(71-74)','(75+)'],
         datasets: [{
             label: 'Jumlah Penduduk Menurut Umur',
-            data: [1, 1, 3, 5, 2, 3, 4, 5, 6, 7, 8, 9, 10, 13, 7],
+            data: {{$hasil}},
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -290,6 +305,29 @@ var myChart = new Chart(ctx, {
         datasets: [{
             label: 'Jenis Kelamin',
             data: [{{$jml_laki_laki + $jml_laki_laki1}}, {{$jml_perempuan + $jml_perempuan1}}],
+            backgroundColor: [
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 99, 132, 0.2)'
+            ],
+            borderColor: [
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 99, 132, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+    }
+});
+
+var ctx = document.getElementById('chart-domisili').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: ['Berdomisili di Padang Panjang', 'Tidak Berdomisili di Padang Panjang'],
+        datasets: [{
+            label: 'Jenis Kelamin',
+            data: {{$domisili}},
             backgroundColor: [
                 'rgba(54, 162, 235, 0.2)',
                 'rgba(255, 99, 132, 0.2)'
@@ -307,7 +345,7 @@ var myChart = new Chart(ctx, {
 </script>
       @elseif(Auth::User()->level == "SuperAdmin")
       <div class="row">
-        <div class="col-xl-6">
+        <div class="col-xl-12">
           <div class="card shadow">
             <div class="card-header bg-transparent">
               <div class="row align-items-center">
@@ -318,13 +356,11 @@ var myChart = new Chart(ctx, {
               </div>
             </div>
             <div class="card-body">
-              <div class="chart">
-                <canvas class="pb-5" id="chart-kelurahan" width="400" height="400"></canvas>
-              </div>
+                <canvas class="pb-5" id="chart-kelurahan" width="100%" height="100px"></canvas>
             </div>
           </div>
         </div>
-        <div class="col-xl-6">
+        <div class="col-xl-6 mt-4">
           <div class="card shadow">
             <div class="card-header bg-transparent">
               <div class="row align-items-center">
@@ -336,7 +372,7 @@ var myChart = new Chart(ctx, {
             </div>
             <div class="card-body">
               <div class="chart">
-                <canvas class="pb-5" id="chart-umur" width="400" height="400" ></canvas>
+                <canvas class="pb-5" id="chart-umur" width="100%" height="100%" ></canvas>
               </div>
             </div>
           </div>
@@ -353,7 +389,24 @@ var myChart = new Chart(ctx, {
             </div>
             <div class="card-body">
               <div class="chart">
-                <canvas class="pb-5" id="chart-penghasilan" width="400" height="400" ></canvas>
+                <canvas class="pb-5" id="chart-penghasilan" width="100%" height="100%" ></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-6 mt-4">
+          <div class="card shadow">
+            <div class="card-header bg-transparent">
+              <div class="row align-items-center">
+                <div class="col">
+                  <h6 class="text-uppercase text-muted ls-1 mb-1">Grafik</h6>
+                  <h2 class="mb-0">Jumlah Penduduk Menurut Domisili </h2>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="chart">
+                <canvas class="pb-5" id="chart-domisili" width="100%" height="100%" ></canvas>
               </div>
             </div>
           </div>
@@ -370,7 +423,7 @@ var myChart = new Chart(ctx, {
             </div>
             <div class="card-body">
               <div class="chart">
-                <canvas class="pb-5" id="chart-jekel" width="400" height="400" ></canvas>
+                <canvas class="pb-5" id="chart-jekel" width="100%" height="100%" ></canvas>
               </div>
             </div>
           </div>
@@ -427,7 +480,7 @@ var myChart = new Chart(ctx, {
         labels: ['(0-4)', '(5-9)', '(10-14)', '(15-19)', '(20-24)', '(25-29)','(30-34)','(35-39)','(45-49)','(50-54)','(55-59)','(60-64)','(65-70)','(71-74)','(75+)'],
         datasets: [{
             label: 'Jumlah Penduduk Menurut Umur',
-            data: [1, 1, 3, 5, 2, 3, 4, 5, 6, 7, 8, 9, 10, 13, 7],
+            data: {{$hasil}},
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -536,10 +589,50 @@ var myChart = new Chart(ctx, {
     options: {
     }
 });
+
+var ctx = document.getElementById('chart-domisili').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: ['Berdomisili di Padang Panjang', 'Tidak Berdomisili di Padang Panjang'],
+        datasets: [{
+            label: 'Jenis Kelamin',
+            data: {{$domisili}},
+            backgroundColor: [
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 99, 132, 0.2)'
+            ],
+            borderColor: [
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 99, 132, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+    }
+});
 </script>
       @else
       <div class="row">
-        <div class="col-xl-6 mt-4">
+        <div class="col-xl-6">
+          <div class="card shadow">
+            <div class="card-header bg-transparent">
+              <div class="row align-items-center">
+                <div class="col">
+                  <h6 class="text-uppercase text-muted ls-1 mb-1">Grafik</h6>
+                  <h2 class="mb-0">Jumlah Penduduk Menurut Umur </h2>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="chart">
+                <canvas class="pb-5" id="chart-umur" width="100%" height="100%" ></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-6">
           <div class="card shadow">
             <div class="card-header bg-transparent">
               <div class="row align-items-center">
@@ -551,7 +644,24 @@ var myChart = new Chart(ctx, {
             </div>
             <div class="card-body">
               <div class="chart">
-                <canvas class="pb-5" id="chart-penghasilan" width="400" height="400" ></canvas>
+                <canvas class="pb-5" id="chart-penghasilan" width="100%" height="100%" ></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-6 mt-4">
+          <div class="card shadow">
+            <div class="card-header bg-transparent">
+              <div class="row align-items-center">
+                <div class="col">
+                  <h6 class="text-uppercase text-muted ls-1 mb-1">Grafik</h6>
+                  <h2 class="mb-0">Jumlah Penduduk Menurut Domisili </h2>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="chart">
+                <canvas class="pb-5" id="chart-domisili" width="100%" height="100%" ></canvas>
               </div>
             </div>
           </div>
@@ -568,13 +678,69 @@ var myChart = new Chart(ctx, {
             </div>
             <div class="card-body">
               <div class="chart">
-                <canvas class="pb-5" id="chart-jekel" width="400" height="400" ></canvas>
+                <canvas class="pb-5" id="chart-jekel" width="100%" height="100%" ></canvas>
               </div>
             </div>
           </div>
         </div>
       </div>
       <script>
+var ctx = document.getElementById('chart-umur').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['(0-4)', '(5-9)', '(10-14)', '(15-19)', '(20-24)', '(25-29)','(30-34)','(35-39)','(45-49)','(50-54)','(55-59)','(60-64)','(65-70)','(71-74)','(75+)'],
+        datasets: [{
+            label: 'Jumlah Penduduk Menurut Umur',
+            data: {{$hasil}},
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)'
+
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(153, 102, 255, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+
 var ctx = document.getElementById('chart-penghasilan').getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'bar',
@@ -621,6 +787,29 @@ var myChart = new Chart(ctx, {
         datasets: [{
             label: 'Jenis Kelamin',
             data: [{{$jml_laki_laki + $jml_laki_laki1}}, {{$jml_perempuan + $jml_perempuan1}}],
+            backgroundColor: [
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 99, 132, 0.2)'
+            ],
+            borderColor: [
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 99, 132, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+    }
+});
+
+var ctx = document.getElementById('chart-domisili').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: ['Berdomisili di Padang Panjang', 'Tidak Berdomisili di Padang Panjang'],
+        datasets: [{
+            label: 'Jenis Kelamin',
+            data: {{$domisili}},
             backgroundColor: [
                 'rgba(54, 162, 235, 0.2)',
                 'rgba(255, 99, 132, 0.2)'
