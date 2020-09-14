@@ -19,7 +19,7 @@
   <link href="{{url('assets/js/plugins/@fortawesome/fontawesome-free/css/all.min.css')}}" rel="stylesheet" />
   <!-- CSS Files -->
   <link href="{{url('assets/css/argon-dashboard.css?v=1.1.2')}}" rel="stylesheet" />
-  <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+  <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
  
@@ -34,26 +34,15 @@
       </button>
       <!-- Brand -->
       <a class="navbar-brand pt-0" href="/welcome">
-        <img src="https://portal.padangpanjang.go.id/assetuser/images/padangpanjang.png" class="navbar-brand-img" alt="...">
+        <img src="{{url('assets/img/padangpanjang.png')}}" class="navbar-brand-img" alt="...">
       </a>
       <!-- User -->
       <ul class="nav align-items-center d-md-none">
         <li class="nav-item dropdown">
-          <a class="nav-link nav-link-icon" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="ni ni-bell-55"></i>
-          </a>
-          <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
-        </li>
-        <li class="nav-item dropdown">
           <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <div class="media align-items-center">
               <span class="avatar avatar-sm rounded-circle">
-                <img alt="Image placeholder" src="{{url('assets/img/theme/team-1-800x800.jpg')}}">
+                <img alt="Image placeholder" src="{{url('assets/img/brand/pp.webp')}}">
               </span>
             </div>
           </a>
@@ -61,27 +50,15 @@
             <div class=" dropdown-header noti-title">
               <h6 class="text-overflow m-0">Welcome!</h6>
             </div>
-            <a href="./examples/profile.html" class="dropdown-item">
-              <i class="ni ni-single-02"></i>
-              <span>My profile</span>
-            </a>
-            <a href="./examples/profile.html" class="dropdown-item">
-              <i class="ni ni-settings-gear-65"></i>
-              <span>Settings</span>
-            </a>
-            <a href="./examples/profile.html" class="dropdown-item">
-              <i class="ni ni-calendar-grid-58"></i>
-              <span>Activity</span>
-            </a>
-            <a href="./examples/profile.html" class="dropdown-item">
-              <i class="ni ni-support-16"></i>
-              <span>Support</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#!" class="dropdown-item">
-              <i class="ni ni-user-run"></i>
-              <span>Logout</span>
-            </a>
+            <a href="/changepassword" class="dropdown-item">
+                <i class="ni ni-key-25"></i>
+                <span>Ganti Password</span>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="/logout" class="dropdown-item">
+                <i class="ni ni-user-run"></i>
+                <span>Logout</span>
+              </a>
           </div>
         </li>
       </ul>
@@ -106,29 +83,39 @@
         <!-- Form --> 
         
         <!-- Navigation -->
+        @if(Auth::User()->level == "Admin Camat")
+          <h6 class="navbar-heading text-muted">Admin Camat</h6>
+        @elseif(Auth::User()->level == "SuperAdmin")
+          <h6 class="navbar-heading text-muted">Super Admin</h6>
+        @else
+          <h6 class="navbar-heading text-muted">{{substr(Auth::User()->level,6)}}</h6>
+        @endif
         <ul class="navbar-nav">
-          <li class="nav-item @if ($activePage == 'dashboard') active @else  @endif">
-            <a class="nav-link  active " href="/welcome">
+          <li class="nav-item">
+            <a class="nav-link @if ($activePage == 'dashboard') active @else  @endif" href="/welcome">
               <i class="ni ni-tv-2 text-primary"></i> Dashboard
             </a>
           </li>
              @if (Auth::User()->level == 'SuperAdmin')
-           <li class="nav-item @if ($activePage == 'users') active @else  @endif">
-            <a class="nav-link " href="/users">
+           <li class="nav-item">
+            <a class="nav-link @if ($activePage == 'users') active @else  @endif" href="/users">
               <i class="ni ni-single-02"></i> Data Users
             </a>
           </li>
             @endif
-          <li class="nav-item @if ($activePage == 'kepala_keluarga') active @else  @endif">
-            <a class="nav-link " href="/kartu-keluarga">
+          <li class="nav-item">
+            <a class="nav-link @if ($activePage == 'kepala_keluarga') active @else  @endif" href="/kartu-keluarga">
               <i class="ni ni-folder-17 text-red"></i> Data Kartu Keluarga
             </a>  
           </li>
-          @if (Auth::User()->level == 'Admin Camat')
-          <li class="nav-item @if ($activePage == 'kepala_keluarga') active @else  @endif">
-            <a class="nav-link " href="/">
-              <i class="ni ni-paper-diploma text-green"></i> Data Perkelurahan </a>  
-          </li>
+        </ul>
+        @if (Auth::User()->level == 'Admin Camat')
+        <!-- Divider -->
+        <hr class="my-3">
+        <!-- Heading -->
+        <h6 class="navbar-heading text-muted">Data Perkelurahan </h6>
+        <!-- Navigation -->
+        <ul class="navbar-nav mb-md-3">
           <li class="nav-item ml-3 @if ($activePage == 'kepala_keluarga') active @else  @endif">
             <a class="nav-link " href="/kartu-keluarga/kelurahan/balai-balai">
               <i class="ni ni-collection text-orange"></i>Kelurahan Balai-Balai
@@ -141,7 +128,7 @@
           </li>
           <li class="nav- ml-3 item @if ($activePage == 'kepala_keluarga') active @else  @endif">
             <a class="nav-link " href="/kartu-keluarga/kelurahan/kampung manggis">
-              <i class="ni ni-collection text-grey"></i>Kelurahan Kampung Manggis
+              <i class="ni ni-collection text-green"></i>Kelurahan Kampung Manggis
             </a>  
           </li>
           <li class="nav-item ml-3 @if ($activePage == 'kepala_keluarga') active @else  @endif">
@@ -169,7 +156,6 @@
               <i class="ni ni-collection text-gray"></i>Kelurahan Tanah Hitam
             </a>  
           </li>
-          @endif
           <!-- <li class="nav-item @if ($activePage == 'warga') active @else  @endif">
             <a class="nav-link " href="/data-warga">
               <i class="ni ni-folder-17 text-red"></i> Data Warga
@@ -192,7 +178,7 @@
           </li> -->
         </ul>
         <!-- Divider -->
-        <hr class="my-3">
+        @endif
       </div>
     </div>
   </nav>
@@ -201,7 +187,7 @@
     <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
       <div class="container-fluid">
         <!-- Brand -->
-        <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="/welcome"> Data Kartu Keluarga Kecamatan Padang Panjang Barat</a>
+        <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="/welcome"> Data Kartu Keluarga Kecamatan Padang Panjang Barat<br></a>
         <!-- User -->
         <ul class="navbar-nav align-items-center d-none d-md-flex">
           <li class="nav-item dropdown">

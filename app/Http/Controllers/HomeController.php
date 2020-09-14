@@ -27,50 +27,106 @@ class HomeController extends Controller
      */
     public function index()
     {
-     
-    $jml_penduduk = DB::table('kartu_keluarga')->count();
-    $jml_penduduk1 = DB::table('anggota')->count();
+        if(Auth::User()->level == "Admin Camat"){
+            $jml_penduduk = DB::table('kartu_keluarga')->count();
+            $jml_penduduk1 = DB::table('anggota')->count();
 
-    $jml_laki_laki = DB::table('kartu_keluarga')->where('jns_kelamin','Laki-Laki')->count();
-    $jml_laki_laki1 = DB::table('anggota')->where('jenis_kelamin','Laki-Laki')->count();
+            $jml_laki_laki = DB::table('kartu_keluarga')->where('jns_kelamin','Laki-Laki')->count();
+            $jml_laki_laki1 = DB::table('anggota')->where('jenis_kelamin','Laki-Laki')->count();
 
-    $jml_perempuan = DB::table('kartu_keluarga')->where('jns_kelamin','perempuan')->count();
-    $jml_perempuan1 = DB::table('anggota')->where('jenis_kelamin','perempuan')->count();
-      
-    $jml_manggis_kk = DB::table('kartu_keluarga')->where('kelurahan','Kampung Manggis')->count();
-    $jml_manggis_anggota = DB::table('anggota')->where('kelurahan','Kampung Manggis')->count();
-    $total_manggis = $jml_manggis_kk + $jml_manggis_anggota;
+            $jml_perempuan = DB::table('kartu_keluarga')->where('jns_kelamin','perempuan')->count();
+            $jml_perempuan1 = DB::table('anggota')->where('jenis_kelamin','perempuan')->count();
+              
+            $jml_manggis_kk = DB::table('kartu_keluarga')->where('kelurahan','Kampung Manggis')->count();
+            $jml_manggis_anggota = DB::table('anggota')->where('kelurahan','Kampung Manggis')->count();
+            $total_manggis = $jml_manggis_kk + $jml_manggis_anggota;
 
-    $jml_balai_kk = DB::table('kartu_keluarga')->where('kelurahan','Balai-Balai')->count();
-    $jml_balai_anggota = DB::table('anggota')->where('kelurahan','Balai-Balai')->count();
-    $total_balai = $jml_balai_kk + $jml_balai_anggota;
+            $jml_balai_kk = DB::table('kartu_keluarga')->where('kelurahan','Balai-Balai')->count();
+            $jml_balai_anggota = DB::table('anggota')->where('kelurahan','Balai-Balai')->count();
+            $total_balai = $jml_balai_kk + $jml_balai_anggota;
 
-    $jml_pabar_kk = DB::table('kartu_keluarga')->where('kelurahan','Pasar Baru')->count();
-    $jml_pabar_anggota = DB::table('anggota')->where('kelurahan','Pasar Baru')->count();
-    $total_pabar = $jml_pabar_kk + $jml_pabar_anggota;
+            $jml_pabar_kk = DB::table('kartu_keluarga')->where('kelurahan','Pasar Baru')->count();
+            $jml_pabar_anggota = DB::table('anggota')->where('kelurahan','Pasar Baru')->count();
+            $total_pabar = $jml_pabar_kk + $jml_pabar_anggota;
 
-    $jml_paus_kk = DB::table('kartu_keluarga')->where('kelurahan','Pasar Usang')->count();
-    $jml_paus_anggota = DB::table('anggota')->where('kelurahan','Pasar Usang')->count();
-    $total_paus = $jml_paus_kk + $jml_paus_anggota;
+            $jml_paus_kk = DB::table('kartu_keluarga')->where('kelurahan','Pasar Usang')->count();
+            $jml_paus_anggota = DB::table('anggota')->where('kelurahan','Pasar Usang')->count();
+            $total_paus = $jml_paus_kk + $jml_paus_anggota;
 
-    $jml_silba_kk = DB::table('kartu_keluarga')->where('kelurahan','Silaing Bawah')->count();
-    $jml_silba_anggota = DB::table('anggota')->where('kelurahan','Silaing Bawah')->count();
-    $total_silba = $jml_silba_kk + $jml_silba_anggota;
+            $jml_silba_kk = DB::table('kartu_keluarga')->where('kelurahan','Silaing Bawah')->count();
+            $jml_silba_anggota = DB::table('anggota')->where('kelurahan','Silaing Bawah')->count();
+            $total_silba = $jml_silba_kk + $jml_silba_anggota;
 
-    $jml_silat_kk = DB::table('kartu_keluarga')->where('kelurahan','Silaing Atas')->count();
-    $jml_silat_anggota = DB::table('anggota')->where('kelurahan','Silaing Atas')->count();
-    $total_silat = $jml_silat_kk + $jml_silat_anggota;
+            $jml_silat_kk = DB::table('kartu_keluarga')->where('kelurahan','Silaing Atas')->count();
+            $jml_silat_anggota = DB::table('anggota')->where('kelurahan','Silaing Atas')->count();
+            $total_silat = $jml_silat_kk + $jml_silat_anggota;
 
-    $jml_tanah_kk = DB::table('kartu_keluarga')->where('kelurahan','Tanah Hitam')->count();
-    $jml_tanah_anggota = DB::table('anggota')->where('kelurahan','Tanah Hitam')->count();
-    $total_tanah = $jml_tanah_kk + $jml_tanah_anggota;
+            $jml_tanah_kk = DB::table('kartu_keluarga')->where('kelurahan','Tanah Hitam')->count();
+            $jml_tanah_anggota = DB::table('anggota')->where('kelurahan','Tanah Hitam')->count();
+            $total_tanah = $jml_tanah_kk + $jml_tanah_anggota;
 
-    $jml_bukit_kk = DB::table('kartu_keluarga')->where('kelurahan','Bukit Surungan')->count();
-    $jml_bukit_anggota = DB::table('anggota')->where('kelurahan','Bukit Surungan')->count();
-    $total_bukit = $jml_bukit_kk + $jml_bukit_anggota;
-    
+            $jml_bukit_kk = DB::table('kartu_keluarga')->where('kelurahan','Bukit Surungan')->count();
+            $jml_bukit_anggota = DB::table('anggota')->where('kelurahan','Bukit Surungan')->count();
+            $total_bukit = $jml_bukit_kk + $jml_bukit_anggota;
+            
 
-      return view('/admin/home',['jml_penduduk'=>$jml_penduduk,'jml_penduduk1'=>$jml_penduduk1,'jml_laki_laki'=>$jml_laki_laki,'jml_laki_laki1'=>$jml_laki_laki1,'jml_perempuan'=>$jml_perempuan,'jml_perempuan1'=>$jml_perempuan1,'total_manggis'=>$total_manggis,'total_bukit'=>$total_bukit,'total_tanah'=>$total_tanah,'total_silat'=>$total_silat,'total_silba'=>$total_silba,'total_paus'=>$total_paus,'total_pabar'=>$total_pabar,'total_balai'=>$total_balai]);
+            return view('/admin/home',['jml_penduduk'=>$jml_penduduk,'jml_penduduk1'=>$jml_penduduk1,'jml_laki_laki'=>$jml_laki_laki,'jml_laki_laki1'=>$jml_laki_laki1,'jml_perempuan'=>$jml_perempuan,'jml_perempuan1'=>$jml_perempuan1,'total_manggis'=>$total_manggis,'total_bukit'=>$total_bukit,'total_tanah'=>$total_tanah,'total_silat'=>$total_silat,'total_silba'=>$total_silba,'total_paus'=>$total_paus,'total_pabar'=>$total_pabar,'total_balai'=>$total_balai]);
+        } else if(Auth::User()->level == "SuperAdmin"){
+            $jml_penduduk = DB::table('kartu_keluarga')->count();
+            $jml_penduduk1 = DB::table('anggota')->count();
+
+            $jml_laki_laki = DB::table('kartu_keluarga')->where('jns_kelamin','Laki-Laki')->count();
+            $jml_laki_laki1 = DB::table('anggota')->where('jenis_kelamin','Laki-Laki')->count();
+
+            $jml_perempuan = DB::table('kartu_keluarga')->where('jns_kelamin','perempuan')->count();
+            $jml_perempuan1 = DB::table('anggota')->where('jenis_kelamin','perempuan')->count();
+              
+            $jml_manggis_kk = DB::table('kartu_keluarga')->where('kelurahan','Kampung Manggis')->count();
+            $jml_manggis_anggota = DB::table('anggota')->where('kelurahan','Kampung Manggis')->count();
+            $total_manggis = $jml_manggis_kk + $jml_manggis_anggota;
+
+            $jml_balai_kk = DB::table('kartu_keluarga')->where('kelurahan','Balai-Balai')->count();
+            $jml_balai_anggota = DB::table('anggota')->where('kelurahan','Balai-Balai')->count();
+            $total_balai = $jml_balai_kk + $jml_balai_anggota;
+
+            $jml_pabar_kk = DB::table('kartu_keluarga')->where('kelurahan','Pasar Baru')->count();
+            $jml_pabar_anggota = DB::table('anggota')->where('kelurahan','Pasar Baru')->count();
+            $total_pabar = $jml_pabar_kk + $jml_pabar_anggota;
+
+            $jml_paus_kk = DB::table('kartu_keluarga')->where('kelurahan','Pasar Usang')->count();
+            $jml_paus_anggota = DB::table('anggota')->where('kelurahan','Pasar Usang')->count();
+            $total_paus = $jml_paus_kk + $jml_paus_anggota;
+
+            $jml_silba_kk = DB::table('kartu_keluarga')->where('kelurahan','Silaing Bawah')->count();
+            $jml_silba_anggota = DB::table('anggota')->where('kelurahan','Silaing Bawah')->count();
+            $total_silba = $jml_silba_kk + $jml_silba_anggota;
+
+            $jml_silat_kk = DB::table('kartu_keluarga')->where('kelurahan','Silaing Atas')->count();
+            $jml_silat_anggota = DB::table('anggota')->where('kelurahan','Silaing Atas')->count();
+            $total_silat = $jml_silat_kk + $jml_silat_anggota;
+
+            $jml_tanah_kk = DB::table('kartu_keluarga')->where('kelurahan','Tanah Hitam')->count();
+            $jml_tanah_anggota = DB::table('anggota')->where('kelurahan','Tanah Hitam')->count();
+            $total_tanah = $jml_tanah_kk + $jml_tanah_anggota;
+
+            $jml_bukit_kk = DB::table('kartu_keluarga')->where('kelurahan','Bukit Surungan')->count();
+            $jml_bukit_anggota = DB::table('anggota')->where('kelurahan','Bukit Surungan')->count();
+            $total_bukit = $jml_bukit_kk + $jml_bukit_anggota;
+            
+
+            return view('/admin/home',['jml_penduduk'=>$jml_penduduk,'jml_penduduk1'=>$jml_penduduk1,'jml_laki_laki'=>$jml_laki_laki,'jml_laki_laki1'=>$jml_laki_laki1,'jml_perempuan'=>$jml_perempuan,'jml_perempuan1'=>$jml_perempuan1,'total_manggis'=>$total_manggis,'total_bukit'=>$total_bukit,'total_tanah'=>$total_tanah,'total_silat'=>$total_silat,'total_silba'=>$total_silba,'total_paus'=>$total_paus,'total_pabar'=>$total_pabar,'total_balai'=>$total_balai]);
+        } else if(Auth::User()->level == "Admin Kelurahan Balai-Balai"){
+            $jml_penduduk = DB::table('kartu_keluarga')->where('kelurahan','Balai-Balai')->count();
+            $jml_penduduk1 = DB::table('anggota')->where('kelurahan','Balai-Balai')->count();
+
+            $jml_laki_laki = DB::table('kartu_keluarga')->where('jns_kelamin','Laki-Laki')->where('kelurahan','Balai-Balai')->count();
+            $jml_laki_laki1 = DB::table('anggota')->where('jenis_kelamin','Laki-Laki')->where('kelurahan','Balai-Balai')->count();
+
+            $jml_perempuan = DB::table('kartu_keluarga')->where('jns_kelamin','perempuan')->where('kelurahan','Balai-Balai')->count();
+            $jml_perempuan1 = DB::table('anggota')->where('jenis_kelamin','perempuan')->where('kelurahan','Balai-Balai')->count();
+
+            return view('/admin/home',['jml_penduduk'=>$jml_penduduk,'jml_penduduk1'=>$jml_penduduk1,'jml_laki_laki'=>$jml_laki_laki,'jml_laki_laki1'=>$jml_laki_laki1,'jml_perempuan'=>$jml_perempuan,'jml_perempuan1'=>$jml_perempuan1]);
+        }
     }
 
     public function create(Request $request)
