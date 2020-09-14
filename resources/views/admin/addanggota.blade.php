@@ -86,6 +86,7 @@
                         <option value="Pasar Baru" @if ($kepala_keluarga->kelurahan =='Pasar Baru') selected @endif  >Pasar Baru</option>
                         <option value="Pasar Usang" @if ($kepala_keluarga->kelurahan =='Pasar Usang') selected @endif  >Pasar Usang</option>
                         <option value="Silaing Atas" @if ($kepala_keluarga->kelurahan =='Silaing Atas') selected @endif  >Silaing Atas</option>
+                        <option value="Silaing Bawah" @if ($kepala_keluarga->kelurahan =='Silaing Bawah') selected @endif  >Silaing Bawah</option>
                         <option value="Tanah Hitam" @if ($kepala_keluarga->kelurahan =='Tanah Hitam') selected @endif >Tanah Hitam</option>
                         <option value="Ekor Lubuk" @if ($kepala_keluarga->kelurahan =='Ekor Lubuk') selected @endif  >Ekor Lubuk</option>
                         <option value="Ganting" @if ($kepala_keluarga->kelurahan =='Ganting') selected @endif >Ganting</option>

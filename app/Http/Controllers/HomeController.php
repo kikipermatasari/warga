@@ -28,6 +28,7 @@ class HomeController extends Controller
     public function index()
     {
         if(Auth::User()->level == "Admin Camat"){
+        
             $jml_penduduk = DB::table('kartu_keluarga')->count();
             $jml_penduduk1 = DB::table('anggota')->count();
 
@@ -105,7 +106,9 @@ class HomeController extends Controller
             
 
             return view('/admin/home',['jml_penduduk'=>$jml_penduduk,'jml_penduduk1'=>$jml_penduduk1,'jml_laki_laki'=>$jml_laki_laki,'jml_laki_laki1'=>$jml_laki_laki1,'jml_perempuan'=>$jml_perempuan,'jml_perempuan1'=>$jml_perempuan1,'total_manggis'=>$total_manggis,'total_bukit'=>$total_bukit,'total_tanah'=>$total_tanah,'total_silat'=>$total_silat,'total_silba'=>$total_silba,'total_paus'=>$total_paus,'total_pabar'=>$total_pabar,'total_balai'=>$total_balai,'penghasilan1'=>$penghasilan1,'penghasilan2'=>$penghasilan2,'penghasilan3'=>$penghasilan3,'penghasilan4'=>$penghasilan4,'penghasilan5'=>$penghasilan5,'penghasilan6'=>$penghasilan6]);
+        
         } else if(Auth::User()->level == "SuperAdmin"){
+        
             $jml_penduduk = DB::table('kartu_keluarga')->count();
             $jml_penduduk1 = DB::table('anggota')->count();
 
@@ -183,7 +186,9 @@ class HomeController extends Controller
             
 
             return view('/admin/home',['jml_penduduk'=>$jml_penduduk,'jml_penduduk1'=>$jml_penduduk1,'jml_laki_laki'=>$jml_laki_laki,'jml_laki_laki1'=>$jml_laki_laki1,'jml_perempuan'=>$jml_perempuan,'jml_perempuan1'=>$jml_perempuan1,'total_manggis'=>$total_manggis,'total_bukit'=>$total_bukit,'total_tanah'=>$total_tanah,'total_silat'=>$total_silat,'total_silba'=>$total_silba,'total_paus'=>$total_paus,'total_pabar'=>$total_pabar,'total_balai'=>$total_balai,'penghasilan1'=>$penghasilan1,'penghasilan2'=>$penghasilan2,'penghasilan3'=>$penghasilan3,'penghasilan4'=>$penghasilan4,'penghasilan5'=>$penghasilan5,'penghasilan6'=>$penghasilan6]);
+        
         } else if(Auth::User()->level == "Admin Kelurahan Balai-Balai"){
+        
             $jml_penduduk = DB::table('kartu_keluarga')->where('kelurahan','Balai-Balai')->count();
             $jml_penduduk1 = DB::table('anggota')->where('kelurahan','Balai-Balai')->count();
 
@@ -226,7 +231,9 @@ class HomeController extends Controller
             $penghasilan6 = $jml_penghasilan + $jml_penghasilan1;
 
             return view('/admin/home',['jml_penduduk'=>$jml_penduduk,'jml_penduduk1'=>$jml_penduduk1,'jml_laki_laki'=>$jml_laki_laki,'jml_laki_laki1'=>$jml_laki_laki1,'jml_perempuan'=>$jml_perempuan,'jml_perempuan1'=>$jml_perempuan1,'penghasilan1'=>$penghasilan1,'penghasilan2'=>$penghasilan2,'penghasilan3'=>$penghasilan3,'penghasilan4'=>$penghasilan4,'penghasilan5'=>$penghasilan5,'penghasilan6'=>$penghasilan6]);
+        
         } else if(Auth::User()->level == "Admin Kelurahan Bukit Surungan"){
+        
             $jml_penduduk = DB::table('kartu_keluarga')->where('kelurahan','Bukit Surungan')->count();
             $jml_penduduk1 = DB::table('anggota')->where('kelurahan','Bukit Surungan')->count();
 
@@ -269,6 +276,277 @@ class HomeController extends Controller
             $penghasilan6 = $jml_penghasilan + $jml_penghasilan1;
 
             return view('/admin/home',['jml_penduduk'=>$jml_penduduk,'jml_penduduk1'=>$jml_penduduk1,'jml_laki_laki'=>$jml_laki_laki,'jml_laki_laki1'=>$jml_laki_laki1,'jml_perempuan'=>$jml_perempuan,'jml_perempuan1'=>$jml_perempuan1,'penghasilan1'=>$penghasilan1,'penghasilan2'=>$penghasilan2,'penghasilan3'=>$penghasilan3,'penghasilan4'=>$penghasilan4,'penghasilan5'=>$penghasilan5,'penghasilan6'=>$penghasilan6]);
+        
+        } else if(Auth::User()->level == "Admin Kelurahan Kampung Manggis"){
+        
+            $jml_penduduk = DB::table('kartu_keluarga')->where('kelurahan','Kampung Manggis')->count();
+            $jml_penduduk1 = DB::table('anggota')->where('kelurahan','Kampung Manggis')->count();
+
+            $jml_laki_laki = DB::table('kartu_keluarga')->where('jns_kelamin','Laki-Laki')->where('kelurahan','Kampung Manggis')->count();
+            $jml_laki_laki1 = DB::table('anggota')->where('jenis_kelamin','Laki-Laki')->where('kelurahan','Kampung Manggis')->count();
+
+            $jml_perempuan = DB::table('kartu_keluarga')->where('jns_kelamin','perempuan')->where('kelurahan','Kampung Manggis')->count();
+            $jml_perempuan1 = DB::table('anggota')->where('jenis_kelamin','perempuan')->where('kelurahan','Kampung Manggis')->count();
+
+            //Data Penghasilan
+            
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Kampung Manggis')->where('gaji',' < Rp500.000')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Kampung Manggis')->where('gaji',' < Rp500.000')->count();
+
+            $penghasilan1 = $jml_penghasilan + $jml_penghasilan1;
+
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Kampung Manggis')->where('gaji','Rp 500.000 - Rp 1500.000')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Kampung Manggis')->where('gaji','Rp 500.000 - Rp 1500.000')->count();
+
+            $penghasilan2 = $jml_penghasilan + $jml_penghasilan1;
+
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Kampung Manggis')->where('gaji','Rp 1500.000 - Rp 2500.000')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Kampung Manggis')->where('gaji','Rp 1500.000 - Rp 2500.000')->count();
+
+            $penghasilan3 = $jml_penghasilan + $jml_penghasilan1;
+
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Kampung Manggis')->where('gaji','Rp 2500.000 - Rp 3500.000')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Kampung Manggis')->where('gaji','Rp 2500.000 - Rp 3500.000')->count();
+
+            $penghasilan4 = $jml_penghasilan + $jml_penghasilan1;
+
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Kampung Manggis')->where('gaji','Rp 3500.000 - Rp 4500.000')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Kampung Manggis')->where('gaji','Rp 3500.000 - Rp 4500.000')->count();
+
+            $penghasilan5 = $jml_penghasilan + $jml_penghasilan1;
+
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Kampung Manggis')->where('gaji','> Rp 4500.000')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Kampung Manggis')->where('gaji','> Rp 4500.000')->count();
+
+            $penghasilan6 = $jml_penghasilan + $jml_penghasilan1;
+
+            return view('/admin/home',['jml_penduduk'=>$jml_penduduk,'jml_penduduk1'=>$jml_penduduk1,'jml_laki_laki'=>$jml_laki_laki,'jml_laki_laki1'=>$jml_laki_laki1,'jml_perempuan'=>$jml_perempuan,'jml_perempuan1'=>$jml_perempuan1,'penghasilan1'=>$penghasilan1,'penghasilan2'=>$penghasilan2,'penghasilan3'=>$penghasilan3,'penghasilan4'=>$penghasilan4,'penghasilan5'=>$penghasilan5,'penghasilan6'=>$penghasilan6]);
+        
+        } else if(Auth::User()->level == "Admin Kelurahan Pasar Baru"){
+        
+            $jml_penduduk = DB::table('kartu_keluarga')->where('kelurahan','Pasar Baru')->count();
+            $jml_penduduk1 = DB::table('anggota')->where('kelurahan','Pasar Baru')->count();
+
+            $jml_laki_laki = DB::table('kartu_keluarga')->where('jns_kelamin','Laki-Laki')->where('kelurahan','Pasar Baru')->count();
+            $jml_laki_laki1 = DB::table('anggota')->where('jenis_kelamin','Laki-Laki')->where('kelurahan','Pasar Baru')->count();
+
+            $jml_perempuan = DB::table('kartu_keluarga')->where('jns_kelamin','perempuan')->where('kelurahan','Pasar Baru')->count();
+            $jml_perempuan1 = DB::table('anggota')->where('jenis_kelamin','perempuan')->where('kelurahan','Pasar Baru')->count();
+
+            //Data Penghasilan
+            
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Pasar Baru')->where('gaji',' < Rp500.000')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Pasar Baru')->where('gaji',' < Rp500.000')->count();
+
+            $penghasilan1 = $jml_penghasilan + $jml_penghasilan1;
+
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Pasar Baru')->where('gaji','Rp 500.000 - Rp 1500.000')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Pasar Baru')->where('gaji','Rp 500.000 - Rp 1500.000')->count();
+
+            $penghasilan2 = $jml_penghasilan + $jml_penghasilan1;
+
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Pasar Baru')->where('gaji','Rp 1500.000 - Rp 2500.000')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Pasar Baru')->where('gaji','Rp 1500.000 - Rp 2500.000')->count();
+
+            $penghasilan3 = $jml_penghasilan + $jml_penghasilan1;
+
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Pasar Baru')->where('gaji','Rp 2500.000 - Rp 3500.000')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Pasar Baru')->where('gaji','Rp 2500.000 - Rp 3500.000')->count();
+
+            $penghasilan4 = $jml_penghasilan + $jml_penghasilan1;
+
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Pasar Baru')->where('gaji','Rp 3500.000 - Rp 4500.000')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Pasar Baru')->where('gaji','Rp 3500.000 - Rp 4500.000')->count();
+
+            $penghasilan5 = $jml_penghasilan + $jml_penghasilan1;
+
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Pasar Baru')->where('gaji','> Rp 4500.000')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Pasar Baru')->where('gaji','> Rp 4500.000')->count();
+
+            $penghasilan6 = $jml_penghasilan + $jml_penghasilan1;
+
+            return view('/admin/home',['jml_penduduk'=>$jml_penduduk,'jml_penduduk1'=>$jml_penduduk1,'jml_laki_laki'=>$jml_laki_laki,'jml_laki_laki1'=>$jml_laki_laki1,'jml_perempuan'=>$jml_perempuan,'jml_perempuan1'=>$jml_perempuan1,'penghasilan1'=>$penghasilan1,'penghasilan2'=>$penghasilan2,'penghasilan3'=>$penghasilan3,'penghasilan4'=>$penghasilan4,'penghasilan5'=>$penghasilan5,'penghasilan6'=>$penghasilan6]);
+
+        } else if(Auth::User()->level == "Admin Kelurahan pasar Usang"){
+        
+            $jml_penduduk = DB::table('kartu_keluarga')->where('kelurahan','Pasar Usang')->count();
+            $jml_penduduk1 = DB::table('anggota')->where('kelurahan','Pasar Usang')->count();
+
+            $jml_laki_laki = DB::table('kartu_keluarga')->where('jns_kelamin','Laki-Laki')->where('kelurahan','Pasar Usang')->count();
+            $jml_laki_laki1 = DB::table('anggota')->where('jenis_kelamin','Laki-Laki')->where('kelurahan','Pasar Usang')->count();
+
+            $jml_perempuan = DB::table('kartu_keluarga')->where('jns_kelamin','perempuan')->where('kelurahan','Pasar Usang')->count();
+            $jml_perempuan1 = DB::table('anggota')->where('jenis_kelamin','perempuan')->where('kelurahan','Pasar Usang')->count();
+
+            //Data Penghasilan
+            
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Pasar Usang')->where('gaji',' < Rp500.000')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Pasar Usang')->where('gaji',' < Rp500.000')->count();
+
+            $penghasilan1 = $jml_penghasilan + $jml_penghasilan1;
+
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Pasar Usang')->where('gaji','Rp 500.000 - Rp 1500.000')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Pasar Usang')->where('gaji','Rp 500.000 - Rp 1500.000')->count();
+
+            $penghasilan2 = $jml_penghasilan + $jml_penghasilan1;
+
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Pasar Usang')->where('gaji','Rp 1500.000 - Rp 2500.000')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Pasar Usang')->where('gaji','Rp 1500.000 - Rp 2500.000')->count();
+
+            $penghasilan3 = $jml_penghasilan + $jml_penghasilan1;
+
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Pasar Usang')->where('gaji','Rp 2500.000 - Rp 3500.000')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Pasar Usang')->where('gaji','Rp 2500.000 - Rp 3500.000')->count();
+
+            $penghasilan4 = $jml_penghasilan + $jml_penghasilan1;
+
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Pasar Usang')->where('gaji','Rp 3500.000 - Rp 4500.000')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Pasar Usang')->where('gaji','Rp 3500.000 - Rp 4500.000')->count();
+
+            $penghasilan5 = $jml_penghasilan + $jml_penghasilan1;
+
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Pasar Usang')->where('gaji','> Rp 4500.000')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Pasar Usang')->where('gaji','> Rp 4500.000')->count();
+
+            $penghasilan6 = $jml_penghasilan + $jml_penghasilan1;
+
+            return view('/admin/home',['jml_penduduk'=>$jml_penduduk,'jml_penduduk1'=>$jml_penduduk1,'jml_laki_laki'=>$jml_laki_laki,'jml_laki_laki1'=>$jml_laki_laki1,'jml_perempuan'=>$jml_perempuan,'jml_perempuan1'=>$jml_perempuan1,'penghasilan1'=>$penghasilan1,'penghasilan2'=>$penghasilan2,'penghasilan3'=>$penghasilan3,'penghasilan4'=>$penghasilan4,'penghasilan5'=>$penghasilan5,'penghasilan6'=>$penghasilan6]);
+
+        } else if(Auth::User()->level == "Admin Kelurahan Silaing Atas"){
+        
+            $jml_penduduk = DB::table('kartu_keluarga')->where('kelurahan','Silaing Atas')->count();
+            $jml_penduduk1 = DB::table('anggota')->where('kelurahan','Silaing Atas')->count();
+
+            $jml_laki_laki = DB::table('kartu_keluarga')->where('jns_kelamin','Laki-Laki')->where('kelurahan','Silaing Atas')->count();
+            $jml_laki_laki1 = DB::table('anggota')->where('jenis_kelamin','Laki-Laki')->where('kelurahan','Silaing Atas')->count();
+
+            $jml_perempuan = DB::table('kartu_keluarga')->where('jns_kelamin','perempuan')->where('kelurahan','Silaing Atas')->count();
+            $jml_perempuan1 = DB::table('anggota')->where('jenis_kelamin','perempuan')->where('kelurahan','Silaing Atas')->count();
+
+            //Data Penghasilan
+            
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Silaing Atas')->where('gaji',' < Rp500.000')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Silaing Atas')->where('gaji',' < Rp500.000')->count();
+
+            $penghasilan1 = $jml_penghasilan + $jml_penghasilan1;
+
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Silaing Atas')->where('gaji','Rp 500.000 - Rp 1500.000')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Silaing Atas')->where('gaji','Rp 500.000 - Rp 1500.000')->count();
+
+            $penghasilan2 = $jml_penghasilan + $jml_penghasilan1;
+
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Silaing Atas')->where('gaji','Rp 1500.000 - Rp 2500.000')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Silaing Atas')->where('gaji','Rp 1500.000 - Rp 2500.000')->count();
+
+            $penghasilan3 = $jml_penghasilan + $jml_penghasilan1;
+
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Silaing Atas')->where('gaji','Rp 2500.000 - Rp 3500.000')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Silaing Atas')->where('gaji','Rp 2500.000 - Rp 3500.000')->count();
+
+            $penghasilan4 = $jml_penghasilan + $jml_penghasilan1;
+
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Silaing Atas')->where('gaji','Rp 3500.000 - Rp 4500.000')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Silaing Atas')->where('gaji','Rp 3500.000 - Rp 4500.000')->count();
+
+            $penghasilan5 = $jml_penghasilan + $jml_penghasilan1;
+
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Silaing Atas')->where('gaji','> Rp 4500.000')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Silaing Atas')->where('gaji','> Rp 4500.000')->count();
+
+            $penghasilan6 = $jml_penghasilan + $jml_penghasilan1;
+
+            return view('/admin/home',['jml_penduduk'=>$jml_penduduk,'jml_penduduk1'=>$jml_penduduk1,'jml_laki_laki'=>$jml_laki_laki,'jml_laki_laki1'=>$jml_laki_laki1,'jml_perempuan'=>$jml_perempuan,'jml_perempuan1'=>$jml_perempuan1,'penghasilan1'=>$penghasilan1,'penghasilan2'=>$penghasilan2,'penghasilan3'=>$penghasilan3,'penghasilan4'=>$penghasilan4,'penghasilan5'=>$penghasilan5,'penghasilan6'=>$penghasilan6]);
+            
+        } else if(Auth::User()->level == "Admin Kelurahan Tanah Hitam"){
+        
+            $jml_penduduk = DB::table('kartu_keluarga')->where('kelurahan','Tanah Hitam')->count();
+            $jml_penduduk1 = DB::table('anggota')->where('kelurahan','Tanah Hitam')->count();
+
+            $jml_laki_laki = DB::table('kartu_keluarga')->where('jns_kelamin','Laki-Laki')->where('kelurahan','Tanah Hitam')->count();
+            $jml_laki_laki1 = DB::table('anggota')->where('jenis_kelamin','Laki-Laki')->where('kelurahan','Tanah Hitam')->count();
+
+            $jml_perempuan = DB::table('kartu_keluarga')->where('jns_kelamin','perempuan')->where('kelurahan','Tanah Hitam')->count();
+            $jml_perempuan1 = DB::table('anggota')->where('jenis_kelamin','perempuan')->where('kelurahan','Tanah Hitam')->count();
+
+            //Data Penghasilan
+            
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Tanah Hitam')->where('gaji',' < Rp500.000')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Tanah Hitam')->where('gaji',' < Rp500.000')->count();
+
+            $penghasilan1 = $jml_penghasilan + $jml_penghasilan1;
+
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Tanah Hitam')->where('gaji','Rp 500.000 - Rp 1500.000')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Tanah Hitam')->where('gaji','Rp 500.000 - Rp 1500.000')->count();
+
+            $penghasilan2 = $jml_penghasilan + $jml_penghasilan1;
+
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Tanah Hitam')->where('gaji','Rp 1500.000 - Rp 2500.000')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Tanah Hitam')->where('gaji','Rp 1500.000 - Rp 2500.000')->count();
+
+            $penghasilan3 = $jml_penghasilan + $jml_penghasilan1;
+
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Tanah Hitam')->where('gaji','Rp 2500.000 - Rp 3500.000')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Tanah Hitam')->where('gaji','Rp 2500.000 - Rp 3500.000')->count();
+
+            $penghasilan4 = $jml_penghasilan + $jml_penghasilan1;
+
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Tanah Hitam')->where('gaji','Rp 3500.000 - Rp 4500.000')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Tanah Hitam')->where('gaji','Rp 3500.000 - Rp 4500.000')->count();
+
+            $penghasilan5 = $jml_penghasilan + $jml_penghasilan1;
+
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Tanah Hitam')->where('gaji','> Rp 4500.000')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Tanah Hitam')->where('gaji','> Rp 4500.000')->count();
+
+            $penghasilan6 = $jml_penghasilan + $jml_penghasilan1;
+
+            return view('/admin/home',['jml_penduduk'=>$jml_penduduk,'jml_penduduk1'=>$jml_penduduk1,'jml_laki_laki'=>$jml_laki_laki,'jml_laki_laki1'=>$jml_laki_laki1,'jml_perempuan'=>$jml_perempuan,'jml_perempuan1'=>$jml_perempuan1,'penghasilan1'=>$penghasilan1,'penghasilan2'=>$penghasilan2,'penghasilan3'=>$penghasilan3,'penghasilan4'=>$penghasilan4,'penghasilan5'=>$penghasilan5,'penghasilan6'=>$penghasilan6]);
+            
+        } else if(Auth::User()->level == "Admin Kelurahan Silaing Bawah"){
+        
+            $jml_penduduk = DB::table('kartu_keluarga')->where('kelurahan','Silaing Bawah')->count();
+            $jml_penduduk1 = DB::table('anggota')->where('kelurahan','Silaing Bawah')->count();
+
+            $jml_laki_laki = DB::table('kartu_keluarga')->where('jns_kelamin','Laki-Laki')->where('kelurahan','Silaing Bawah')->count();
+            $jml_laki_laki1 = DB::table('anggota')->where('jenis_kelamin','Laki-Laki')->where('kelurahan','Silaing Bawah')->count();
+
+            $jml_perempuan = DB::table('kartu_keluarga')->where('jns_kelamin','perempuan')->where('kelurahan','Silaing Bawah')->count();
+            $jml_perempuan1 = DB::table('anggota')->where('jenis_kelamin','perempuan')->where('kelurahan','Silaing Bawah')->count();
+
+            //Data Penghasilan
+            
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Silaing Bawah')->where('gaji',' < Rp500.000')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Silaing Bawah')->where('gaji',' < Rp500.000')->count();
+
+            $penghasilan1 = $jml_penghasilan + $jml_penghasilan1;
+
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Silaing Bawah')->where('gaji','Rp 500.000 - Rp 1500.000')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Silaing Bawah')->where('gaji','Rp 500.000 - Rp 1500.000')->count();
+
+            $penghasilan2 = $jml_penghasilan + $jml_penghasilan1;
+
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Silaing Bawah')->where('gaji','Rp 1500.000 - Rp 2500.000')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Silaing Bawah')->where('gaji','Rp 1500.000 - Rp 2500.000')->count();
+
+            $penghasilan3 = $jml_penghasilan + $jml_penghasilan1;
+
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Silaing Bawah')->where('gaji','Rp 2500.000 - Rp 3500.000')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Silaing Bawah')->where('gaji','Rp 2500.000 - Rp 3500.000')->count();
+
+            $penghasilan4 = $jml_penghasilan + $jml_penghasilan1;
+
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Silaing Bawah')->where('gaji','Rp 3500.000 - Rp 4500.000')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Silaing Bawah')->where('gaji','Rp 3500.000 - Rp 4500.000')->count();
+
+            $penghasilan5 = $jml_penghasilan + $jml_penghasilan1;
+
+            $jml_penghasilan = DB::table('kartu_keluarga')->where('kelurahan','Silaing Bawah')->where('gaji','> Rp 4500.000')->count();
+            $jml_penghasilan1 = DB::table('anggota')->where('kelurahan','Silaing Bawah')->where('gaji','> Rp 4500.000')->count();
+
+            $penghasilan6 = $jml_penghasilan + $jml_penghasilan1;
+
+            return view('/admin/home',['jml_penduduk'=>$jml_penduduk,'jml_penduduk1'=>$jml_penduduk1,'jml_laki_laki'=>$jml_laki_laki,'jml_laki_laki1'=>$jml_laki_laki1,'jml_perempuan'=>$jml_perempuan,'jml_perempuan1'=>$jml_perempuan1,'penghasilan1'=>$penghasilan1,'penghasilan2'=>$penghasilan2,'penghasilan3'=>$penghasilan3,'penghasilan4'=>$penghasilan4,'penghasilan5'=>$penghasilan5,'penghasilan6'=>$penghasilan6]);
+            
         }
     }
 

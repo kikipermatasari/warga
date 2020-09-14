@@ -69,6 +69,7 @@
                         <option value="Pasar Baru" >Pasar Baru</option>
                         <option value="Pasar Usang" >Pasar Usang</option>
                         <option value="Silaing Atas" >Silaing Atas</option>
+                        <option value="Silaing Bawah" >Silaing Bawah</option>
                         <option value="Tanah Hitam" >Tanah Hitam</option>
                         <option value="Ekor Lubuk" >Ekor Lubuk</option>
                         <option value="Ganting" >Ganting</option>

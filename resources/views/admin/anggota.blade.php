@@ -45,6 +45,15 @@
                           <td>{{$data->nik}} </td>
                                 <td class="text-center">
                             <div class="form-button-action"> 
+                            @if (Auth::User()->level != 'Admin Camat')
+                              <a href="/kartu-keluarga/anggota/detail/{{$data->id }}"
+                                data-toggle="tooltip" style="margin-left: 10px; color: grey;" data-original-title="Detail"><i class="fa fa-eye"></i>
+                              </a>
+                            @elseif (Auth::User()->level != 'SuperAdmin')
+                              <a href="/kartu-keluarga/anggota/detail/{{$data->id }}"
+                                data-toggle="tooltip" style="margin-left: 10px; color: grey;" data-original-title="Detail"><i class="fa fa-eye"></i>
+                              </a>
+                            @else
                               <a href="/kartu-keluarga/anggota/edit/{{$data->id }}"
                                 data-toggle="tooltip" style="margin-left: 10px; color: blue;" data-original-title="Edit"><i class="fa fa-edit"></i>
                               </a>
@@ -53,7 +62,7 @@
                               </a>
                               <a href="/kartu-keluarga/anggota/delete/{{$data->id}}" data-toggle="tooltip"   style="margin-left: 10px; color: red;"  data-original-title="Hapus" onclick="javascript: return confirm('Anda yakin hapus ?')"> <i class="fa fa-trash-alt"></i>
                               </a>
-                                                            
+                            @endif                           
                             </div>
                           </td>                        
                       </tr>
