@@ -28,9 +28,6 @@ class HomeController extends Controller
     public function index()
     {
         if(Auth::User()->level == "Admin Camat"){
-        
-            $penduduk = DB::table('kartu_keluarga')->get();
-            $anggota = DB::table('anggota')->get();
 
             $jml_penduduk = DB::table('kartu_keluarga')->count();
             $jml_penduduk1 = DB::table('anggota')->count();
@@ -108,7 +105,7 @@ class HomeController extends Controller
             $total_bukit = $jml_bukit_kk + $jml_bukit_anggota;
             
 
-            return view('/admin/home',['penduduk'=>$penduduk,'anggota'=>$anggota,'jml_penduduk'=>$jml_penduduk,'jml_penduduk1'=>$jml_penduduk1,'jml_laki_laki'=>$jml_laki_laki,'jml_laki_laki1'=>$jml_laki_laki1,'jml_perempuan'=>$jml_perempuan,'jml_perempuan1'=>$jml_perempuan1,'total_manggis'=>$total_manggis,'total_bukit'=>$total_bukit,'total_tanah'=>$total_tanah,'total_silat'=>$total_silat,'total_silba'=>$total_silba,'total_paus'=>$total_paus,'total_pabar'=>$total_pabar,'total_balai'=>$total_balai,'penghasilan1'=>$penghasilan1,'penghasilan2'=>$penghasilan2,'penghasilan3'=>$penghasilan3,'penghasilan4'=>$penghasilan4,'penghasilan5'=>$penghasilan5,'penghasilan6'=>$penghasilan6]);
+            return view('/admin/home',['jml_penduduk'=>$jml_penduduk,'jml_penduduk1'=>$jml_penduduk1,'jml_laki_laki'=>$jml_laki_laki,'jml_laki_laki1'=>$jml_laki_laki1,'jml_perempuan'=>$jml_perempuan,'jml_perempuan1'=>$jml_perempuan1,'total_manggis'=>$total_manggis,'total_bukit'=>$total_bukit,'total_tanah'=>$total_tanah,'total_silat'=>$total_silat,'total_silba'=>$total_silba,'total_paus'=>$total_paus,'total_pabar'=>$total_pabar,'total_balai'=>$total_balai,'penghasilan1'=>$penghasilan1,'penghasilan2'=>$penghasilan2,'penghasilan3'=>$penghasilan3,'penghasilan4'=>$penghasilan4,'penghasilan5'=>$penghasilan5,'penghasilan6'=>$penghasilan6]);
         
         } else if(Auth::User()->level == "SuperAdmin"){
         
@@ -370,7 +367,7 @@ class HomeController extends Controller
 
             return view('/admin/home',['jml_penduduk'=>$jml_penduduk,'jml_penduduk1'=>$jml_penduduk1,'jml_laki_laki'=>$jml_laki_laki,'jml_laki_laki1'=>$jml_laki_laki1,'jml_perempuan'=>$jml_perempuan,'jml_perempuan1'=>$jml_perempuan1,'penghasilan1'=>$penghasilan1,'penghasilan2'=>$penghasilan2,'penghasilan3'=>$penghasilan3,'penghasilan4'=>$penghasilan4,'penghasilan5'=>$penghasilan5,'penghasilan6'=>$penghasilan6]);
 
-        } else if(Auth::User()->level == "Admin Kelurahan pasar Usang"){
+        } else if(Auth::User()->level == "Admin Kelurahan Pasar Usang"){
         
             $jml_penduduk = DB::table('kartu_keluarga')->where('kelurahan','Pasar Usang')->count();
             $jml_penduduk1 = DB::table('anggota')->where('kelurahan','Pasar Usang')->count();
