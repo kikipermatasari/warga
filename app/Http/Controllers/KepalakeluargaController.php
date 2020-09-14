@@ -696,8 +696,10 @@ class KepalakeluargaController extends Controller
 
      public function cetak_kepala ($id){
         $kepala_keluarga= DB::table('kartu_keluarga')->find($id);
+
         $pdf = PDF::loadview('admin/cetakkepala',['kepala_keluarga'=>$kepala_keluarga]);
-        return $pdf->stream();
+
+        return $pdf->stream("studentidcard.pdf", array("Attachment"=>0));
     }
 
     public function cetak_anggota ($id){
