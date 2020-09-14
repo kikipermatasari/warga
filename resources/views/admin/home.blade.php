@@ -86,7 +86,7 @@
               </div>
             </div>
             <div class="card-body">
-                <canvas class="pb-5" id="chart-kelurahan" width="100%" height="100%"></canvas>
+                <canvas class="pb-5" id="chart-kelurahan" ></canvas>
             </div>
           </div>
         </div>
@@ -356,7 +356,7 @@ var myChart = new Chart(ctx, {
               </div>
             </div>
             <div class="card-body">
-                <canvas class="pb-5" id="chart-kelurahan" width="100%" height="100px"></canvas>
+                <canvas class="pb-5" id="chart-kelurahan" ></canvas>
             </div>
           </div>
         </div>
