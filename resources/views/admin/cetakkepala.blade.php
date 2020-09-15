@@ -246,7 +246,8 @@
 
                             </table> 
                         </div>
-                       <!--  <div class="col-md-3">
-                            <img src="{{url('public/warga')}}/{{$kepala_keluarga->foto_profile}}" width="70%" height="200px">
-                        </div> -->
+                        <div class="col-md-3">
+                           <img src="{{url('public/warga')}}/{{$kepala_keluarga->foto_profile}}">
+                        </div>
+
 </body>

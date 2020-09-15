@@ -100,6 +100,9 @@
                                 <a href="/kartu-keluarga/detail/{{$data->id}}"
                                   data-toggle="tooltip" style="margin-left: 10px; color: black;" data-original-title="Detail Data Kepala Keluarga"><i class="fa fa-eye"></i>
                                 </a>
+                                <a href="/kartu-keluarga/foto-rumah/{{$data->id}}"
+                                  data-toggle="tooltip" style="margin-left: 10px; color: orange;" data-original-title="Foto Rumah"><i class="fa fa-home"></i>
+                                </a>
                                @endif                               
                               </div>
                             </td>                        
@@ -206,6 +209,9 @@
                                 <a href="/kartu-keluarga/detail/{{$data->id}}"
                                   data-toggle="tooltip" style="margin-left: 10px; color: black;" data-original-title="Detail Data Kepala Keluarga"><i class="fa fa-eye"></i>
                                 </a>
+                                <a href="/kartu-keluarga/foto-rumah/{{$data->id}}"
+                                  data-toggle="tooltip" style="margin-left: 10px; color: orange;" data-original-title="Foto Rumah"><i class="fa fa-home"></i>
+                                </a>
                                @endif                               
                               </div>
                             </td>                        
@@ -247,7 +253,10 @@
                                 data-toggle="tooltip" style="margin-left: 10px; color: black;" data-original-title="Detail Data Kepala Keluarga"><i class="fa fa-eye"></i>
                               </a> 
                               <!-- <a href="/kartu-keluarga/delete/{{$data->no_kk}}" data-toggle="tooltip"   style="margin-left: 10px; color: red;"  data-original-title="Hapus" onclick="javascript: return confirm('Anda yakin hapus ?')"> <i class="fa fa-trash-alt"></i>
-                              </a> -->                          
+                              </a> --> 
+                              <a href="/kartu-keluarga/foto-rumah/{{$data->id}}"
+                                  data-toggle="tooltip" style="margin-left: 10px; color: orange;" data-original-title="Foto Rumah"><i class="fa fa-home"></i>
+                                </a>                         
                             </div>
                           </td>                        
                       </tr>
