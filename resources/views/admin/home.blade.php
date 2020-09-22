@@ -350,7 +350,7 @@ var ctx = document.getElementById('chart-penghasilan').getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: ['-','-',' 0-1 Juta', '1 Juta- 2 Juta', '2 Juta - 3 Juta', '3 Juta - 4 Juta', '4 Juta - 5 Juta', '> 5 Juta'],
+        labels: ['-',' 0-1 Juta', '1 Juta- 2 Juta', '2 Juta - 3 Juta', '3 Juta - 4 Juta', '4 Juta - 5 Juta', '> 5 Juta'],
         datasets: [{
             label: 'Jumlah Penduduk Menurut Penghasilan',
             data: [{{$penghasilan0}},{{$penghasilan1}}, {{$penghasilan2}}, {{$penghasilan3}}, {{$penghasilan4}}, {{$penghasilan5}}, {{$penghasilan6}}],
