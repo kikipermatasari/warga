@@ -135,6 +135,7 @@ class HomeController extends Controller
             //Data Penghasilan
             $jml_penghasilan = DB::table('kartu_keluarga')->where('gaji','-')->count();
             $jml_penghasilan1 = DB::table('anggota')->where('gaji','-')->count();
+            $penghasilan0 = $jml_penghasilan + $jml_penghasilan1;
 
             $jml_penghasilan = DB::table('kartu_keluarga')->where('gaji','0-1 Juta')->count();
             $jml_penghasilan1 = DB::table('anggota')->where('gaji','0-1 Juta')->count();
