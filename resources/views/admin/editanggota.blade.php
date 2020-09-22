@@ -54,7 +54,7 @@
                   <label for="example-search-input" class="form-control-label">Kode Pos</label>
                      <select class="form-control form-control"    name="kodepos">
                         <option value="">-- Pilih Kode Pos--</option>
-                        <option>#Padang Panjang Timur#</option>
+                        <!-- <option>#Padang Panjang Timur#</option>
                         <option value="27125" @if ($anggota->kodepos =='27125') selected @endif >27125</option>
                         <option value="27127" @if ($anggota->kodepos =='27127') selected @endif >27127</option>
                         <option value="27123" @if ($anggota->kodepos =='27123') selected @endif>27123</option>
@@ -63,7 +63,7 @@
                         <option value="27124" @if ($anggota->kodepos =='27124') selected @endif >27124</option>
                         <option value="27126" @if ($anggota->kodepos =='27126') selected @endif>27126</option>
                         <option value="27121" @if ($anggota->kodepos =='27121') selected @endif  >27121</option>
-                        <option>#Padang Panjang Barat#</option>
+                        <option>#Padang Panjang Barat#</option> -->
                         <option value="27114" @if ($anggota->kodepos =='27114') selected @endif >27114</option>
                         <option value="27115" @if ($anggota->kodepos =='27115') selected @endif>27115</option>
                         <option value="27111" @if ($anggota->kodepos =='27111') selected @endif >27111</option>

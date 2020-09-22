@@ -81,7 +81,7 @@
               <div class="row align-items-center">
                 <div class="col">
                   <h6 class="text-uppercase text-muted ls-1 mb-1">Log Aktivitas</h6>
-                  <h2 class="mb-0">Aktivitas Pada Bulan <?php date_default_timezone_set('Asia/Jakarta'); echo date('F Y H:i:s');?></h2>
+                  <h2 class="mb-0">Aktivitas Pada Bulan <?php date_default_timezone_set('Asia/Jakarta'); echo date('F Y');?></h2>
                 </div>
               </div>
             </div>
@@ -433,6 +433,93 @@ var myChart = new Chart(ctx, {
       @elseif(Auth::User()->level == "SuperAdmin")
       <div class="row">
         <div class="col-xl-12">
+          <div class="card shadow">
+            <div class="card-header bg-transparent">
+              <div class="row align-items-center">
+                <div class="col">
+                  <h6 class="text-uppercase text-muted ls-1 mb-1">Log Aktivitas</h6>
+                  <h2 class="mb-0">Aktivitas Pada Bulan <?php date_default_timezone_set('Asia/Jakarta'); echo date('F Y');?></h2>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                  <table id="example" class="table table-striped table-bordered" style="width:100%">
+                      <thead>
+                        <tr>
+                          <th class="text-center" width="5%">#</th>
+                          <th class="th-md text-center">Tanggal</th>
+                          <th class="th-md text-center">Pukul</th>
+                          <th class="th-md text-center">Aktivitas</th>
+                          <th class="th-md text-center">Action</th>
+                        </tr>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <?php $no=0; ?>
+                        @foreach($log_penduduk_created as $data)
+                        <?php $no++; ?>
+                        <tr>
+                          <td class="text-center">{{$no}}</td>
+                          <td class="th-md text-center">{{ \Carbon\Carbon::parse($data->created_at)->format('d M Y')}}</td>
+                          <td class="th-md text-center">{{ \Carbon\Carbon::parse($data->created_at)->format('H:i')}} WIB</td>
+                          <td>Kelurahan {{$data->kelurahan}} Menambahkan Data Kepala Keluarga Baru</td>
+                          <td class="text-center">
+                            <a href="/kartu-keluarga/detail/{{$data->id}}"
+                                  data-toggle="tooltip" style="margin-left: 10px; color: black;" data-original-title="Lihat Aktivitas"><i class="fa fa-eye"></i>
+                            </a>
+                          </td>             
+                        </tr>
+                        @endforeach
+                        @foreach($log_penduduk_updated as $data)
+                        <?php $no++; ?>
+                        <tr>
+                          <td class="text-center">{{$no}}</td>
+                          <td class="th-md text-center">{{ \Carbon\Carbon::parse($data->updated_at)->format('d M Y')}}</td>
+                          <td class="th-md text-center">{{ \Carbon\Carbon::parse($data->updated_at)->format('H:i')}} WIB</td>
+                          <td>Kelurahan {{$data->kelurahan}} Mengupdate Data Kepala Keluarga Baru</td>
+                          <td class="text-center">
+                            <a href="/kartu-keluarga/detail/{{$data->id}}"
+                                  data-toggle="tooltip" style="margin-left: 10px; color: black;" data-original-title="Lihat Aktivitas"><i class="fa fa-eye"></i>
+                            </a>
+                          </td>             
+                        </tr>
+                        @endforeach
+                        @foreach($log_anggota_created as $data)
+                        <?php $no++; ?>
+                        <tr>
+                          <td class="text-center">{{$no}}</td>
+                          <td class="th-md text-center">{{ \Carbon\Carbon::parse($data->created_at)->format('d M Y')}}</td>
+                          <td class="th-md text-center">{{ \Carbon\Carbon::parse($data->created_at)->format('H:i')}} WIB</td>
+                          <td>Kelurahan {{$data->kelurahan}} Menambahkan Data Anggota Keluarga Baru</td>
+                          <td class="text-center">
+                            <a href="/kartu-keluarga/detail/{{$data->id}}"
+                                  data-toggle="tooltip" style="margin-left: 10px; color: black;" data-original-title="Lihat Aktivitas"><i class="fa fa-eye"></i>
+                            </a>
+                          </td>             
+                        </tr>
+                        @endforeach
+                        @foreach($log_anggota_updated as $data)
+                        <?php $no++; ?>
+                        <tr>
+                          <td class="text-center">{{$no}}</td>
+                          <td class="th-md text-center">{{ \Carbon\Carbon::parse($data->updated_at)->format('d M Y')}}</td>
+                          <td class="th-md text-center">{{ \Carbon\Carbon::parse($data->updated_at)->format('H:i')}} WIB</td>
+                          <td>Kelurahan {{$data->kelurahan}} Mengupdate Data Anggota Keluarga Baru</td>
+                          <td class="text-center">
+                            <a href="/kartu-keluarga/detail/{{$data->id}}"
+                                  data-toggle="tooltip" style="margin-left: 10px; color: black;" data-original-title="Lihat Aktivitas"><i class="fa fa-eye"></i>
+                            </a>
+                          </td>             
+                        </tr>
+                        @endforeach
+                      </tbody>
+                    </table> 
+                </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-12 mt-4">
           <div class="card shadow">
             <div class="card-header bg-transparent">
               <div class="row align-items-center">

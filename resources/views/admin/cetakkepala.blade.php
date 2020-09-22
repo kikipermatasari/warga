@@ -147,7 +147,7 @@
                                     <td class="font1"width="67%">{{ $kepala_keluarga->jns_kelamin}}</td>
                                 </tr>
                                 <tr>
-                                    <td class="font1"width="40%"><b>Tempat Lahir / Tanggal Lahir</b></td>
+                                    <td class="font1"width="40%"><b>Tempat/Tanggal Lahir</b></td>
                                     <td class="font1"width="3%"> : </td>
                                     <td class="font1"width="67%">{{ $kepala_keluarga->tempat_lahir}} / {{$hasil}}</td>
                                 </tr>

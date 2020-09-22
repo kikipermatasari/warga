@@ -59,9 +59,13 @@
             </div>        
                 <br>
                 <div>
+                  @if (Auth::User()->level == 'Admin Camat')
+                    @elseif (Auth::User()->level == 'SuperAdmin')
+                    @else
                   <button type="submit" class="btn btn-lg btn-primary btn-block">
                     <i class="fa fa-plus"></i>&nbsp;<span>Simpan</span>
                   </button>
+                  @endif
                 </div>
               </div>
             </div>

@@ -705,12 +705,13 @@ class KepalakeluargaController extends Controller
    public function delete($id)
     {
       DB::table('kartu_keluarga')->where('no_kk',$id)->delete();
+      DB::table('anggota')->where('id_nomorkk',$id)->delete();
       return redirect()->back();
     }
 
     public function delete_anggota($id)
     {
-      DB::table('kartu_keluarga')->where('id',$id)->delete();
+      DB::table('anggota')->where('id',$id)->delete();
       return redirect()->back();
     }
 

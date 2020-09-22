@@ -485,7 +485,25 @@
                   <label class="custom-control-label"  for="customRadio11" >Tidak</label>
                 </div>  
                   </div>
+<<<<<<< HEAD
             </div>
+=======
+                </div>
+              <div class="col-md-5">
+                <div class="form-group">
+                    <label for="example-search-input" class="form-control-label">Penghasilan / Bulan</label>
+                     <select class="form-control form-control" name="gaji">
+                        <option value="">-- Pilih Kisaran Gaji --</option>
+                        <option value="0-1 Juta" > 0-1 Juta</option>
+                        <option value="1 Juta- 2 Juta"  >1 Juta-  Juta</option>
+                        <option value="2 Juta - 3 Juta"  >2 Juta - 3 Juta</option>
+                        <option value="3 Juta - 4 Juta"  >3 Juta - 4 Juta</option>
+                        <option value="4 Juta - 5 Juta"  >4 Juta - 5 Juta</option>
+                        <option value="> 5 Juta" >> 5Juta </option>
+                      </select>                 
+                    </div>
+              </div>
+>>>>>>> 42f934af265bde9901a28001888233ed176da75a
                <style>
                           }
                           }

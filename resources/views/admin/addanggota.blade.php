@@ -54,7 +54,7 @@
                   <label for="example-search-input" class="form-control-label">Kode Pos</label>
                      <select class="form-control form-control"   required  name="kodepos">
                         <option value="">-- Pilih Kode Pos--</option>
-                        <option>#Padang Panjang Timur#</option>
+                        <!-- <option>#Padang Panjang Timur#</option>
                         <option value="27125" @if ($kepala_keluarga->kode_pos =='27125') selected @endif >27125</option>
                         <option value="27127" @if ($kepala_keluarga->kode_pos =='27127') selected @endif >27127</option>
                         <option value="27123" @if ($kepala_keluarga->kode_pos =='27123') selected @endif>27123</option>
@@ -62,9 +62,9 @@
                         <option value="27122" @if ($kepala_keluarga->kode_pos =='27122') selected @endif>27122</option>
                         <option value="27124" @if ($kepala_keluarga->kode_pos =='27124') selected @endif >27124</option>
                         <option value="27126" @if ($kepala_keluarga->kode_pos =='27126') selected @endif>27126</option>
-                        <option value="27121" @if ($kepala_keluarga->kode_pos =='27121') selected @endif  >27121</option>
-                        <option>#Padang Panjang Barat#</option>
-                        <option value="27114" @if ($kepala_keluarga->kode_pos =='27114') selected @endif >27114</option>
+                        <option value="27121" @if ($kepala_keluarga->kode_pos =='27121') selected @endif  >27121</option> -->
+<!--                         <option>#Padang Panjang Barat#</option>
+ -->                        <option value="27114" @if ($kepala_keluarga->kode_pos =='27114') selected @endif >27114</option>
                         <option value="27115" @if ($kepala_keluarga->kode_pos =='27115') selected @endif>27115</option>
                         <option value="27111" @if ($kepala_keluarga->kode_pos =='27111') selected @endif >27111</option>
                         <option value="27113" @if ($kepala_keluarga->kode_pos =='27113') selected @endif>27113</option>
@@ -104,8 +104,7 @@
                     <label for="example-search-input" class="form-control-label">Kecamatan</label>
                     <select class="form-control form-control"  name="kecamatan">
                         <option value="">-- Pilih Kecamatan--</option>
-                        <option value="Padang Panjang Barat" @if ($kepala_keluarga->kecamatan =='Padang Panjang Timur') selected @endif >Padang Panjang Barat</option>   
-                        <option value="Padang Panjang Timur" @if ($kepala_keluarga->kecamatan =='Padang Panjang Barat') selected @endif >Padang Panjang Timur</option>   
+                        <option value="Padang Panjang Barat" @if ($kepala_keluarga->kecamatan =='Padang Panjang Barat') selected @endif >Padang Panjang Barat</option>    
                     </select>               
                       </div>
                 </div>
@@ -418,7 +417,7 @@
                 <div class="col-md-5">
                 <div class="form-group">
                     <label for="example-search-input" class="form-control-label">Penghasilan / Bulan</label>
-                     <select class="form-control form-control" required name="gaji">
+                     <select class="form-control form-control" name="gaji">
                         <option value="">-- Pilih Kisaran Gaji --</option>
                         <option value="0-1 Juta" > 0-1 Juta</option>
                         <option value="1 Juta- 2 Juta"  >1 Juta-  Juta</option>
