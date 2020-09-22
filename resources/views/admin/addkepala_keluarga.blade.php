@@ -25,17 +25,12 @@
                 <form role="form" action="/kartu-keluarga/create" method="POST" enctype="multipart/form-data" id="kk_form">
                           {{ csrf_field() }}
               <div class="row">
-                <div class="col-12">
-  <!-- One "tab" for each step in the form: -->
-  <div class="tab">
-    <h1>Data Diri</h1><br>
-                  <div class="row">
-                  <div class="col-md-6">
+                <div class="col-md-6">
                   <div class="form-group">
                       <label for="example-text-input" class="form-control-label">Nomor KK</label>
                       <input class="form-control" type="text" autofocus="" required name="no_kk" placeholder="Masukkan Nomor KK" id="no_kk" >
                   </div>
-                </div>
+              </div>
                   <div class="col-md-6">
                   <div class="form-group">
                     <label for="example-search-input" class="form-control-label">NIK</label>
@@ -44,13 +39,120 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-md-12">
+                <div class="col-md-6">
                 <div class="form-group">
                     <label for="example-text-input" class="form-control-label">Nama Lengkap</label>
                     <input class="form-control" type="text" required name="nama" placeholder="Masukkan Nama Lengkap" id="nama">
                 </div>
                 </div>
+            <div class="col-md-6">
+                  <div class="form-group">
+                      <label for="example-text-input" class="form-control-label">Alamat</label>
+                      <textarea class="form-control" type="text" placeholder="Masukan Alamat..." required name="alamat" id="alamat" ></textarea>
+                  </div>
+              </div>
+              @if(Auth::User()->level == 'Admin Camat' || Auth::User()->level == 'SuperAdmin')  
+              <div class="col-md-2">
+                <div class="form-group">
+                    <label for="example-search-input" class="form-control-label">RT/RW</label>
+                    <input class="form-control" type="text" placeholder="Masukan RT/RW" required name="rtrw">
+                  </div>
+                </div>
                 <div class="col-md-3">
+                <div class="form-group">  
+                    <label for="example-search-input" class="form-control-label">Desa/Kelurahan</label>
+                     <select class="form-control form-control" required name="kelurahan">
+                        <option value="">-- Pilih Desa/ Kelurahan--</option>
+                        <option value="Balai-Balai" >Balai-Balai</option>
+                        <option value="Bukit Surungan"  >Bukit Surungan</option>
+                        <option value="Kampung Manggis" >Kampung Manggis</option>
+                        <option value="Pasar Baru" >Pasar Baru</option>
+                        <option value="Pasar Usang" >Pasar Usang</option>
+                        <option value="Silaing Atas" >Silaing Atas</option>
+                        <option value="Silaing Bawah" >Silaing Bawah</option>
+                        <option value="Tanah Hitam" >Tanah Hitam</option>
+                        <option value="Ekor Lubuk" >Ekor Lubuk</option>
+                        <option value="Ganting" >Ganting</option>
+                        <option value="Guguk Malintang" >Guguk Malintang</option>
+                        <option value="Koto Katik" >Koto Katik</option>
+                        <option value="Koto Panjang" >Koto Panjang</option>
+                        <option value="Ngalau" >Ngalau</option>
+                        <option value="Sigando" >Sigando</option>
+                        <option value="Tanah Pak Lambik" >Tanah Pak Lambik</option>    
+                      </select> 
+                  </div>
+                </div>
+                <div class="col-md-3">
+                <div class="form-group">
+                    <label for="example-search-input" class="form-control-label">Kecamatan</label>
+                    <select class="form-control form-control" required name="kecamatan">
+                        <option value="">-- Pilih Kecamatan--</option>
+                        <option value="Padang Panjang Barat" >Padang Panjang Barat</option>   
+                        <option value="Padang Panjang Timur" >Padang Panjang Timur</option>   
+                    </select>               
+                      </div>
+                </div>
+                <div class="col-md-4"> 
+                <div class="form-group">
+                  <label for="example-search-input" class="form-control-label">Kode Pos</label>
+                     <select class="form-control form-control" required name="kode_pos">
+                        <option value="">-- Pilih Kode Pos--</option>
+                        <option>#Padang Panjang Timur#</option>
+                        <option value="27125" >27125</option>
+                        <option value="27127"  >27127</option>
+                        <option value="27123" >27123</option>
+                        <option value="27128"  >27128</option>
+                        <option value="27122" >27122</option>
+                        <option value="27124"  >27124</option>
+                        <option value="27126" >27126</option>
+                        <option value="27121"  >27121</option>
+                        <option>#Padang Panjang Barat#</option>
+                        <option value="27114" >27114</option>
+                        <option value="27115" >27115</option>
+                        <option value="27111"  >27111</option>
+                        <option value="27113" >27113</option>
+                        <option value="27116"  >27116</option>
+                        <option value="27117" >27117</option>
+                        <option value="27118"  >27118</option>
+                        <option value="27112" >27112</option>
+                      </select>
+                  </div>
+              </div>
+              @else
+              <div class="col-md-6">
+                <div class="form-group">
+                    <label for="example-search-input" class="form-control-label">RT/RW</label>
+                    <input class="form-control" type="text" placeholder="Masukan RT/RW" required name="rtrw">
+                  </div>
+                </div>
+                <div class="col-md-6"> 
+                <div class="form-group">
+                  <label for="example-search-input" class="form-control-label">Kode Pos</label>
+                     <select class="form-control form-control" required name="kode_pos">
+                        <option value="">-- Pilih Kode Pos--</option>
+                        <!-- <option>#Padang Panjang Timur#</option>
+                        <option value="27125" >27125</option>
+                        <option value="27127"  >27127</option>
+                        <option value="27123" >27123</option>
+                        <option value="27128"  >27128</option>
+                        <option value="27122" >27122</option>
+                        <option value="27124"  >27124</option>
+                        <option value="27126" >27126</option>
+                        <option value="27121"  >27121</option>
+                        <option>#Padang Panjang Barat#</option> -->
+                        <option value="27114" >27114</option>
+                        <option value="27115" >27115</option>
+                        <option value="27111"  >27111</option>
+                        <option value="27113" >27113</option>
+                        <option value="27116"  >27116</option>
+                        <option value="27117" >27117</option>
+                        <option value="27118"  >27118</option>
+                        <option value="27112" >27112</option>
+                      </select>
+                  </div>
+              </div>
+              @endif
+              <div class="col-md-3">
                  <div class="form-group">
                     <label for="example-datetime-local-input"  class="form-control-label">Jenis Kelamin</label> 
                   <div class="custom-control custom-radio mb-3">
@@ -250,138 +352,13 @@
                             </select>
                           </div>
                     </div>
-                                  <div class="col-md-6">
-                <div class="form-group">
-                    <label for="example-search-input" class="form-control-label">Penghasilan / Bulan</label>
-                     <select class="form-control form-control" required name="gaji">
-                        <option value="">-- Pilih Kisaran Gaji --</option>
-                        <option value="0-1 Juta" > 0-1 Juta</option>
-                        <option value="1 Juta- 2 Juta"  >1 Juta-  Juta</option>
-                        <option value="2 Juta - 3 Juta"  >2 Juta - 3 Juta</option>
-                        <option value="3 Juta - 4 Juta"  >3 Juta - 4 Juta</option>
-                        <option value="4 Juta - 5 Juta"  >4 Juta - 5 Juta</option>
-                        <option value="> 5 Juta" >> 5Juta </option>
-                      </select>                 
-                    </div>
-              </div>
-      </div>
-  </div>
-  <div class="tab">
-    <h1>Data Alamat</h1><br>
-    <div class="row">
-    <div class="col-md-6">
-                  <div class="form-group">
-                      <label for="example-text-input" class="form-control-label">Alamat</label>
-                      <textarea class="form-control" type="text" placeholder="Masukan Alamat..." required name="alamat" id="alamat" ></textarea>
-                  </div>
-              </div>
-              @if(Auth::User()->level == 'Admin Camat' || Auth::User()->level == 'SuperAdmin')  
-              <div class="col-md-2">
-                <div class="form-group">
-                    <label for="example-search-input" class="form-control-label">RT/RW</label>
-                    <input class="form-control" type="text" placeholder="Masukan RT/RW" required name="rtrw">
-                  </div>
+                  <div class="col-md-6">
+              <div class="form-group">
+                    <label for="example-email-input" class="form-control-label">Detail Jenis Pekerjaan</label>
+                    <textarea class="form-control" type="text" rows="3" placeholder="Masukan Detail Jenis Pekerjaan" required name="detail_pekerjaan" ></textarea>
                 </div>
-                <div class="col-md-3">
-                <div class="form-group">  
-                    <label for="example-search-input" class="form-control-label">Desa/Kelurahan</label>
-                     <select class="form-control form-control" required name="kelurahan">
-                        <option value="">-- Pilih Desa/ Kelurahan--</option>
-                        <option value="Balai-Balai" >Balai-Balai</option>
-                        <option value="Bukit Surungan"  >Bukit Surungan</option>
-                        <option value="Kampung Manggis" >Kampung Manggis</option>
-                        <option value="Pasar Baru" >Pasar Baru</option>
-                        <option value="Pasar Usang" >Pasar Usang</option>
-                        <option value="Silaing Atas" >Silaing Atas</option>
-                        <option value="Silaing Bawah" >Silaing Bawah</option>
-                        <option value="Tanah Hitam" >Tanah Hitam</option>
-                        <option value="Ekor Lubuk" >Ekor Lubuk</option>
-                        <option value="Ganting" >Ganting</option>
-                        <option value="Guguk Malintang" >Guguk Malintang</option>
-                        <option value="Koto Katik" >Koto Katik</option>
-                        <option value="Koto Panjang" >Koto Panjang</option>
-                        <option value="Ngalau" >Ngalau</option>
-                        <option value="Sigando" >Sigando</option>
-                        <option value="Tanah Pak Lambik" >Tanah Pak Lambik</option>    
-                      </select> 
-                  </div>
-                </div>
-                <div class="col-md-3">
-                <div class="form-group">
-                    <label for="example-search-input" class="form-control-label">Kecamatan</label>
-                    <select class="form-control form-control" required name="kecamatan">
-                        <option value="">-- Pilih Kecamatan--</option>
-                        <option value="Padang Panjang Barat" >Padang Panjang Barat</option>   
-                        <option value="Padang Panjang Timur" >Padang Panjang Timur</option>   
-                    </select>               
-                      </div>
-                </div>
-                <div class="col-md-4"> 
-                <div class="form-group">
-                  <label for="example-search-input" class="form-control-label">Kode Pos</label>
-                     <select class="form-control form-control" required name="kode_pos">
-                        <option value="">-- Pilih Kode Pos--</option>
-                        <option>#Padang Panjang Timur#</option>
-                        <option value="27125" >27125</option>
-                        <option value="27127"  >27127</option>
-                        <option value="27123" >27123</option>
-                        <option value="27128"  >27128</option>
-                        <option value="27122" >27122</option>
-                        <option value="27124"  >27124</option>
-                        <option value="27126" >27126</option>
-                        <option value="27121"  >27121</option>
-                        <option>#Padang Panjang Barat#</option>
-                        <option value="27114" >27114</option>
-                        <option value="27115" >27115</option>
-                        <option value="27111"  >27111</option>
-                        <option value="27113" >27113</option>
-                        <option value="27116"  >27116</option>
-                        <option value="27117" >27117</option>
-                        <option value="27118"  >27118</option>
-                        <option value="27112" >27112</option>
-                      </select>
-                  </div>
               </div>
-              @else
               <div class="col-md-6">
-                <div class="form-group">
-                    <label for="example-search-input" class="form-control-label">RT/RW</label>
-                    <input class="form-control" type="text" placeholder="Masukan RT/RW" required name="rtrw">
-                  </div>
-                </div>
-                <div class="col-md-6"> 
-                <div class="form-group">
-                  <label for="example-search-input" class="form-control-label">Kode Pos</label>
-                     <select class="form-control form-control" required name="kode_pos">
-                        <option value="">-- Pilih Kode Pos--</option>
-                        <!-- <option>#Padang Panjang Timur#</option>
-                        <option value="27125" >27125</option>
-                        <option value="27127"  >27127</option>
-                        <option value="27123" >27123</option>
-                        <option value="27128"  >27128</option>
-                        <option value="27122" >27122</option>
-                        <option value="27124"  >27124</option>
-                        <option value="27126" >27126</option>
-                        <option value="27121"  >27121</option>
-                        <option>#Padang Panjang Barat#</option> -->
-                        <option value="27114" >27114</option>
-                        <option value="27115" >27115</option>
-                        <option value="27111"  >27111</option>
-                        <option value="27113" >27113</option>
-                        <option value="27116"  >27116</option>
-                        <option value="27117" >27117</option>
-                        <option value="27118"  >27118</option>
-                        <option value="27112" >27112</option>
-                      </select>
-                  </div>
-              </div>
-              @endif
-            </div>
-  </div>
-  <div class="tab">
-    <h1>Data Keluarga</h1><br>
-    <div class="row">
-    <div class="col-md-6">
               <div class="form-group">
                     <label for="example-email-input" class="form-control-label">Status Perkawinan</label>
                      <select class="form-control form-control" required name="status_kawin">
@@ -397,7 +374,7 @@
               <div class="col-md-6">
                 <div class="form-group">
                     <label for="example-search-input" class="form-control-label">Tanggal Perkawinan</label>
-                    <input class="form-control" type="date" placeholder="Masukan Tanggal Perkawinan" required name="tgl_kawin">
+                    <input class="form-control" type="text" placeholder="Masukan Tanggal Perkawinan" required name="tgl_kawin">
                   </div>
                 </div>
                <div class="col-md-6">
@@ -425,30 +402,6 @@
                     <textarea class="form-control" type="text" rows="3" placeholder="Masukan Detail Status Hubungan Keluarga" required name="detail_hub_keluarga" ></textarea>
                 </div>
               </div>
-              <div class="col-md-6">
-                  <div class="form-group">
-                      <label for="example-email-input" class="form-control-label">Nama Ayah</label>
-                      <input class="form-control" type="text" required="" placeholder="Status Ayah   ..." name="nama_ayah" >
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                      <label for="example-email-input" class="form-control-label">Nama Ibu</label>
-                      <input class="form-control" type="text" required="" placeholder="Nama Ibu ..." name="nama_ibu" >
-                  </div>
-            </div>
-          </div>
-  </div>
-  <div class="tab">
-    <h1>Data Lainnya</h1><br>
-    <div class="row">
-    <div class="col-md-6">
-              <div class="form-group">
-                    <label for="example-email-input" class="form-control-label">Detail Jenis Pekerjaan</label>
-                    <textarea class="form-control" type="text" rows="3" placeholder="Masukan Detail Jenis Pekerjaan" required name="detail_pekerjaan" ></textarea>
-                </div>
-              </div>
-              
               <div class="col-md-4">
                 <div class="form-group">
                     <label for="example-password-input" class="form-control-label">Kewarganegaraan</label>
@@ -472,7 +425,18 @@
                     <input class="form-control" type="text" required="" placeholder="Masukan No. Kitap ... " required name="no_kitap" >
                 </div>
               </div>
-              
+              <div class="col-md-6">
+                  <div class="form-group">
+                      <label for="example-email-input" class="form-control-label">Nama Ayah</label>
+                      <input class="form-control" type="text" required="" placeholder="Status Ayah   ..." name="nama_ayah" >
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                      <label for="example-email-input" class="form-control-label">Nama Ibu</label>
+                      <input class="form-control" type="text" required="" placeholder="Nama Ibu ..." name="nama_ibu" >
+                  </div>
+            </div>
             <div class="col-md-3">
                  <div class="form-group">
                     <label for="example-datetime-local-input"  class="form-control-label"> Domisili Di Padang Panjang</label> 
@@ -485,9 +449,6 @@
                   <label class="custom-control-label"  for="customRadio11" >Tidak</label>
                 </div>  
                   </div>
-<<<<<<< HEAD
-            </div>
-=======
                 </div>
               <div class="col-md-5">
                 <div class="form-group">
@@ -503,7 +464,6 @@
                       </select>                 
                     </div>
               </div>
->>>>>>> 42f934af265bde9901a28001888233ed176da75a
                <style>
                           }
                           }
@@ -529,29 +489,17 @@
                     <input class="form-control" type="file" onchange="loadFile(event)" class="form-control-file" required="" placeholder="Masukan No. Pasport ... " required name="foto_profile" >
                 </div>
               </div>
+             </div>
              <br>
-              </div>
-  </div>
-  <div style="overflow:auto;">
-    <div style="float:right;">
-      <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-      <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
-    </div>
-  </div>
-  <!-- Circles which indicates the steps of the form: -->
-  <div style="text-align:center;margin-top:40px;">
-    <span class="step"></span>
-    <span class="step"></span>
-    <span class="step"></span>
-  </div>
+                <div>
+                  <button type="submit" class="btn btn-lg btn-primary btn-block">
+                    <i class="fa fa-plus" id="btn_kk"></i>&nbsp;<span>Simpan</span>
+                  </button>
+                </div>
+              </form>
               </div>
             </div>
-          </form>
+          </div>
         </div>
-      </div>
-    </div>
-    </div>
-  </div>
-</div>
 
 @endsection
