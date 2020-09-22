@@ -58,7 +58,7 @@
 
                     <div class="text-center w-full mt-3">
                         <p style="color:white">
-                            Copyright © <?php echo date('Y');?><br>Dinas Kominfo Kota Padang Panjang
+                            Copyright © <?php echo date('Y');?><br>Dinas Komunikasi dan Informatika<br>Kota Padang Panjang
                         </p>
                     </div>
                 </form>
