@@ -215,6 +215,11 @@
                                     <td width="67%">{{ $kepala_keluarga->domisili}}</td>
                                 </tr>
                                 <tr>
+                                    <td width="40%"><b>Alamat Domisili</b><br><b>*Jika Tidak Berdomisili Di Padang Panjang</b></td>
+                                    <td width="3%"> : </td>
+                                    <td width="67%">{{ $kepala_keluarga->alamat_domisili}}</td>
+                                </tr>
+                                <tr>
                                     <td width="40%"><b>Penghasilan  / Bulan</b></td>
                                     <td width="3%"> : </td>
                                     <td width="67%">{{ $kepala_keluarga->gaji}}</td>

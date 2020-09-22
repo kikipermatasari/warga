@@ -71,14 +71,14 @@
                         <option value="Silaing Atas" >Silaing Atas</option>
                         <option value="Silaing Bawah" >Silaing Bawah</option>
                         <option value="Tanah Hitam" >Tanah Hitam</option>
-                        <option value="Ekor Lubuk" >Ekor Lubuk</option>
+                        <!-- <option value="Ekor Lubuk" >Ekor Lubuk</option>
                         <option value="Ganting" >Ganting</option>
                         <option value="Guguk Malintang" >Guguk Malintang</option>
                         <option value="Koto Katik" >Koto Katik</option>
                         <option value="Koto Panjang" >Koto Panjang</option>
                         <option value="Ngalau" >Ngalau</option>
                         <option value="Sigando" >Sigando</option>
-                        <option value="Tanah Pak Lambik" >Tanah Pak Lambik</option>    
+                        <option value="Tanah Pak Lambik" >Tanah Pak Lambik</option> -->    
                       </select> 
                   </div>
                 </div>
@@ -97,7 +97,7 @@
                   <label for="example-search-input" class="form-control-label">Kode Pos</label>
                      <select class="form-control form-control" required name="kode_pos">
                         <option value="">-- Pilih Kode Pos--</option>
-                        <option>#Padang Panjang Timur#</option>
+                       <!--  <option>#Padang Panjang Timur#</option>
                         <option value="27125" >27125</option>
                         <option value="27127"  >27127</option>
                         <option value="27123" >27123</option>
@@ -105,7 +105,7 @@
                         <option value="27122" >27122</option>
                         <option value="27124"  >27124</option>
                         <option value="27126" >27126</option>
-                        <option value="27121"  >27121</option>
+                        <option value="27121"  >27121</option> -->
                         <option>#Padang Panjang Barat#</option>
                         <option value="27114" >27114</option>
                         <option value="27115" >27115</option>
@@ -437,7 +437,7 @@
                       <input class="form-control" type="text" required="" placeholder="Nama Ibu ..." name="nama_ibu" >
                   </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-6">
                  <div class="form-group">
                     <label for="example-datetime-local-input"  class="form-control-label"> Domisili Di Padang Panjang</label> 
                   <div class="custom-control custom-radio mb-3">
@@ -450,11 +450,18 @@
                 </div>  
                   </div>
                 </div>
-              <div class="col-md-5">
+                 <div class="col-md-6">
+                  <div class="form-group">
+                      <label for="example-email-input" class="form-control-label">Alamat Domisili *Jika Tidak berdomisili Di Padang Panjang</label>
+                      <textarea class="form-control" rows="3" type="text" placeholder="Masukan Alamat Domisili Jika Tidak ..." name="alamat_domisili" ></textarea>
+                  </div>
+                </div>
+              <div class="col-md-6">
                 <div class="form-group">
                     <label for="example-search-input" class="form-control-label">Penghasilan / Bulan</label>
                      <select class="form-control form-control" name="gaji">
                         <option value="">-- Pilih Kisaran Gaji --</option>
+                        <option value="-" >-</option>
                         <option value="0-1 Juta" > 0-1 Juta</option>
                         <option value="1 Juta- 2 Juta"  >1 Juta-  Juta</option>
                         <option value="2 Juta - 3 Juta"  >2 Juta - 3 Juta</option>
@@ -483,7 +490,7 @@
                         };
 
                     </script>
-              <div class="col-md-4">
+              <div class="col-md-6">
                 <div class="form-group">
                     <label for="example-search-input" class="form-control-label">Foto Profile</label>
                     <input class="form-control" type="file" onchange="loadFile(event)" class="form-control-file" required="" placeholder="Masukan No. Pasport ... " required name="foto_profile" >

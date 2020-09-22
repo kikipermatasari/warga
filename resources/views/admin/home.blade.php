@@ -350,11 +350,12 @@ var ctx = document.getElementById('chart-penghasilan').getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: [' 0-1 Juta', '1 Juta- 2 Juta', '2 Juta - 3 Juta', '3 Juta - 4 Juta', '4 Juta - 5 Juta', '> 5 Juta'],
+        labels: ['-','-',' 0-1 Juta', '1 Juta- 2 Juta', '2 Juta - 3 Juta', '3 Juta - 4 Juta', '4 Juta - 5 Juta', '> 5 Juta'],
         datasets: [{
             label: 'Jumlah Penduduk Menurut Penghasilan',
-            data: [{{$penghasilan1}}, {{$penghasilan2}}, {{$penghasilan3}}, {{$penghasilan4}}, {{$penghasilan5}}, {{$penghasilan6}}],
+            data: [{{$penghasilan0}},{{$penghasilan1}}, {{$penghasilan2}}, {{$penghasilan3}}, {{$penghasilan4}}, {{$penghasilan5}}, {{$penghasilan6}}],
             backgroundColor: [
+                'rgba(54, 162, 235, 0.2)',
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
                 'rgba(255, 206, 86, 0.2)',
@@ -363,6 +364,7 @@ var myChart = new Chart(ctx, {
                 'rgba(54, 162, 235, 0.2)'
             ],
             borderColor: [
+                'rgba(153, 102, 255, 1)',
                 'rgba(255, 99, 132, 1)',
                 'rgba(54, 162, 235, 1)',
                 'rgba(255, 206, 86, 1)',
@@ -707,10 +709,10 @@ var ctx = document.getElementById('chart-penghasilan').getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: [' 0-1 Juta', '1 Juta- 2 Juta', '2 Juta - 3 Juta', '3 Juta - 4 Juta', '4 Juta - 5 Juta', '> 5 Juta'],
+        labels: ['-',' 0-1 Juta', '1 Juta- 2 Juta', '2 Juta - 3 Juta', '3 Juta - 4 Juta', '4 Juta - 5 Juta', '> 5 Juta'],
         datasets: [{
             label: 'Jumlah Penduduk Menurut Penghasilan',
-            data: [{{$penghasilan1}}, {{$penghasilan2}}, {{$penghasilan3}}, {{$penghasilan4}}, {{$penghasilan5}}, {{$penghasilan6}}],
+            data: [{{$penghasilan0}},{{$penghasilan1}}, {{$penghasilan2}}, {{$penghasilan3}}, {{$penghasilan4}}, {{$penghasilan5}}, {{$penghasilan6}}],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -919,11 +921,12 @@ var ctx = document.getElementById('chart-penghasilan').getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: [' 0-1 Juta', '1 Juta- 2 Juta', '2 Juta - 3 Juta', '3 Juta - 4 Juta', '4 Juta - 5 Juta', '> 5 Juta'],
+        labels: ['-',' 0-1 Juta', '1 Juta- 2 Juta', '2 Juta - 3 Juta', '3 Juta - 4 Juta', '4 Juta - 5 Juta', '> 5 Juta'],
         datasets: [{
             label: 'Jumlah Penduduk Menurut Penghasilan',
-            data: [{{$penghasilan1}}, {{$penghasilan2}}, {{$penghasilan3}}, {{$penghasilan4}}, {{$penghasilan5}}, {{$penghasilan6}}],
+            data: [{{$penghasilan0}},{{$penghasilan1}}, {{$penghasilan2}}, {{$penghasilan3}}, {{$penghasilan4}}, {{$penghasilan5}}, {{$penghasilan6}}],
             backgroundColor: [
+                'rgba(54, 162, 235, 0.2)',
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
                 'rgba(255, 206, 86, 0.2)',
@@ -932,6 +935,7 @@ var myChart = new Chart(ctx, {
                 'rgba(54, 162, 235, 0.2)'
             ],
             borderColor: [
+                'rgba(153, 102, 255, 1)',
                 'rgba(255, 99, 132, 1)',
                 'rgba(54, 162, 235, 1)',
                 'rgba(255, 206, 86, 1)',
