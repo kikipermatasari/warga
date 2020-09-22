@@ -99,6 +99,7 @@ class KepalakeluargaController extends Controller
    }
 
    public function createkepala(Request $request){
+        date_default_timezone_set('Asia/Jakarta');
         if(Auth::User()->level == 'Admin Camat' || Auth::User()->level == 'SuperAdmin'){
             $dokumen = $request->file('foto_profile');
             $name = uniqid()."_".$dokumen->getClientOriginalName();
@@ -133,7 +134,8 @@ class KepalakeluargaController extends Controller
                 'nama_ayah' => $request->nama_ayah,                
                 'gaji' => $request->gaji,                
                 'foto_profile'=>$name,                 
-                'kwn' =>$request->kwn
+                'kwn' =>$request->kwn,
+                'created_at' => date('Y-m-d H:i:s')
               ]);
         } else if (Auth::User()->level == 'Admin Kelurahan Kampung Manggis') {
              $dokumen = $request->file('foto_profile');
@@ -169,7 +171,8 @@ class KepalakeluargaController extends Controller
                 'nama_ayah' => $request->nama_ayah,                
                 'gaji' => $request->gaji,                
                 'foto_profile'=>$name,                 
-                'kwn' =>$request->kwn
+                'kwn' =>$request->kwn,
+                'created_at' => date('Y-m-d H:i:s')
               ]);
         }
         else if (Auth::User()->level == 'Admin Kelurahan Tanah Hitam') {
@@ -206,7 +209,8 @@ class KepalakeluargaController extends Controller
                 'nama_ayah' => $request->nama_ayah,                
                 'gaji' => $request->gaji,                
                 'foto_profile'=>$name,                 
-                'kwn' =>$request->kwn
+                'kwn' =>$request->kwn,
+                'created_at' => date('Y-m-d H:i:s')
               ]);
         }
         else if (Auth::User()->level == 'Admin Kelurahan Pasar Baru') {
@@ -243,7 +247,8 @@ class KepalakeluargaController extends Controller
                 'nama_ayah' => $request->nama_ayah,                
                 'gaji' => $request->gaji,                
                 'foto_profile'=>$name,                 
-                'kwn' =>$request->kwn
+                'kwn' =>$request->kwn,
+                'created_at' => date('Y-m-d H:i:s')
               ]);
         }
         else if (Auth::User()->level == 'Admin Kelurahan Pasar Usang') {
@@ -280,7 +285,8 @@ class KepalakeluargaController extends Controller
                 'nama_ayah' => $request->nama_ayah,                
                 'gaji' => $request->gaji,                
                 'foto_profile'=>$name,                 
-                'kwn' =>$request->kwn
+                'kwn' =>$request->kwn,
+                'created_at' => date('Y-m-d H:i:s')
               ]);
         }
         else if (Auth::User()->level == 'Admin Kelurahan Silaing Atas') {
@@ -317,11 +323,12 @@ class KepalakeluargaController extends Controller
                 'nama_ayah' => $request->nama_ayah,                
                 'gaji' => $request->gaji,                
                 'foto_profile'=>$name,                 
-                'kwn' =>$request->kwn
+                'kwn' =>$request->kwn,
+                'created_at' => date('Y-m-d H:i:s')
               ]);
         }
         else if (Auth::User()->level == 'Admin Kelurahan Silaing Bawah') {
-             $dokumen = $request->file('foto_profile');
+            $dokumen = $request->file('foto_profile');
             $name = uniqid()."_".$dokumen->getClientOriginalName();
             $dokumen->move(public_path() . "/public/warga", $name);
             DB::table('kartu_keluarga')->insert([
@@ -354,7 +361,8 @@ class KepalakeluargaController extends Controller
                 'nama_ayah' => $request->nama_ayah,                
                 'gaji' => $request->gaji,                
                 'foto_profile'=>$name,                 
-                'kwn' =>$request->kwn
+                'kwn' =>$request->kwn,
+                'created_at' => date('Y-m-d H:i:s')
               ]);
         }
         else if (Auth::User()->level == 'Admin Kelurahan Balai-Balai') {
@@ -391,7 +399,8 @@ class KepalakeluargaController extends Controller
                 'nama_ayah' => $request->nama_ayah,                
                 'gaji' => $request->gaji,                
                 'foto_profile'=>$name,                 
-                'kwn' =>$request->kwn
+                'kwn' =>$request->kwn,
+                'created_at' => date('Y-m-d H:i:s')
               ]);
         }
         else if (Auth::User()->level == 'Admin Kelurahan Bukit Surungan') {
@@ -428,13 +437,15 @@ class KepalakeluargaController extends Controller
                 'nama_ayah' => $request->nama_ayah,                
                 'gaji' => $request->gaji,                
                 'foto_profile'=>$name,                 
-                'kwn' =>$request->kwn
+                'kwn' =>$request->kwn,
+                'created_at' => date('Y-m-d H:i:s')
               ]);
         }
             return redirect('/kartu-keluarga');
    }
 
    public function createanggota(Request $request){
+            date_default_timezone_set('Asia/Jakarta');
             $dokumen = $request->file('foto_profile');
             $name = uniqid()."_".$dokumen->getClientOriginalName();
             $dokumen->move(public_path() . "/public/warga", $name);
@@ -484,6 +495,7 @@ class KepalakeluargaController extends Controller
     }
 
     public function updatekepala(Request $request, $id) {
+          date_default_timezone_set('Asia/Jakarta');
           $kepala_keluarga= DB::table('kartu_keluarga')->find($id);        
             if ($request->hasFile('foto_profile') ) {
             unlink(public_path() . '/public/warga/' . $kepala_keluarga->foto_profile);
@@ -519,7 +531,9 @@ class KepalakeluargaController extends Controller
                 'nama_ayah' => $request->nama_ayah,                
                 'gaji' => $request->gaji,                
                 'foto_profile' => $name,                
-                'kwn' =>$request->kwn
+                'kwn' =>$request->kwn,
+                'updated_at' => date('Y-m-d H:i:s'),
+                'created_at' => null
               ]);
     } else {
         $update =  DB::table('kartu_keluarga')->where('id',$id)->update([
@@ -550,7 +564,9 @@ class KepalakeluargaController extends Controller
                 'nama_ibu' => $request->nama_ibu,
                 'nama_ayah' => $request->nama_ayah,
                 'gaji' => $request->gaji,                                               
-                'kwn' =>$request->kwn
+                'kwn' =>$request->kwn,
+                'updated_at' => date('Y-m-d H:i:s'),
+                'created_at' => null
             ]);
 
          }
@@ -564,6 +580,7 @@ class KepalakeluargaController extends Controller
     }
 
   public function updateanggota(Request $request, $id) {
+         date_default_timezone_set('Asia/Jakarta');
          $anggota= DB::table('anggota')->find($id);        
             if ($request->hasFile('foto_profile') ) {
             unlink(public_path() . '/public/warga/' . $anggota->foto_profile);
@@ -599,7 +616,9 @@ class KepalakeluargaController extends Controller
                 'nama_ayah' => $request->nama_ayah,
                 'gaji' => $request->gaji,
                 'foto_profile' => $name,                
-                'kwn' =>$request->kwn
+                'kwn' =>$request->kwn,
+                'updated_at' => date('Y-m-d H:i:s'),
+                'created_at' => null
               ]);
             } else {
         $update = DB::table('anggota')->where('id',$id)->update([
@@ -630,7 +649,9 @@ class KepalakeluargaController extends Controller
                 'nama_ibu' => $request->nama_ibu,
                 'nama_ayah' => $request->nama_ayah,
                 'gaji' => $request->gaji,
-                'kwn' =>$request->kwn
+                'kwn' =>$request->kwn,
+                'updated_at' => date('Y-m-d H:i:s'),
+                'created_at' => null
               ]);
       
             }
@@ -684,20 +705,23 @@ class KepalakeluargaController extends Controller
    public function delete($id)
     {
       DB::table('kartu_keluarga')->where('no_kk',$id)->delete();
+      DB::table('anggota')->where('id_nomorkk',$id)->delete();
       return redirect()->back();
     }
 
     public function delete_anggota($id)
     {
-      DB::table('kartu_keluarga')->where('id',$id)->delete();
+      DB::table('anggota')->where('id',$id)->delete();
       return redirect()->back();
     }
 
 
      public function cetak_kepala ($id){
         $kepala_keluarga= DB::table('kartu_keluarga')->find($id);
+
         $pdf = PDF::loadview('admin/cetakkepala',['kepala_keluarga'=>$kepala_keluarga]);
-        return $pdf->stream();
+
+        return $pdf->stream("studentidcard.pdf", array("Attachment"=>0));
     }
 
     public function cetak_anggota ($id){

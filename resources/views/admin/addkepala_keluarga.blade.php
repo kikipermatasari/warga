@@ -453,7 +453,7 @@
               <div class="col-md-5">
                 <div class="form-group">
                     <label for="example-search-input" class="form-control-label">Penghasilan / Bulan</label>
-                     <select class="form-control form-control" required name="gaji">
+                     <select class="form-control form-control" name="gaji">
                         <option value="">-- Pilih Kisaran Gaji --</option>
                         <option value="0-1 Juta" > 0-1 Juta</option>
                         <option value="1 Juta- 2 Juta"  >1 Juta-  Juta</option>

@@ -212,7 +212,17 @@ class HomeController extends Controller
 
             $domisili = "[".$domisili_ya.",".$domisili_tidak."]";
 
-            return view('/admin/home',['domisili'=>$domisili,'hasil'=>$hasil,'jml_penduduk'=>$jml_penduduk,'jml_penduduk1'=>$jml_penduduk1,'jml_laki_laki'=>$jml_laki_laki,'jml_laki_laki1'=>$jml_laki_laki1,'jml_perempuan'=>$jml_perempuan,'jml_perempuan1'=>$jml_perempuan1,'total_manggis'=>$total_manggis,'total_bukit'=>$total_bukit,'total_tanah'=>$total_tanah,'total_silat'=>$total_silat,'total_silba'=>$total_silba,'total_paus'=>$total_paus,'total_pabar'=>$total_pabar,'total_balai'=>$total_balai,'penghasilan1'=>$penghasilan1,'penghasilan2'=>$penghasilan2,'penghasilan3'=>$penghasilan3,'penghasilan4'=>$penghasilan4,'penghasilan5'=>$penghasilan5,'penghasilan6'=>$penghasilan6]);
+            //Log
+
+            $now = date('Y-m');
+
+            $log_penduduk_created = DB::table('kartu_keluarga')->where('created_at', 'like', $now.'%')->get();
+            $log_anggota_created = DB::table('anggota')->where('created_at', 'like', $now.'%')->get();
+
+            $log_penduduk_updated = DB::table('kartu_keluarga')->where('updated_at', 'like', $now.'%')->get();
+            $log_anggota_updated = DB::table('anggota')->where('updated_at', 'like', $now.'%')->get();
+
+            return view('/admin/home',['log_penduduk_created'=>$log_penduduk_created,'log_anggota_created'=>$log_anggota_created,'log_penduduk_updated'=>$log_penduduk_updated,'log_anggota_updated'=>$log_anggota_updated,'domisili'=>$domisili,'hasil'=>$hasil,'jml_penduduk'=>$jml_penduduk,'jml_penduduk1'=>$jml_penduduk1,'jml_laki_laki'=>$jml_laki_laki,'jml_laki_laki1'=>$jml_laki_laki1,'jml_perempuan'=>$jml_perempuan,'jml_perempuan1'=>$jml_perempuan1,'total_manggis'=>$total_manggis,'total_bukit'=>$total_bukit,'total_tanah'=>$total_tanah,'total_silat'=>$total_silat,'total_silba'=>$total_silba,'total_paus'=>$total_paus,'total_pabar'=>$total_pabar,'total_balai'=>$total_balai,'penghasilan1'=>$penghasilan1,'penghasilan2'=>$penghasilan2,'penghasilan3'=>$penghasilan3,'penghasilan4'=>$penghasilan4,'penghasilan5'=>$penghasilan5,'penghasilan6'=>$penghasilan6]);
         
         } else if(Auth::User()->level == "SuperAdmin"){
         
@@ -399,7 +409,17 @@ class HomeController extends Controller
 
             $domisili = "[".$domisili_ya.",".$domisili_tidak."]";
 
-            return view('/admin/home',['domisili'=>$domisili,'hasil'=>$hasil,'jml_penduduk'=>$jml_penduduk,'jml_penduduk1'=>$jml_penduduk1,'jml_laki_laki'=>$jml_laki_laki,'jml_laki_laki1'=>$jml_laki_laki1,'jml_perempuan'=>$jml_perempuan,'jml_perempuan1'=>$jml_perempuan1,'total_manggis'=>$total_manggis,'total_bukit'=>$total_bukit,'total_tanah'=>$total_tanah,'total_silat'=>$total_silat,'total_silba'=>$total_silba,'total_paus'=>$total_paus,'total_pabar'=>$total_pabar,'total_balai'=>$total_balai,'penghasilan1'=>$penghasilan1,'penghasilan2'=>$penghasilan2,'penghasilan3'=>$penghasilan3,'penghasilan4'=>$penghasilan4,'penghasilan5'=>$penghasilan5,'penghasilan6'=>$penghasilan6]);
+            //Log
+
+            $now = date('m-Y');
+
+            $log_penduduk_created = DB::table('kartu_keluarga')->where('created_at', 'like', '%$now%')->get();
+            $log_anggota_created = DB::table('anggota')->where('created_at', 'like', '%$now%')->get();
+
+            $log_penduduk_updated = DB::table('kartu_keluarga')->where('updated_at', 'like', '%$now%')->get();
+            $log_anggota_updated = DB::table('anggota')->where('updated_at', 'like', '%$now%')->get();
+
+            return view('/admin/home',['log_penduduk_created'=>$log_penduduk_created,'log_anggota_created'=>$log_anggota_created,'log_penduduk_updated'=>$log_penduduk_updated,'log_anggota_updated'=>$log_anggota_updated,'domisili'=>$domisili,'hasil'=>$hasil,'jml_penduduk'=>$jml_penduduk,'jml_penduduk1'=>$jml_penduduk1,'jml_laki_laki'=>$jml_laki_laki,'jml_laki_laki1'=>$jml_laki_laki1,'jml_perempuan'=>$jml_perempuan,'jml_perempuan1'=>$jml_perempuan1,'total_manggis'=>$total_manggis,'total_bukit'=>$total_bukit,'total_tanah'=>$total_tanah,'total_silat'=>$total_silat,'total_silba'=>$total_silba,'total_paus'=>$total_paus,'total_pabar'=>$total_pabar,'total_balai'=>$total_balai,'penghasilan1'=>$penghasilan1,'penghasilan2'=>$penghasilan2,'penghasilan3'=>$penghasilan3,'penghasilan4'=>$penghasilan4,'penghasilan5'=>$penghasilan5,'penghasilan6'=>$penghasilan6]);
         
         } else if(Auth::User()->level == "Admin Kelurahan Balai-Balai"){
         

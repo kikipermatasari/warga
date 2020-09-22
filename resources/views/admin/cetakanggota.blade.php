@@ -1,13 +1,8 @@
- <head>
-  <!-- Required meta tags -->
-    <meta charset="utf-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="{{url('asseteoffice/img/apple-icon.png')}}">
-  <link rel="icon" type="image/png" href="{{url('asseteoffice/img/favicon.png')}}">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cetak Data Anggota Keluarga</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <title>Cetak Data Anggota Keluarga</title>
     <style>
     /* Black border */
     .font1{
@@ -48,6 +43,7 @@
     }
   </style>
 </head>
+<body style="margin-left: 40px;margin-right: 30px;">
 <?php
                                                   $tgl = $anggota->tgl_lahir;
                                                   $hari = date("D", strtotime($tgl));
@@ -88,75 +84,77 @@
                                                   $hasil = $hari_ini . ", " . $newdate;
 
                                             ?>
-                        <body style="margin-left: 50px;margin-right: 30px;margin-top: 20px;">
-                           <p class="text-center">
-                        <span class="font2">Data Anggota Keluarga</span></p><hr hr class="new4"><br>
+    <div class="container">
+        <center>
+            <span class="font2">Data Anggota Keluarga</span></p><hr class="new4"><br>
+        </center>
+        <div class="row">
+                    <div class="col-md-9">
                          <table border="0" width="100%">
-                               <table border="0" width="100%">
                                 <tr>
-                                    <td class="font1" width="40%"><b>Nomor Kartu Keluarga</b></td>
-                                    <td class="font1" width="3%"> : </td>
-                                    <td class="font1" width="67%">{{ $anggota->id_nomorkk }}</td>
+                                    <td class="font1"width="40%"><b>Nomor Kartu Keluarga</b></td>
+                                    <td class="font1"width="3%"> : </td>
+                                    <td class="font1"width="67%">{{ $anggota->id_nomorkk }}</td>
                                 </tr>
                                 <tr>
-                                    <td class="font1" width="40%"><b>Nama Lengkap</b></td>
-                                    <td class="font1" width="3%"> : </td>
-                                    <td class="font1" width="67%">{{ $anggota->nama}}</td>
+                                    <td class="font1"width="40%"><b>Nama Lengkap</b></td>
+                                    <td class="font1"width="3%"> : </td>
+                                    <td class="font1"width="67%">{{ $anggota->nama}}</td>
                                 </tr>
                                 <tr>
-                                    <td class="font1" width="40%"><b>NIK</b></td>
-                                    <td class="font1" width="3%"> : </td>
-                                    <td class="font1" width="67%">{{ $anggota->nik}}</td>
+                                    <td class="font1"width="40%"><b>NIK</b></td>
+                                    <td class="font1"width="3%"> : </td>
+                                    <td class="font1"width="67%">{{ $anggota->nik}}</td>
                                 </tr>
                                 <tr>
-                                    <td class="font1" width="40%"><b>Alamat</b></td>
-                                    <td class="font1" width="3%"> : </td>
-                                    <td class="font1" width="67%">{{ $anggota->alamat}}</td>
+                                    <td class="font1"width="40%"><b>Alamat</b></td>
+                                    <td class="font1"width="3%"> : </td>
+                                    <td class="font1"width="67%">{{ $anggota->alamat}}</td>
                                 </tr>
                                 <tr>
-                                    <td class="font1" width="40%"><b>RT / RW</b></td>
-                                    <td class="font1" width="3%"> : </td>
-                                    <td class="font1" width="67%">{{ $anggota->rtrw}}</td>
+                                    <td class="font1"width="40%"><b>RT / RW</b></td>
+                                    <td class="font1"width="3%"> : </td>
+                                    <td class="font1"width="67%">{{ $anggota->rtrw}}</td>
                                 </tr>
                                 <tr>
-                                    <td class="font1" width="40%"><b>Kode Pos</b></td>
-                                    <td class="font1" width="3%"> : </td>
-                                    <td class="font1" width="67%">{{ $anggota->kodepos}}</td>
-                                </tr>
+                                    <td class="font1"width="40%"><b>Kode Pos</b></td>
+                                    <td class="font1"width="3%"> : </td>
+                                    <td class="font1"width="67%">{{ $anggota->kodepos}}</td>
+                                </tr> 
                                 <tr>
-                                    <td class="font1" width="40%"><b>Desa / Kelurahan</b></td>
-                                    <td class="font1" width="3%"> : </td>
-                                    <td class="font1" width="67%">{{ $anggota->kelurahan}}</td>
+                                    <td class="font1"width="40%"><b>Desa / Kelurahan</b></td>
+                                    <td class="font1"width="3%"> : </td>
+                                    <td class="font1"width="67%">{{ $anggota->kelurahan}}</td>
                                 </tr>
                                  <tr>
-                                    <td class="font1" width="40%"><b>Kecamatan</b></td>
-                                    <td class="font1" width="3%"> : </td>
-                                    <td class="font1" width="67%">{{ $anggota->kecamatan}}</td>
+                                    <td class="font1"width="40%"><b>Kecamatan</b></td>
+                                    <td class="font1"width="3%"> : </td>
+                                    <td class="font1"width="67%">{{ $anggota->kecamatan}}</td>
                                 </tr>
                                 <tr>
-                                    <td class="font1" width="40%"><b>Kabupaten / Kota</b></td>
-                                    <td class="font1" width="3%"> : </td>
-                                    <td class="font1" width="67%">{{ $anggota->kota}}</td>
+                                    <td class="font1"width="40%"><b>Kabupaten / Kota</b></td>
+                                    <td class="font1"width="3%"> : </td>
+                                    <td class="font1"width="67%">{{ $anggota->kota}}</td>
                                 </tr>
                                 <tr>
-                                    <td class="font1" width="40%"><b>Provinsi</b></td>
-                                    <td class="font1" width="3%"> : </td>
-                                    <td class="font1" width="67%">{{ $anggota->provinsi}}</td>
+                                    <td class="font1"width="40%"><b>Provinsi</b></td>
+                                    <td class="font1"width="3%"> : </td>
+                                    <td class="font1"width="67%">{{ $anggota->provinsi}}</td>
                                 </tr>
                                 <tr>
-                                    <td class="font1" width="40%"><b>Jenis Kelamin</b></td>
-                                    <td class="font1" width="3%"> : </td>
-                                    <td class="font1" width="67%">{{ $anggota->jenis_kelamin}}</td>
+                                    <td class="font1"width="40%"><b>Jenis Kelamin</b></td>
+                                    <td class="font1"width="3%"> : </td>
+                                    <td class="font1"width="67%">{{ $anggota->jenis_kelamin}}</td>
                                 </tr>
                                 <tr>
-                                    <td class="font1" width="40%"><b>Tempat Lahir / Tanggal Lahir</b></td>
-                                    <td class="font1" width="3%"> : </td>
-                                    <td class="font1" width="67%">{{ $anggota->tempat_lahir}} / {{$hasil}}</td>
+                                    <td class="font1"width="40%"><b>Tempat Lahir / Tanggal Lahir</b></td>
+                                    <td class="font1"width="3%"> : </td>
+                                    <td class="font1"width="67%">{{ $anggota->tempat_lahir}} / {{$hasil}}</td>
                                 </tr>
                                 <tr>
-                                    <td class="font1" width="40%"><b>Umur</b></td>
-                                    <td class="font1" width="3%"> : </td>
-                                    <td class="font1" width="67%">
+                                    <td class="font1"width="40%"><b>Umur</b></td>
+                                    <td class="font1"width="3%"> : </td>
+                                    <td class="font1"width="67%">
                                     <?php
                                       $tgl_lahir = $anggota->tgl_lahir;
                                       $diff  = date_diff( date_create($tgl_lahir), date_create() );
@@ -164,89 +162,95 @@
                                     ?></td>
                                 </tr>
                                 <tr>
-                                    <td class="font1" width="40%"><b>Agama</b></td>
-                                    <td class="font1" width="3%"> : </td>
-                                    <td class="font1" width="67%">{{ $anggota->agama_anggota}}</td>
+                                    <td class="font1"width="40%"><b>Agama</b></td>
+                                    <td class="font1"width="3%"> : </td>
+                                    <td class="font1"width="67%">{{ $anggota->agama_anggota}}</td>
                                 </tr>
                                 <tr>
-                                    <td class="font1" width="40%"><b>Pendidikan</b></td>
-                                    <td class="font1" width="3%"> : </td>
-                                    <td class="font1" width="67%">{{ $anggota->pendidikan}}</td>
+                                    <td class="font1"width="40%"><b>Pendidikan</b></td>
+                                    <td class="font1"width="3%"> : </td>
+                                    <td class="font1"width="67%">{{ $anggota->pendidikan}}</td>
                                 </tr>
                                 <tr>
-                                    <td class="font1" width="40%"><b>Jenis Pekerjaan</b></td>
-                                    <td class="font1" width="3%"> : </td>
-                                    <td class="font1" width="67%">{{ $anggota->jenis_pekerjaan}}</td>
+                                    <td class="font1"width="40%"><b>Jenis Pekerjaan</b></td>
+                                    <td class="font1"width="3%"> : </td>
+                                    <td class="font1"width="67%">{{ $anggota->jenis_pekerjaan}}</td>
                                 </tr>
                                 <tr>
-                                    <td class="font1" width="40%"><b>Detail Pekerjaan</b></td>
-                                    <td class="font1" width="3%"> : </td>
-                                    <td class="font1" width="67%">{{ $anggota->detail_pekerjaan}}</td>
+                                    <td class="font1"width="40%"><b>Detail Pekerjaan</b></td>
+                                    <td class="font1"width="3%"> : </td>
+                                    <td class="font1"width="67%">{{ $anggota->detail_pekerjaan}}</td>
                                 </tr>
                                  <tr>
-                                    <td class="font1" width="35%"><b>Golongan Darah</b></td>
-                                    <td class="font1" width="3%"> : </td>
-                                    <td class="font1" width="62%">{{ $anggota->gol_darah}}</td>
+                                    <td class="font1"width="35%"><b>Golongan Darah</b></td>
+                                    <td class="font1"width="3%"> : </td>
+                                    <td class="font1"width="62%">{{ $anggota->gol_darah}}</td>
                                 </tr>
                                  <tr>
-                                    <td class="font1" width="35%"><b>Status Perkawinan</b></td>
-                                    <td class="font1" width="3%"> : </td>
-                                    <td class="font1" width="62%">{{ $anggota->status_kawin}}</td>
+                                    <td class="font1"width="35%"><b>Status Perkawinan</b></td>
+                                    <td class="font1"width="3%"> : </td>
+                                    <td class="font1"width="62%">{{ $anggota->status_kawin}}</td>
                                 </tr>
                                  <tr>
-                                    <td class="font1" width="35%"><b>Tanggal Perkawinan</b></td>
-                                    <td class="font1" width="3%"> : </td>
-                                    <td class="font1" width="62%">{{ $anggota->tgl_kawin}}</td>
+                                    <td class="font1"width="35%"><b>Tanggal Perkawinan</b></td>
+                                    <td class="font1"width="3%"> : </td>
+                                    <td class="font1"width="62%">{{ $anggota->tgl_kawin}}</td>
                                 </tr>
                                 
                                 <tr>
-                                    <td class="font1" width="40%"><b>Status Hubungan Dalam Keluarga</b></td>
-                                    <td class="font1" width="3%"> : </td>
-                                    <td class="font1" width="67%">{{ $anggota->status_hub_keluarga}}</td>
+                                    <td class="font1"width="40%"><b>Status Hubungan Dalam Keluarga</b></td>
+                                    <td class="font1"width="3%"> : </td>
+                                    <td class="font1"width="67%">{{ $anggota->status_hub_keluarga}}</td>
                                 </tr>
                                  <tr>
-                                    <td class="font1" width="40%"><b>Detail Status Hubungan Dalam Keluarga</b></td>
-                                    <td class="font1" width="3%"> : </td>
-                                    <td class="font1" width="67%">{{ $anggota->detail_hub_keluarga}}</td>
+                                    <td class="font1"width="40%"><b>Detail Status Hubungan Dalam Keluarga</b></td>
+                                    <td class="font1"width="3%"> : </td>
+                                    <td class="font1"width="67%">{{ $anggota->detail_hub_keluarga}}</td>
                                 </tr>
                                 <tr>
-                                    <td class="font1" width="40%"><b>Kewarganegaraan</b></td>
-                                    <td class="font1" width="3%"> : </td>
-                                    <td class="font1" width="67%">{{ $anggota->kwn}}</td>
+                                    <td class="font1"width="40%"><b>Kewarganegaraan</b></td>
+                                    <td class="font1"width="3%"> : </td>
+                                    <td class="font1"width="67%">{{ $anggota->kwn}}</td>
                                 </tr>
                                 <tr>
-                                    <td class="font1" width="40%"><b>No.Pasport</b></td>
-                                    <td class="font1" width="3%"> : </td>
-                                    <td class="font1" width="67%">{{ $anggota->no_pasport}}</td>
+                                    <td class="font1"width="40%"><b>No.Pasport</b></td>
+                                    <td class="font1"width="3%"> : </td>
+                                    <td class="font1"width="67%">{{ $anggota->no_pasport}}</td>
                                 </tr>
                                 <tr>
-                                    <td class="font1" width="40%"><b>No.Kitap</b></td>
-                                    <td class="font1" width="3%"> : </td>
-                                    <td class="font1" width="67%">{{ $anggota->no_kitap}}</td>
+                                    <td class="font1"width="40%"><b>No.Kitap</b></td>
+                                    <td class="font1"width="3%"> : </td>
+                                    <td class="font1"width="67%">{{ $anggota->no_kitap}}</td>
                                 </tr>
                                 <tr>
-                                    <td class="font1" width="40%"><b>Nama Ayah </b></td>
-                                    <td class="font1" width="3%"> : </td>
-                                    <td class="font1" width="67%">{{ $anggota->nama_ayah}}</td>
+                                    <td class="font1"width="40%"><b>Nama Ayah </b></td>
+                                    <td class="font1"width="3%"> : </td>
+                                    <td class="font1"width="67%">{{ $anggota->nama_ayah}}</td>
                                 </tr>
                                 <tr>
-                                    <td class="font1" width="40%"><b>Nama Ibu</b></td>
-                                    <td class="font1" width="3%"> : </td>
-                                    <td class="font1" width="67%">{{ $anggota->nama_ibu}}</td>
+                                    <td class="font1"width="40%"><b>Nama Ibu</b></td>
+                                    <td class="font1"width="3%"> : </td>
+                                    <td class="font1"width="67%">{{ $anggota->nama_ibu}}</td>
                                 </tr>
                                 <tr>
-                                    <td class="font1" width="40%"><b>Domisili Di Padang Panjang</b></td>
-                                    <td class="font1" width="3%"> : </td>
-                                    <td class="font1" width="67%">{{ $anggota->domisili}}</td>
+                                    <td class="font1"width="40%"><b>Domisili Di Padang Panjang</b></td>
+                                    <td class="font1"width="3%"> : </td>
+                                    <td class="font1"width="67%">{{ $anggota->domisili}}</td>
                                 </tr>
-                                 <tr>
-                                    <td class="font1" width="40%"><b>Penghasilan  / Bulan</b></td>
-                                    <td class="font1" width="3%"> : </td>
-                                    <td class="font1" width="67%">{{ $anggota->gaji}}</td>
+                                <tr>
+                                    <td class="font1"width="40%"><b>Penghasilan  / Bulan</b></td>
+                                    <td class="font1"width="3%"> : </td>
+                                    <td class="font1"width="67%">{{ $anggota->gaji}}</td>
                                 </tr>
+
                             </table> 
                         </div>
-                       <!--  <div class="col-md-3">
-                            <img src="{{url('public/warga')}}/{{$anggota->foto_profile}}" width="70%" height="200px">
-                        </div> -->
+                        <div class="col-md-3 text-right mt-4">
+                            <br>
+                            <img src="{{ public_path('public/warga') }}/{{ $anggota->foto_profile}}" width="125px" height="125px">
+                        </div>
+                    </div>
+    </div>
+
 </body>
+</html>

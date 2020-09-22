@@ -1,25 +1,20 @@
- <head>
-  <!-- Required meta tags -->
-    <meta charset="utf-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="{{url('asseteoffice/img/apple-icon.png')}}">
-  <link rel="icon" type="image/png" href="{{url('asseteoffice/img/favicon.png')}}">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cetak Data Kepala Keluarga</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <title>Cetak Data Kepala Keluarga</title>
-	<style>
+    <style>
     /* Black border */
     .font1{
-    	margin-top:auto; 
-    	font-size: 14px;
+        margin-top:auto; 
+        font-size: 14px;
       font-family: "Arial", Helvetica, sans-serif;
       text-align: justify;
     }
 
     .font2{
-    	font-size: 18px;
-    	font-family: "Arial", Helvetica, sans-serif;
+        font-size: 18px;
+        font-family: "Arial", Helvetica, sans-serif;
       font-style: bold;
     }
     hr.new1 {
@@ -48,6 +43,7 @@
     }
   </style>
 </head>
+<body style="margin-left: 40px;margin-right: 30px;">
 <?php
                                                   $tgl = $kepala_keluarga->tgl_lahir;
                                                   $hari = date("D", strtotime($tgl));
@@ -88,9 +84,12 @@
                                                   $hasil = $hari_ini . ", " . $newdate;
 
                                             ?>
-                        <body style="margin-left: 50px;margin-right: 30px;margin-top: 20px;">
-                           <p class="text-center">
-                        <span class="font2">Data Kepala Keluarga</span></p><hr hr class="new4"><br>
+    <div class="container">
+        <center>
+            <span class="font2">Data Kepala Keluarga</span></p><hr class="new4"><br>
+        </center>
+        <div class="row">
+                    <div class="col-md-9">
                          <table border="0" width="100%">
                                 <tr>
                                     <td class="font1"width="40%"><b>Nomor Kartu Keluarga</b></td>
@@ -148,7 +147,7 @@
                                     <td class="font1"width="67%">{{ $kepala_keluarga->jns_kelamin}}</td>
                                 </tr>
                                 <tr>
-                                    <td class="font1"width="40%"><b>Tempat Lahir / Tanggal Lahir</b></td>
+                                    <td class="font1"width="40%"><b>Tempat/Tanggal Lahir</b></td>
                                     <td class="font1"width="3%"> : </td>
                                     <td class="font1"width="67%">{{ $kepala_keluarga->tempat_lahir}} / {{$hasil}}</td>
                                 </tr>
@@ -246,8 +245,12 @@
 
                             </table> 
                         </div>
-                        <div class="col-md-3">
-                           <img src="{{url('public/warga')}}/{{$kepala_keluarga->foto_profile}}">
+                        <div class="col-md-3 text-right mt-4">
+                            <br>
+                            <img src="{{ public_path('public/warga') }}/{{ $kepala_keluarga->foto_profile}}" width="125px" height="125px">
                         </div>
+                    </div>
+    </div>
 
 </body>
+</html>

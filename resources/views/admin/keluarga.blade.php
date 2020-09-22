@@ -28,7 +28,7 @@
                       <thead>
                         <tr>
                           <th class="text-center" width="5%">No
-d                          <th class="th-md text-center">Dasawisma
+                          <th class="th-md text-center">Dasawisma
                           <th class="th-md text-center">Nama Kepala Keluarga
                           <th class="text-center" width="25%">Action
                           </th>
