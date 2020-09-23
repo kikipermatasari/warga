@@ -455,9 +455,6 @@ class KepalakeluargaController extends Controller
 
    public function createanggota(Request $request){
             date_default_timezone_set('Asia/Jakarta');
-            $dokumen = $request->file('foto_profile');
-            $name = uniqid()."_".$dokumen->getClientOriginalName();
-            $dokumen->move(public_path() . "/public/warga", $name);
             DB::table('anggota')->insert([
                 'id_nomorkk'=>$request->id_nomorkk,
                 'nama_kk'=>$request->nama_kk,
@@ -489,7 +486,6 @@ class KepalakeluargaController extends Controller
                 'nama_ibu' => $request->nama_ibu,
                 'nama_ayah' => $request->nama_ayah,
                 'gaji' => $request->gaji,
-                'foto_profile'=>$name,                 
                 'kwn' =>$request->kwn
               ]);
 
@@ -593,54 +589,8 @@ class KepalakeluargaController extends Controller
 
   public function updateanggota(Request $request, $id) {
          date_default_timezone_set('Asia/Jakarta');
-         $anggota= DB::table('anggota')->find($id);        
-            if ($request->hasFile('foto_profile') ) {
-            unlink(public_path() . '/public/warga/' . $anggota->foto_profile);
-            $dokumen = $request->file('foto_profile');
-            $name    = uniqid()."_".$dokumen->getClientOriginalName();
-            $dokumen->move(public_path() . "/public/warga", $name);
+         $anggota= DB::table('anggota')->find($id);       
        $update = DB::table('anggota')->where('id',$id)->update([
-                'id_nomorkk'=>$request->id_nomorkk,
-                'nama_kk'=>$request->nama_kk,
-                'nik' => $request->nik,
-                'alamat' => $request->alamat,
-                'rtrw' => $request->rtrw,
-                'kodepos' => $request->kodepos,
-                'jenis_kelamin' => $request->jenis_kelamin,
-                'tempat_lahir' => $request->tempat_lahir,
-                'tgl_lahir' => $request->tgl_lahir,
-                'agama_anggota' => $request->agama_anggota,
-                'pendidikan' => $request->pendidikan,
-                'jenis_pekerjaan' => $request->jenis_pekerjaan,
-                'gol_darah' => $request->gol_darah,
-                'status_kawin' => $request->status_kawin,
-                'tgl_kawin' => $request->tgl_kawin,
-                'status_hub_keluarga' => $request->status_hub_keluarga,
-                'detail_pekerjaan' => $request->detail_pekerjaan,
-                'detail_hub_keluarga' => $request->detail_hub_keluarga,
-                'domisili' => $request->domisili,
-                'alamat_domisili' => $request->alamat_domisili,
-                'kota' => "Padang Panjang",
-                'provinsi' => "Sumatera Barat", 
-                'nama' => $request->nama,
-                'no_pasport' => $request->no_pasport,
-                'no_kitap' => $request->no_kitap,
-                'nama_ibu' => $request->nama_ibu,
-                'nama_ayah' => $request->nama_ayah,
-                'gaji' => $request->gaji,
-                'foto_profile' => $name,                
-                'kwn' =>$request->kwn,
-                'updated_at' => date('Y-m-d H:i:s'),
-                'created_at' => null
-              ]);
-            } else {
-        $update = DB::table('anggota')->where('id',$id)->update([
-                'id_nomorkk'=>$request->id_nomorkk,
-                'nama_kk'=>$request->nama_kk,
-                'nik' => $request->nik,
-                'alamat' => $request->alamat,
-                'rtrw' => $request->rtrw,
-                'kodepos' => $request->kodepos,
                 'jenis_kelamin' => $request->jenis_kelamin,
                 'tempat_lahir' => $request->tempat_lahir,
                 'tgl_lahir' => $request->tgl_lahir,
@@ -667,8 +617,7 @@ class KepalakeluargaController extends Controller
                 'updated_at' => date('Y-m-d H:i:s'),
                 'created_at' => null
               ]);
-      
-            }
+            
 
         return redirect()->back();
      }

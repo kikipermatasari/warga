@@ -28,31 +28,31 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="example-search-input" class="form-control-label">No KK</label>
-                    <input class="form-control" type="text" required="" name="id_nomorkk" placeholder="Masukan Nama Kepala Keluarga ... " value="{{$kepala_keluarga->no_kk}}" >
+                    <input class="form-control" type="text"  name="id_nomorkk" placeholder="Masukan Nama Kepala Keluarga ... " value="{{$kepala_keluarga->no_kk}}" >
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="example-search-input" class="form-control-label">Nama Kepala Keluaga</label>
-                    <input class="form-control" type="text" required="" name="nama_kk" placeholder="Masukan Nama Kepala Keluarga ... " value="{{$kepala_keluarga->nama}}" >
+                    <input class="form-control" type="text"  name="nama_kk" placeholder="Masukan Nama Kepala Keluarga ... " value="{{$kepala_keluarga->nama}}" >
                   </div>
                 </div>  
                 <div class="col-md-6">
                   <div class="form-group">
                       <label for="example-text-input" class="form-control-label">Alamat</label>
-                      <textarea class="form-control" type="text" placeholder="Masukan Alamat..." required name="alamat" id="alamat" >{{$kepala_keluarga->alamat}}</textarea>
+                      <textarea class="form-control" type="text" placeholder="Masukan Alamat..." name="id_alamat" id="alamat" >{{$kepala_keluarga->alamat}}</textarea>
                   </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
                     <label for="example-search-input" class="form-control-label">RT/RW</label>
-                    <input class="form-control" type="text" value="{{$kepala_keluarga->rtrw}}" placeholder="Masukan RT/RW" required name="rtrw">
+                    <input class="form-control" type="text" value="{{$kepala_keluarga->rtrw}}" placeholder="Masukan RT/RW" name="id_rtrw">
                   </div>
                 </div>
                 <div class="col-md-4"> 
                 <div class="form-group">
                   <label for="example-search-input" class="form-control-label">Kode Pos</label>
-                     <select class="form-control form-control"   required  name="kodepos">
+                     <select class="form-control form-control"     name="id_kodepos">
                         <option value="">-- Pilih Kode Pos--</option>
                         <!-- <option>#Padang Panjang Timur#</option>
                         <option value="27125" @if ($kepala_keluarga->kode_pos =='27125') selected @endif >27125</option>
@@ -78,7 +78,7 @@
               <div class="col-md-4">  
                    <div class="form-group">
                     <label for="example-search-input" class="form-control-label">Desa/Kelurahan</label>
-                     <select class="form-control form-control" required name="kelurahan">
+                     <select class="form-control form-control"  name="id_kelurahan">
                         <option value="">-- Pilih Desa/ Kelurahan--</option>
                         <option value="Balai-Balai" @if ($kepala_keluarga->kelurahan =='Balai-Balai') selected @endif  >Balai-Balai</option>
                         <option value="Bukit Surungan" @if ($kepala_keluarga->kelurahan =='Bukit Surungan') selected @endif   >Bukit Surungan</option>
@@ -98,15 +98,6 @@
                         <option value="Tanah Pak Lambik" @if ($kepala_keluarga->kelurahan =='Tanah Pak Lambik') selected @endif  >Tanah Pak Lambik</option>      
                       </select> 
                   </div>
-                </div>
-                <div class="col-md-4">
-                <div class="form-group">
-                    <label for="example-search-input" class="form-control-label">Kecamatan</label>
-                    <select class="form-control form-control"  name="kecamatan">
-                        <option value="">-- Pilih Kecamatan--</option>
-                        <option value="Padang Panjang Barat" @if ($kepala_keluarga->kecamatan =='Padang Panjang Barat') selected @endif >Padang Panjang Barat</option>    
-                    </select>               
-                      </div>
                 </div>
                 <div class="col-md-6">
                 <div class="form-group">
@@ -401,7 +392,7 @@
                       <input class="form-control" type="text" required="" placeholder="Nama Ibu ..." name="nama_ibu" >
                   </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                  <div class="form-group">
                     <label for="example-datetime-local-input"  class="form-control-label"> Domisili Di Padang Panjang</label> 
                   <div class="custom-control custom-radio mb-3">
@@ -414,11 +405,18 @@
                 </div>  
                   </div>
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-6">
+                  <div class="form-group">
+                      <label for="example-email-input" class="form-control-label">Alamat Domisili *Jika Tidak berdomisili Di Padang Panjang</label>
+                      <textarea class="form-control" rows="3" type="text" placeholder="Masukan Alamat Domisili Jika Tidak ..." name="alamat_domisili" ></textarea>
+                  </div>
+                </div>
+                <div class="col-md-4">
                 <div class="form-group">
                     <label for="example-search-input" class="form-control-label">Penghasilan / Bulan</label>
                      <select class="form-control form-control" name="gaji">
                         <option value="">-- Pilih Kisaran Gaji --</option>
+                        <option value="-" >-</option>
                         <option value="0-1 Juta" > 0-1 Juta</option>
                         <option value="1 Juta- 2 Juta"  >1 Juta-  Juta</option>
                         <option value="2 Juta - 3 Juta"  >2 Juta - 3 Juta</option>
@@ -427,31 +425,6 @@
                         <option value="> 5 Juta" >> 5Juta </option>
                       </select>                 
                     </div>
-              </div>
-              <style>
-                          }
-                          }
-                        .gambar {
-                            width: 150px;
-                            height: 200px;
-                        }
-                    </style>
-                    <script>
-                        var loadFile = function (event) {
-                            var reader = new FileReader();
-                            reader.onload = function () {
-                                var output = document.getElementById('output');
-                                output.src = reader.result;
-                            };
-                            reader.readAsDataURL(event.target.files[0]);
-                        };
-
-                    </script>
-              <div class="col-md-4">
-                <div class="form-group">
-                    <label for="example-search-input" class="form-control-label">Foto Profile</label>
-                    <input class="form-control" type="file" onchange="loadFile(event)" class="form-control-file" required="" placeholder="Masukan No. Pasport ... " required name="foto_profile" >
-                </div>
               </div>
             </div>        
                 <br>

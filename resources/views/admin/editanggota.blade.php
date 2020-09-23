@@ -48,7 +48,7 @@
                     <label for="example-search-input" class="form-control-label">RT/RW</label>
                     <input class="form-control" type="text" value="{{$anggota->rtrw}}" placeholder="Masukan RT/RW" name="rtrw">
                   </div>
-                </div>
+                </div> 
                 <div class="col-md-6"> 
                 <div class="form-group">
                   <label for="example-search-input" class="form-control-label">Kode Pos</label>
@@ -367,7 +367,7 @@
                       <input class="form-control" type="text" value="{{$anggota->nama_ibu}}"  placeholder="Nama Ibu ..." name="nama_ibu" >
                   </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <div class="form-group">
                     <label for="example-datetime-local-input"  class="form-control-label"> Domisili Di Padang Panjang</label> 
                   <div class="custom-control custom-radio mb-3">
@@ -380,44 +380,24 @@
                 </div>  
                   </div>
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-6">
+                  <div class="form-group">
+                      <label for="example-email-input" class="form-control-label">Alamat Domisili *Jika Tidak berdomisili Di Padang Panjang</label>
+                      <textarea class="form-control" rows="3" type="text" placeholder="Masukan Alamat Domisili Jika Tidak ..." name="alamat_domisili" >{{$anggota->alamat_domisili}}</textarea>
+                  </div>
+                </div>
+                <div class="col-md-4">
               <div class="form-group">
                     <label for="example-email-input" class="form-control-label">Penghasilan / Bulan</label>
                      <select class="form-control form-control"  name="gaji">
-                        <option value="">-- Pilih Kisaran Gaji --</option>
-                        <option value="0-1 Juta" @if ($anggota->gaji =='0-1 Juta') selected @endif  > 0-1 Juta</option>
-                        <option value="1 Juta- 2 Juta" @if ($anggota->gaji =='1 Juta- 2 Juta') selected @endif   >1 Juta-  Juta</option>
+                        <option value="-" @if ($anggota->gaji =='-') selected @endif   >-</option>
+                        <option value="0-1 Juta" @if ($anggota->gaji =='0-1 Juta') selected @endif   >0-1 Juta</option>
+                        <option value="1 Juta- 2 Juta" @if ($anggota->gaji =='1 Juta- 2 Juta') selected @endif   >1 Juta- 2 Juta</option>
                         <option value="2 Juta - 3 Juta" @if ($anggota->gaji =='2 Juta - 3 Juta') selected @endif  >2 Juta - 3 Juta</option>
                         <option value="3 Juta - 4 Juta" @if ($anggota->gaji =='3 Juta - 4 Juta') selected @endif  >3 Juta - 4 Juta</option>
                         <option value="4 Juta - 5 Juta" @if ($anggota->gaji =='4 Juta - 5 Juta') selected @endif  >4 Juta - 5 Juta</option>
                         <option value="> 5 Juta"  @if ($anggota->gaji =='> 5 Juta') selected @endif >> 5Juta </option>
                       </select>  
-                </div>
-              </div>
-              <style>
-                          }
-                          }
-                        .gambar {
-                            width: 150px;
-                            height: 200px;
-                        }
-                    </style>
-                    <script>
-                        var loadFile = function (event) {
-                            var reader = new FileReader();
-                            reader.onload = function () {
-                                var output = document.getElementById('output');
-                                output.src = reader.result;
-                            };
-                            reader.readAsDataURL(event.target.files[0]);
-                        };
-
-                    </script>
-              <div class="col-md-4">
-                <div class="form-group">
-                    <label for="example-search-input" class="form-control-label">Foto Profile</label>
-                    <input class="form-control" type="file" onchange="loadFile(event)" class="form-control-file" required="" placeholder="Masukan No. Pasport ... " required name="foto_profile" >
-                    <img src="{{url('public/warga')}}/{{ $anggota->foto_profile}}" id="output" class="gambar" alt="" style="max-height:100px;max-width:150px;margin-top:10px" >
                 </div>
               </div>
             </div>        

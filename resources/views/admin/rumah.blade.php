@@ -17,7 +17,11 @@
             <div class="card-header bg-transparent">
               <div class="row align-items-center">
                 <div class="col">
+                   @if (Auth::User()->level == 'Admin Camat')
+                    @elseif (Auth::User()->level == 'SuperAdmin')
+                    @else
                   <h2 class="card-title"><i class="fa fa-plus-circle"></i>&nbsp;&nbsp;Tambah Data
+                    @endif
                     <div class="float-right">
                       <a href="/kartu-keluarga" class="btn btn-secondary btn-round btn-sm mb-3 mr-4"><i class="fa fa-arrow-left"></i>Back</a>
                     </div>
@@ -47,8 +51,12 @@
                     </script>
               <div class="col-md-12">
                <div class="form-group">
-                    <label for="example-search-input" class="form-control-label">Foto Profile</label>
+                    @if (Auth::User()->level == 'Admin Camat')
+                    @elseif (Auth::User()->level == 'SuperAdmin')
+                    @else
+                    <label for="example-search-input" class="form-control-label">Foto Rumah</label>
                     <input class="form-control" type="file" onchange="loadFile(event)" class="form-control-file" required="" placeholder="Masukan No. Pasport ... " required name="foto_rumah" >
+                    @endif
                     @if($kepala_keluarga->foto_rumah == "")
                     <img src="https://www.someltenthire.co.uk/wp-content/uploads/2016/02/blank-rows-img.jpg" id="output" class="gambar" alt="" style="max-height:350px;width:100%;margin-top:10px" >
                     @else

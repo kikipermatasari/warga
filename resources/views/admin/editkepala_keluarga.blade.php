@@ -186,18 +186,18 @@
               <div class="col-md-4">
                 <div class="form-group">
                     <label for="example-search-input" class="form-control-label">Pendidikan</label>
-                     <select class="form-control form-control"  name="pendidikan">
-                        <option value="">--- Pilih Pendidikan ---</option>
+                     <select class="form-control form-control" name="pendidikan">
+                         <option value="">--- Pilih Pendidikan ---</option>
                         <option value="TIDAK / BELUM SEKOLAH" @if ($kepala_keluarga->pendidikan =='TIDAK / BELUM SEKOLAH') selected @endif >TIDAK / BELUM SEKOLAH</option>
-                        <option value=" TAMAT SD / SEDERAJAT" @if ($kepala_keluarga->pendidikan =='TAMAT SD / SEDERAJAT') selected @endif> TAMAT SD / SEDERAJAT</option>
-                        <option value=" SLTP/SEDERAJAT"  @if ($kepala_keluarga->pendidikan =='SLTP/SEDERAJAT') selected @endif>  SLTP/SEDERAJAT</option>
-                        <option value="SLTA / SEDERAJAT"  @if ($kepala_keluarga->pendidikan =='SLTA / SEDERAJAT') selected @endif>SLTA / SEDERAJAT</option>
+                        <option value=" TAMAT SD / SEDERAJAT" @if ($kepala_keluarga->pendidikan =='TAMAT SD / SEDERAJAT') selected @endif > TAMAT SD / SEDERAJAT</option>
+                        <option value=" SLTP/SEDERAJAT"  @if ($kepala_keluarga->pendidikan =='SLTP/SEDERAJAT') selected @endif >  SLTP/SEDERAJAT</option>
+                        <option value="SLTA / SEDERAJAT" @if ($kepala_keluarga->pendidikan =='SLTA / SEDERAJAT') selected @endif >SLTA / SEDERAJAT</option>
                         <option value="BELUM TAMAT SD/SEDERAJAT" @if ($kepala_keluarga->pendidikan =='BELUM TAMAT SD/SEDERAJAT') selected @endif >BELUM TAMAT SD/SEDERAJAT</option>
-                        <option value="DIPLOMA IV/ STRATA I" @if ($kepala_keluarga->pendidikan =='DIPLOMA IV/ STRATA I') selected @endif>DIPLOMA IV/ STRATA I</option>
+                        <option value="DIPLOMA IV/ STRATA I" @if ($kepala_keluarga->pendidikan =='DIPLOMA IV/ STRATA I') selected @endif >DIPLOMA IV/ STRATA I</option>
                         <option value="AKADEMI/ DIPLOMA III/S. MUDA" @if ($kepala_keluarga->pendidikan =='AKADEMI/ DIPLOMA III/S. MUDA') selected @endif >AKADEMI/ DIPLOMA III/S. MUDA</option>
                         <option value="DIPLOMA I / II" @if ($kepala_keluarga->pendidikan =='DIPLOMA I / II') selected @endif >DIPLOMA I / II</option>
                         <option value="STRATA III" @if ($kepala_keluarga->pendidikan =='STRATA III') selected @endif >STRATA III</option>
-                        <option value=" STRATA II" @if ($kepala_keluarga->pendidikan =='STRATA II"') selected @endif>  STRATA II</option>
+                        <option value=" STRATA II"  @if ($kepala_keluarga->pendidikan =='STRATA II') selected @endif >  STRATA II</option>
                       </select>                 
                     </div>
               </div>
@@ -403,7 +403,7 @@
                       <input class="form-control" type="text" value="{{$kepala_keluarga->nama_ibu}}"  placeholder="Nama Ibu ..." name="nama_ibu" >
                   </div>
             </div>
-             <div class="col-md-3">
+             <div class="col-md-6">
                  <div class="form-group">
                     <label for="example-datetime-local-input"  class="form-control-label"> Domisili Di Padang Panjang</label> 
                   <div class="custom-control custom-radio mb-3">
@@ -416,10 +416,17 @@
                 </div>  
                   </div>
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-6">
+                  <div class="form-group">
+                      <label for="example-email-input" class="form-control-label">Alamat Domisili *Jika Tidak berdomisili Di Padang Panjang</label>
+                      <textarea class="form-control" rows="3" type="text" placeholder="Masukan Alamat Domisili Jika Tidak ..." name="alamat_domisili" >{{$kepala_keluarga->alamat_domisili}}</textarea>
+                  </div>
+                </div>
+                <div class="col-md-6">
               <div class="form-group">
                     <label for="example-email-input" class="form-control-label">Penghasilan / Bulan</label>
                      <select class="form-control form-control"  name="gaji">
+                        <option value="-" @if ($kepala_keluarga->gaji =='-') selected @endif> -</option>
                         <option value="0-1 Juta" @if ($kepala_keluarga->gaji =='0-1 Juta') selected @endif> 0-1 Juta</option>
                         <option value="1 Juta- 2 Juta" @if ($kepala_keluarga->gaji =='1 Juta- 2 Juta') selected @endif   >1 Juta- 2 Juta</option>
                         <option value="2 Juta - 3 Juta" @if ($kepala_keluarga->gaji =='2 Juta - 3 Juta') selected @endif  >2 Juta - 3 Juta</option>
@@ -448,7 +455,7 @@
                         };
 
                     </script>
-              <div class="col-md-4">
+              <div class="col-md-6">
                 <div class="form-group">
                     <label for="example-search-input" class="form-control-label">Foto Profile</label>
                     <input class="form-control" type="file" onchange="loadFile(event)" class="form-control-file" placeholder="Masukan No. Pasport ... "  name="foto_profile" >
