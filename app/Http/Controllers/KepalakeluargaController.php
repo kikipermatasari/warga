@@ -597,7 +597,6 @@ class KepalakeluargaController extends Controller
                 'alamat' => $request->alamat,
                 'rtrw' => $request->rtrw,
                 'kodepos' => $request->kodepos,
-                'kelurahan' => $request->kelurahan,
                 'jenis_kelamin' => $request->jenis_kelamin,
                 'tempat_lahir' => $request->tempat_lahir,
                 'tgl_lahir' => $request->tgl_lahir,

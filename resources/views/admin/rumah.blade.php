@@ -20,7 +20,7 @@
                    @if (Auth::User()->level == 'Admin Camat')
                     @elseif (Auth::User()->level == 'SuperAdmin')
                     @else
-                  <h2 class="card-title"><i class="fa fa-plus-circle"></i>&nbsp;&nbsp;Tambah Data
+                  <h2 class="card-title"><i class="fa fa-home"></i>&nbsp;&nbsp;Tambah Data Foto Rumah
                     @endif
                     <div class="float-right">
                       <a href="/kartu-keluarga" class="btn btn-secondary btn-round btn-sm mb-3 mr-4"><i class="fa fa-arrow-left"></i>Back</a>

@@ -28,51 +28,36 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="example-search-input" class="form-control-label">No KK</label>
-                    <input class="form-control" type="text"  name="id_nomorkk" placeholder="Masukan Nama Kepala Keluarga ... " value="{{$anggota->id_nomorkk}}" >
+                    <input class="form-control" type="hidden"  name="id_nomorkk" placeholder="Masukan Nama Kepala Keluarga ... " value="{{$anggota->id_nomorkk}}" >
+                    <input class="form-control" type="text" disabled="disabled" placeholder="Masukan Nama Kepala Keluarga ... " value="{{$kepala_keluarga->no_kk}}" >
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="example-search-input" class="form-control-label">Nama Kepala Keluaga</label>
-                    <input class="form-control" type="text"  name="nama_kk" placeholder="Masukan Nama Kepala Keluarga ... " value="{{$anggota->nama_kk}}" >
+                    <input class="form-control" type="hidden"  name="nama_kk" placeholder="Masukan Nama Kepala Keluarga ... " value="{{$anggota->nama_kk}}" >
+                    <input class="form-control" type="text"  disabled="disabled" placeholder="Masukan Nama Kepala Keluarga ... " value="{{$kepala_keluarga->nama}}" >
                   </div>
                 </div>  
                 <div class="col-md-6">
                   <div class="form-group">
                       <label for="example-text-input" class="form-control-label">Alamat</label>
-                      <textarea class="form-control" type="text" placeholder="Masukan Alamat..." name="alamat" id="alamat" >{{$anggota->alamat}}</textarea>
+                      <input class="form-control" type="hidden"  name="alamat" placeholder="Masukan Nama Kepala Keluarga ... " value="{{$kepala_keluarga->alamat}}" >
+                      <input class="form-control" type="text" disabled=""   placeholder="Masukan Nama Kepala Keluarga ... " value="{{$kepala_keluarga->alamat}}" >
                   </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
                     <label for="example-search-input" class="form-control-label">RT/RW</label>
-                    <input class="form-control" type="text" value="{{$anggota->rtrw}}" placeholder="Masukan RT/RW" name="rtrw">
+                    <input class="form-control" type="hidden" value="{{$kepala_keluarga->rtrw}}" placeholder="Masukan RT/RW" name="rtrw">
+                    <input class="form-control" type="text" value="{{$kepala_keluarga->rtrw}}" placeholder="Masukan RT/RW" disabled="disabled">
                   </div>
                 </div> 
                 <div class="col-md-6"> 
                 <div class="form-group">
                   <label for="example-search-input" class="form-control-label">Kode Pos</label>
-                     <select class="form-control form-control"    name="kodepos">
-                        <option value="">-- Pilih Kode Pos--</option>
-                        <!-- <option>#Padang Panjang Timur#</option>
-                        <option value="27125" @if ($anggota->kodepos =='27125') selected @endif >27125</option>
-                        <option value="27127" @if ($anggota->kodepos =='27127') selected @endif >27127</option>
-                        <option value="27123" @if ($anggota->kodepos =='27123') selected @endif>27123</option>
-                        <option value="27128" @if ($anggota->kodepos =='27128') selected @endif >27128</option>
-                        <option value="27122" @if ($anggota->kodepos =='27122') selected @endif>27122</option>
-                        <option value="27124" @if ($anggota->kodepos =='27124') selected @endif >27124</option>
-                        <option value="27126" @if ($anggota->kodepos =='27126') selected @endif>27126</option>
-                        <option value="27121" @if ($anggota->kodepos =='27121') selected @endif  >27121</option>
-                        <option>#Padang Panjang Barat#</option> -->
-                        <option value="27114" @if ($anggota->kodepos =='27114') selected @endif >27114</option>
-                        <option value="27115" @if ($anggota->kodepos =='27115') selected @endif>27115</option>
-                        <option value="27111" @if ($anggota->kodepos =='27111') selected @endif >27111</option>
-                        <option value="27113" @if ($anggota->kodepos =='27113') selected @endif>27113</option>
-                        <option value="27116" @if ($anggota->kodepos =='27116') selected @endif >27116</option>
-                        <option value="27117" @if ($anggota->kodepos =='27117') selected @endif>27117</option>
-                        <option value="27118" @if ($anggota->kodepos =='27118') selected @endif >27118</option>
-                        <option value="27112" @if ($anggota->kodepos =='27112') selected @endif>27112</option>
-                      </select>
+                     <input class="form-control" type="hidden" value="{{$kepala_keluarga->kode_pos}}" placeholder="Masukan RT/RW" name="kodepos">
+                    <input class="form-control" type="text" value="{{$kepala_keluarga->kode_pos}}" placeholder="Masukan RT/RW" disabled="disabled">
                   </div>
               </div>
                 <div class="col-md-6">
