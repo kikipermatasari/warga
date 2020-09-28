@@ -19,7 +19,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
-
 Route::get('/kartu-keluarga/', 'KepalakeluargaController@kepala');
 Route::get('/kartu-keluarga/kelurahan/{id}', 'KepalakeluargaController@kepala_kel');
 Route::get('/kartu-keluarga/tambah', 'KepalakeluargaController@tambah');
