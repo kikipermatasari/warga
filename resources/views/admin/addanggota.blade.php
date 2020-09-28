@@ -28,25 +28,29 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="example-search-input" class="form-control-label">No KK</label>
-                    <input class="form-control" type="text"  name="id_nomorkk" placeholder="Masukan Nama Kepala Keluarga ... " value="{{$kepala_keluarga->no_kk}}" >
+                    <input class="form-control" type="hidden"  name="id_nomorkk" placeholder="Masukan Nama Kepala Keluarga ... " value="{{$kepala_keluarga->no_kk}}" >
+                    <input class="form-control" type="text" disabled="disabled" placeholder="Masukan Nama Kepala Keluarga ... " value="{{$kepala_keluarga->no_kk}}" >
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="example-search-input" class="form-control-label">Nama Kepala Keluaga</label>
-                    <input class="form-control" type="text"  name="nama_kk" placeholder="Masukan Nama Kepala Keluarga ... " value="{{$kepala_keluarga->nama}}" >
+                    <input class="form-control" type="hidden"  name="nama_kk" placeholder="Masukan Nama Kepala Keluarga ... " value="{{$kepala_keluarga->nama}}" >
+                    <input class="form-control" type="text"  disabled="disabled" placeholder="Masukan Nama Kepala Keluarga ... " value="{{$kepala_keluarga->nama}}" >
                   </div>
                 </div>  
                 <div class="col-md-6">
                   <div class="form-group">
                       <label for="example-text-input" class="form-control-label">Alamat</label>
-                      <textarea class="form-control" type="text" placeholder="Masukan Alamat..." name="id_alamat" id="alamat" >{{$kepala_keluarga->alamat}}</textarea>
+                      <input class="form-control" type="hidden"  name="alam" placeholder="Masukan Nama Kepala Keluarga ... " value="{{$kepala_keluarga->nama}}" >
+                      <input class="form-control" type="text"  name="nama_kk" placeholder="Masukan Nama Kepala Keluarga ... " value="{{$kepala_keluarga->nama}}" >
                   </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
                     <label for="example-search-input" class="form-control-label">RT/RW</label>
-                    <input class="form-control" type="text" value="{{$kepala_keluarga->rtrw}}" placeholder="Masukan RT/RW" name="id_rtrw">
+                    <input class="form-control" type="hidden" value="{{$kepala_keluarga->rtrw}}" placeholder="Masukan RT/RW" name="rtrw">
+                    <input class="form-control" type="text" value="{{$kepala_keluarga->rtrw}}" placeholder="Masukan RT/RW" disabled="disabled">
                   </div>
                 </div>
                 <div class="col-md-4"> 
@@ -64,7 +68,7 @@
                         <option value="27126" @if ($kepala_keluarga->kode_pos =='27126') selected @endif>27126</option>
                         <option value="27121" @if ($kepala_keluarga->kode_pos =='27121') selected @endif  >27121</option> -->
 <!--                         <option>#Padang Panjang Barat#</option>
- -->                        <option value="27114" @if ($kepala_keluarga->kode_pos =='27114') selected @endif >27114</option>
+ -->                    <option value="27114" @if ($kepala_keluarga->kode_pos =='27114') selected @endif >27114<option>
                         <option value="27115" @if ($kepala_keluarga->kode_pos =='27115') selected @endif>27115</option>
                         <option value="27111" @if ($kepala_keluarga->kode_pos =='27111') selected @endif >27111</option>
                         <option value="27113" @if ($kepala_keluarga->kode_pos =='27113') selected @endif>27113</option>

@@ -591,6 +591,13 @@ class KepalakeluargaController extends Controller
          date_default_timezone_set('Asia/Jakarta');
          $anggota= DB::table('anggota')->find($id);       
        $update = DB::table('anggota')->where('id',$id)->update([
+                'id_nomorkk'=>$request->id_nomorkk,
+                'nama_kk'=>$request->nama_kk,
+                'nik' => $request->nik,
+                'alamat' => $request->alamat,
+                'rtrw' => $request->rtrw,
+                'kodepos' => $request->kodepos,
+                'kelurahan' => $request->kelurahan,
                 'jenis_kelamin' => $request->jenis_kelamin,
                 'tempat_lahir' => $request->tempat_lahir,
                 'tgl_lahir' => $request->tgl_lahir,
