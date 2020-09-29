@@ -100,357 +100,701 @@ class KepalakeluargaController extends Controller
 
    public function createkepala(Request $request){
         date_default_timezone_set('Asia/Jakarta');
-        if(Auth::User()->level == 'Admin Camat' || Auth::User()->level == 'SuperAdmin'){
-            $dokumen = $request->file('foto_profile');
-            $name = uniqid()."_".$dokumen->getClientOriginalName();
-            $dokumen->move(public_path() . "/public/warga", $name);
-            DB::table('kartu_keluarga')->insert([
-                'nik' => $request->nik,
-                'no_kk' => $request->no_kk,
-                'alamat' => $request->alamat,
-                'rtrw' => $request->rtrw,
-                'kode_pos' => $request->kode_pos,
-                'kelurahan' => $request->kelurahan,
-                'kecamatan' => $request->kecamatan,
-                'jns_kelamin' => $request->jns_kelamin,
-                'tempat_lahir' => $request->tempat_lahir,
-                'tgl_lahir' => $request->tgl_lahir,
-                'agama' => $request->agama,
-                'pendidikan' => $request->pendidikan,
-                'jenis_pekerjaan' => $request->jenis_pekerjaan,
-                'gol_darah' => $request->gol_darah,
-                'status_kawin' => $request->status_kawin,
-                'tgl_kawin' => $request->tgl_kawin,
-                'status_hub_keluarga' => $request->status_hub_keluarga,
-                'detail_pekerjaan' => $request->detail_pekerjaan,
-                'detail_hub_keluarga' => $request->detail_hub_keluarga,
-                'domisili' => $request->domisili,
-                'alamat_domisili' => $request->alamat_domisili,
-                'kota' => "Padang Panjang",
-                'provinsi' => "Sumatera Barat", 
-                'nama' => $request->nama,
-                'no_pasport' => $request->no_pasport,
-                'no_kitap' => $request->no_kitap,
-                'nama_ibu' => $request->nama_ibu,
-                'nama_ayah' => $request->nama_ayah,                
-                'gaji' => $request->gaji,                
-                'foto_profile'=>$name,                 
-                'kwn' =>$request->kwn,
-                'created_at' => date('Y-m-d H:i:s')
-              ]);
-        } else if (Auth::User()->level == 'Admin Kelurahan Kampung Manggis') {
-             $dokumen = $request->file('foto_profile');
-            $name = uniqid()."_".$dokumen->getClientOriginalName();
-            $dokumen->move(public_path() . "/public/warga", $name);
-            DB::table('kartu_keluarga')->insert([
-                'nik' => $request->nik,
-                'no_kk' => $request->no_kk,
-                'alamat' => $request->alamat,
-                'rtrw' => $request->rtrw,
-                'kode_pos' => $request->kode_pos,
-                'kelurahan' => 'Kampung Manggis',
-                'kecamatan' => "Padang Panjang Barat",
-                'jns_kelamin' => $request->jns_kelamin,
-                'tempat_lahir' => $request->tempat_lahir,
-                'tgl_lahir' => $request->tgl_lahir,
-                'agama' => $request->agama,
-                'pendidikan' => $request->pendidikan,
-                'jenis_pekerjaan' => $request->jenis_pekerjaan,
-                'gol_darah' => $request->gol_darah,
-                'status_kawin' => $request->status_kawin,
-                'tgl_kawin' => $request->tgl_kawin,
-                'status_hub_keluarga' => $request->status_hub_keluarga,
-                'detail_pekerjaan' => $request->detail_pekerjaan,
-                'detail_hub_keluarga' => $request->detail_hub_keluarga,
-                'domisili' => $request->domisili,
-                'alamat_domisili' => $request->alamat_domisili,
-                'kota' => "Padang Panjang",
-                'provinsi' => "Sumatera Barat", 
-                'nama' => $request->nama,
-                'no_pasport' => $request->no_pasport,
-                'no_kitap' => $request->no_kitap,
-                'nama_ibu' => $request->nama_ibu,
-                'nama_ayah' => $request->nama_ayah,                
-                'gaji' => $request->gaji,                
-                'foto_profile'=>$name,                 
-                'kwn' =>$request->kwn,
-                'created_at' => date('Y-m-d H:i:s')
-              ]);
+        if ($request->hasFile('foto_profile')) {
+            if(Auth::User()->level == 'Admin Camat' || Auth::User()->level == 'SuperAdmin'){
+                $dokumen = $request->file('foto_profile');
+                $name = uniqid()."_".$dokumen->getClientOriginalName();
+                $dokumen->move(public_path() . "/public/warga", $name);
+                DB::table('kartu_keluarga')->insert([
+                    'nik' => $request->nik,
+                    'no_kk' => $request->no_kk,
+                    'alamat' => $request->alamat,
+                    'rtrw' => $request->rtrw,
+                    'kode_pos' => $request->kode_pos,
+                    'kelurahan' => $request->kelurahan,
+                    'kecamatan' => $request->kecamatan,
+                    'jns_kelamin' => $request->jns_kelamin,
+                    'tempat_lahir' => $request->tempat_lahir,
+                    'tgl_lahir' => $request->tgl_lahir,
+                    'agama' => $request->agama,
+                    'pendidikan' => $request->pendidikan,
+                    'jenis_pekerjaan' => $request->jenis_pekerjaan,
+                    'gol_darah' => $request->gol_darah,
+                    'status_kawin' => $request->status_kawin,
+                    'tgl_kawin' => $request->tgl_kawin,
+                    'status_hub_keluarga' => $request->status_hub_keluarga,
+                    'detail_pekerjaan' => $request->detail_pekerjaan,
+                    'detail_hub_keluarga' => $request->detail_hub_keluarga,
+                    'domisili' => $request->domisili,
+                    'alamat_domisili' => $request->alamat_domisili,
+                    'kota' => "Padang Panjang",
+                    'provinsi' => "Sumatera Barat", 
+                    'nama' => $request->nama,
+                    'no_pasport' => $request->no_pasport,
+                    'no_kitap' => $request->no_kitap,
+                    'nama_ibu' => $request->nama_ibu,
+                    'nama_ayah' => $request->nama_ayah,                
+                    'gaji' => $request->gaji,                                 
+                    'kwn' =>$request->kwn,
+                    'foto_profile' => $name,
+                    'created_at' => date('Y-m-d H:i:s')
+                  ]);
+            } else if (Auth::User()->level == 'Admin Kelurahan Kampung Manggis') {
+                 $dokumen = $request->file('foto_profile');
+                $name = uniqid()."_".$dokumen->getClientOriginalName();
+                $dokumen->move(public_path() . "/public/warga", $name);
+                DB::table('kartu_keluarga')->insert([
+                    'nik' => $request->nik,
+                    'no_kk' => $request->no_kk,
+                    'alamat' => $request->alamat,
+                    'rtrw' => $request->rtrw,
+                    'kode_pos' => $request->kode_pos,
+                    'kelurahan' => 'Kampung Manggis',
+                    'kecamatan' => "Padang Panjang Barat",
+                    'jns_kelamin' => $request->jns_kelamin,
+                    'tempat_lahir' => $request->tempat_lahir,
+                    'tgl_lahir' => $request->tgl_lahir,
+                    'agama' => $request->agama,
+                    'pendidikan' => $request->pendidikan,
+                    'jenis_pekerjaan' => $request->jenis_pekerjaan,
+                    'gol_darah' => $request->gol_darah,
+                    'status_kawin' => $request->status_kawin,
+                    'tgl_kawin' => $request->tgl_kawin,
+                    'status_hub_keluarga' => $request->status_hub_keluarga,
+                    'detail_pekerjaan' => $request->detail_pekerjaan,
+                    'detail_hub_keluarga' => $request->detail_hub_keluarga,
+                    'domisili' => $request->domisili,
+                    'alamat_domisili' => $request->alamat_domisili,
+                    'kota' => "Padang Panjang",
+                    'provinsi' => "Sumatera Barat", 
+                    'nama' => $request->nama,
+                    'no_pasport' => $request->no_pasport,
+                    'no_kitap' => $request->no_kitap,
+                    'nama_ibu' => $request->nama_ibu,
+                    'nama_ayah' => $request->nama_ayah,                
+                    'gaji' => $request->gaji,                                 
+                    'kwn' =>$request->kwn,
+                    'foto_profile' => $name,
+                    'created_at' => date('Y-m-d H:i:s')
+                  ]);
+            }
+            else if (Auth::User()->level == 'Admin Kelurahan Tanah Hitam') {
+                 $dokumen = $request->file('foto_profile');
+                $name = uniqid()."_".$dokumen->getClientOriginalName();
+                $dokumen->move(public_path() . "/public/warga", $name);
+                DB::table('kartu_keluarga')->insert([
+                    'nik' => $request->nik,
+                    'no_kk' => $request->no_kk,
+                    'alamat' => $request->alamat,
+                    'rtrw' => $request->rtrw,
+                    'kode_pos' => $request->kode_pos,
+                    'kelurahan' => 'Tanah Hitam',
+                    'kecamatan' => "Padang Panjang Barat",
+                    'jns_kelamin' => $request->jns_kelamin,
+                    'tempat_lahir' => $request->tempat_lahir,
+                    'tgl_lahir' => $request->tgl_lahir,
+                    'agama' => $request->agama,
+                    'pendidikan' => $request->pendidikan,
+                    'jenis_pekerjaan' => $request->jenis_pekerjaan,
+                    'gol_darah' => $request->gol_darah,
+                    'status_kawin' => $request->status_kawin,
+                    'tgl_kawin' => $request->tgl_kawin,
+                    'status_hub_keluarga' => $request->status_hub_keluarga,
+                    'detail_pekerjaan' => $request->detail_pekerjaan,
+                    'detail_hub_keluarga' => $request->detail_hub_keluarga,
+                    'domisili' => $request->domisili,
+                    'alamat_domisili' => $request->alamat_domisili,
+                    'kota' => "Padang Panjang",
+                    'provinsi' => "Sumatera Barat", 
+                    'nama' => $request->nama,
+                    'no_pasport' => $request->no_pasport,
+                    'no_kitap' => $request->no_kitap,
+                    'nama_ibu' => $request->nama_ibu,
+                    'nama_ayah' => $request->nama_ayah,                
+                    'gaji' => $request->gaji,                                 
+                    'kwn' =>$request->kwn,
+                    'foto_profile' => $name,
+                    'created_at' => date('Y-m-d H:i:s')
+                  ]);
+            }
+            else if (Auth::User()->level == 'Admin Kelurahan Pasar Baru') {
+                $dokumen = $request->file('foto_profile');
+                $name = uniqid()."_".$dokumen->getClientOriginalName();
+                $dokumen->move(public_path() . "/public/warga", $name);
+                DB::table('kartu_keluarga')->insert([
+                    'nik' => $request->nik,
+                    'no_kk' => $request->no_kk,
+                    'alamat' => $request->alamat,
+                    'rtrw' => $request->rtrw,
+                    'kode_pos' => $request->kode_pos,
+                    'kelurahan' => 'Pasar Baru',
+                    'kecamatan' => "Padang Panjang Barat",
+                    'jns_kelamin' => $request->jns_kelamin,
+                    'tempat_lahir' => $request->tempat_lahir,
+                    'tgl_lahir' => $request->tgl_lahir,
+                    'agama' => $request->agama,
+                    'pendidikan' => $request->pendidikan,
+                    'jenis_pekerjaan' => $request->jenis_pekerjaan,
+                    'gol_darah' => $request->gol_darah,
+                    'status_kawin' => $request->status_kawin,
+                    'tgl_kawin' => $request->tgl_kawin,
+                    'status_hub_keluarga' => $request->status_hub_keluarga,
+                    'detail_pekerjaan' => $request->detail_pekerjaan,
+                    'detail_hub_keluarga' => $request->detail_hub_keluarga,
+                    'domisili' => $request->domisili,
+                    'alamat_domisili' => $request->alamat_domisili,
+                    'kota' => "Padang Panjang",
+                    'provinsi' => "Sumatera Barat", 
+                    'nama' => $request->nama,
+                    'no_pasport' => $request->no_pasport,
+                    'no_kitap' => $request->no_kitap,
+                    'nama_ibu' => $request->nama_ibu,
+                    'nama_ayah' => $request->nama_ayah,                
+                    'gaji' => $request->gaji,                                 
+                    'kwn' =>$request->kwn,
+                    'foto_profile' => $name,
+                    'created_at' => date('Y-m-d H:i:s')
+                  ]);
+            }
+            else if (Auth::User()->level == 'Admin Kelurahan Pasar Usang') {
+                 $dokumen = $request->file('foto_profile');
+                $name = uniqid()."_".$dokumen->getClientOriginalName();
+                $dokumen->move(public_path() . "/public/warga", $name);
+                DB::table('kartu_keluarga')->insert([
+                    'nik' => $request->nik,
+                    'no_kk' => $request->no_kk,
+                    'alamat' => $request->alamat,
+                    'rtrw' => $request->rtrw,
+                    'kode_pos' => $request->kode_pos,
+                    'kelurahan' => 'Pasar Usang',
+                    'kecamatan' => "Padang Panjang Barat",
+                    'jns_kelamin' => $request->jns_kelamin,
+                    'tempat_lahir' => $request->tempat_lahir,
+                    'tgl_lahir' => $request->tgl_lahir,
+                    'agama' => $request->agama,
+                    'pendidikan' => $request->pendidikan,
+                    'jenis_pekerjaan' => $request->jenis_pekerjaan,
+                    'gol_darah' => $request->gol_darah,
+                    'status_kawin' => $request->status_kawin,
+                    'tgl_kawin' => $request->tgl_kawin,
+                    'status_hub_keluarga' => $request->status_hub_keluarga,
+                    'detail_pekerjaan' => $request->detail_pekerjaan,
+                    'detail_hub_keluarga' => $request->detail_hub_keluarga,
+                    'domisili' => $request->domisili,
+                    'alamat_domisili' => $request->alamat_domisili,
+                    'kota' => "Padang Panjang",
+                    'provinsi' => "Sumatera Barat", 
+                    'nama' => $request->nama,
+                    'no_pasport' => $request->no_pasport,
+                    'no_kitap' => $request->no_kitap,
+                    'nama_ibu' => $request->nama_ibu,
+                    'nama_ayah' => $request->nama_ayah,                
+                    'gaji' => $request->gaji,                                 
+                    'kwn' =>$request->kwn,
+                    'foto_profile' => $name,
+                    'created_at' => date('Y-m-d H:i:s')
+                  ]);
+            }
+            else if (Auth::User()->level == 'Admin Kelurahan Silaing Atas') {
+                $dokumen = $request->file('foto_profile');
+                $name = uniqid()."_".$dokumen->getClientOriginalName();
+                $dokumen->move(public_path() . "/public/warga", $name);
+                DB::table('kartu_keluarga')->insert([
+                    'nik' => $request->nik,
+                    'no_kk' => $request->no_kk,
+                    'alamat' => $request->alamat,
+                    'rtrw' => $request->rtrw,
+                    'kode_pos' => $request->kode_pos,
+                    'kelurahan' => 'Silaing Atas',
+                    'kecamatan' => "Padang Panjang Barat",
+                    'jns_kelamin' => $request->jns_kelamin,
+                    'tempat_lahir' => $request->tempat_lahir,
+                    'tgl_lahir' => $request->tgl_lahir,
+                    'agama' => $request->agama,
+                    'pendidikan' => $request->pendidikan,
+                    'jenis_pekerjaan' => $request->jenis_pekerjaan,
+                    'gol_darah' => $request->gol_darah,
+                    'status_kawin' => $request->status_kawin,
+                    'tgl_kawin' => $request->tgl_kawin,
+                    'status_hub_keluarga' => $request->status_hub_keluarga,
+                    'detail_pekerjaan' => $request->detail_pekerjaan,
+                    'detail_hub_keluarga' => $request->detail_hub_keluarga,
+                    'domisili' => $request->domisili,
+                    'alamat_domisili' => $request->alamat_domisili,
+                    'kota' => "Padang Panjang",
+                    'provinsi' => "Sumatera Barat", 
+                    'nama' => $request->nama,
+                    'no_pasport' => $request->no_pasport,
+                    'no_kitap' => $request->no_kitap,
+                    'nama_ibu' => $request->nama_ibu,
+                    'nama_ayah' => $request->nama_ayah,                
+                    'gaji' => $request->gaji,                                 
+                    'kwn' =>$request->kwn,
+                    'foto_profile' => $name,
+                    'created_at' => date('Y-m-d H:i:s')
+                  ]);
+            }
+            else if (Auth::User()->level == 'Admin Kelurahan Silaing Bawah') {
+                $dokumen = $request->file('foto_profile');
+                $name = uniqid()."_".$dokumen->getClientOriginalName();
+                $dokumen->move(public_path() . "/public/warga", $name);
+                DB::table('kartu_keluarga')->insert([
+                    'nik' => $request->nik,
+                    'no_kk' => $request->no_kk,
+                    'alamat' => $request->alamat,
+                    'rtrw' => $request->rtrw,
+                    'kode_pos' => $request->kode_pos,
+                    'kelurahan' => 'Silaing Bawah',
+                    'kecamatan' => "Padang Panjang Barat",
+                    'jns_kelamin' => $request->jns_kelamin,
+                    'tempat_lahir' => $request->tempat_lahir,
+                    'tgl_lahir' => $request->tgl_lahir,
+                    'agama' => $request->agama,
+                    'pendidikan' => $request->pendidikan,
+                    'jenis_pekerjaan' => $request->jenis_pekerjaan,
+                    'gol_darah' => $request->gol_darah,
+                    'status_kawin' => $request->status_kawin,
+                    'tgl_kawin' => $request->tgl_kawin,
+                    'status_hub_keluarga' => $request->status_hub_keluarga,
+                    'detail_pekerjaan' => $request->detail_pekerjaan,
+                    'detail_hub_keluarga' => $request->detail_hub_keluarga,
+                    'domisili' => $request->domisili,
+                    'alamat_domisili' => $request->alamat_domisili,
+                    'kota' => "Padang Panjang",
+                    'provinsi' => "Sumatera Barat", 
+                    'nama' => $request->nama,
+                    'no_pasport' => $request->no_pasport,
+                    'no_kitap' => $request->no_kitap,
+                    'nama_ibu' => $request->nama_ibu,
+                    'nama_ayah' => $request->nama_ayah,                
+                    'gaji' => $request->gaji,                                 
+                    'kwn' =>$request->kwn,
+                    'foto_profile' => $name,
+                    'created_at' => date('Y-m-d H:i:s')
+                  ]);
+            }
+            else if (Auth::User()->level == 'Admin Kelurahan Balai-Balai') {
+                 $dokumen = $request->file('foto_profile');
+                $name = uniqid()."_".$dokumen->getClientOriginalName();
+                $dokumen->move(public_path() . "/public/warga", $name);
+                DB::table('kartu_keluarga')->insert([
+                    'nik' => $request->nik,
+                    'no_kk' => $request->no_kk,
+                    'alamat' => $request->alamat,
+                    'rtrw' => $request->rtrw,
+                    'kode_pos' => $request->kode_pos,
+                    'kelurahan' => 'Balai-Balai',
+                    'kecamatan' => "Padang Panjang Barat",
+                    'jns_kelamin' => $request->jns_kelamin,
+                    'tempat_lahir' => $request->tempat_lahir,
+                    'tgl_lahir' => $request->tgl_lahir,
+                    'agama' => $request->agama,
+                    'pendidikan' => $request->pendidikan,
+                    'jenis_pekerjaan' => $request->jenis_pekerjaan,
+                    'gol_darah' => $request->gol_darah,
+                    'status_kawin' => $request->status_kawin,
+                    'tgl_kawin' => $request->tgl_kawin,
+                    'status_hub_keluarga' => $request->status_hub_keluarga,
+                    'detail_pekerjaan' => $request->detail_pekerjaan,
+                    'detail_hub_keluarga' => $request->detail_hub_keluarga,
+                    'domisili' => $request->domisili,
+                    'alamat_domisili' => $request->alamat_domisili,
+                    'kota' => "Padang Panjang",
+                    'provinsi' => "Sumatera Barat", 
+                    'nama' => $request->nama,
+                    'no_pasport' => $request->no_pasport,
+                    'no_kitap' => $request->no_kitap,
+                    'nama_ibu' => $request->nama_ibu,
+                    'nama_ayah' => $request->nama_ayah,                
+                    'gaji' => $request->gaji,                                 
+                    'kwn' =>$request->kwn,
+                    'foto_profile' => $name,
+                    'created_at' => date('Y-m-d H:i:s')
+                  ]);
+            }
+            else if (Auth::User()->level == 'Admin Kelurahan Bukit Surungan') {
+                $dokumen = $request->file('foto_profile');
+                $name = uniqid()."_".$dokumen->getClientOriginalName();
+                $dokumen->move(public_path() . "/public/warga", $name);
+                DB::table('kartu_keluarga')->insert([
+                    'nik' => $request->nik,
+                    'no_kk' => $request->no_kk,
+                    'alamat' => $request->alamat,
+                    'rtrw' => $request->rtrw,
+                    'kode_pos' => $request->kode_pos,
+                    'kelurahan' => 'Bukit Surungan',
+                    'kecamatan' => "Padang Panjang Barat",
+                    'jns_kelamin' => $request->jns_kelamin,
+                    'tempat_lahir' => $request->tempat_lahir,
+                    'tgl_lahir' => $request->tgl_lahir,
+                    'agama' => $request->agama,
+                    'pendidikan' => $request->pendidikan,
+                    'jenis_pekerjaan' => $request->jenis_pekerjaan,
+                    'gol_darah' => $request->gol_darah,
+                    'status_kawin' => $request->status_kawin,
+                    'tgl_kawin' => $request->tgl_kawin,
+                    'status_hub_keluarga' => $request->status_hub_keluarga,
+                    'detail_pekerjaan' => $request->detail_pekerjaan,
+                    'detail_hub_keluarga' => $request->detail_hub_keluarga,
+                    'domisili' => $request->domisili,
+                    'alamat_domisili' => $request->alamat_domisili,
+                    'kota' => "Padang Panjang",
+                    'provinsi' => "Sumatera Barat", 
+                    'nama' => $request->nama,
+                    'no_pasport' => $request->no_pasport,
+                    'no_kitap' => $request->no_kitap,
+                    'nama_ibu' => $request->nama_ibu,
+                    'nama_ayah' => $request->nama_ayah,                
+                    'gaji' => $request->gaji,                                 
+                    'kwn' =>$request->kwn,
+                    'foto_profile' => $name,
+                    'created_at' => date('Y-m-d H:i:s')
+                  ]);
+            }
+        } else {
+            if(Auth::User()->level == 'Admin Camat' || Auth::User()->level == 'SuperAdmin'){
+                $dokumen = $request->file('foto_profile');
+                $name = uniqid()."_".$dokumen->getClientOriginalName();
+                $dokumen->move(public_path() . "/public/warga", $name);
+                DB::table('kartu_keluarga')->insert([
+                    'nik' => $request->nik,
+                    'no_kk' => $request->no_kk,
+                    'alamat' => $request->alamat,
+                    'rtrw' => $request->rtrw,
+                    'kode_pos' => $request->kode_pos,
+                    'kelurahan' => $request->kelurahan,
+                    'kecamatan' => $request->kecamatan,
+                    'jns_kelamin' => $request->jns_kelamin,
+                    'tempat_lahir' => $request->tempat_lahir,
+                    'tgl_lahir' => $request->tgl_lahir,
+                    'agama' => $request->agama,
+                    'pendidikan' => $request->pendidikan,
+                    'jenis_pekerjaan' => $request->jenis_pekerjaan,
+                    'gol_darah' => $request->gol_darah,
+                    'status_kawin' => $request->status_kawin,
+                    'tgl_kawin' => $request->tgl_kawin,
+                    'status_hub_keluarga' => $request->status_hub_keluarga,
+                    'detail_pekerjaan' => $request->detail_pekerjaan,
+                    'detail_hub_keluarga' => $request->detail_hub_keluarga,
+                    'domisili' => $request->domisili,
+                    'alamat_domisili' => $request->alamat_domisili,
+                    'kota' => "Padang Panjang",
+                    'provinsi' => "Sumatera Barat", 
+                    'nama' => $request->nama,
+                    'no_pasport' => $request->no_pasport,
+                    'no_kitap' => $request->no_kitap,
+                    'nama_ibu' => $request->nama_ibu,
+                    'nama_ayah' => $request->nama_ayah,                
+                    'gaji' => $request->gaji,                                 
+                    'kwn' =>$request->kwn,
+                    'created_at' => date('Y-m-d H:i:s')
+                  ]);
+            } else if (Auth::User()->level == 'Admin Kelurahan Kampung Manggis') {
+                 $dokumen = $request->file('foto_profile');
+                $name = uniqid()."_".$dokumen->getClientOriginalName();
+                $dokumen->move(public_path() . "/public/warga", $name);
+                DB::table('kartu_keluarga')->insert([
+                    'nik' => $request->nik,
+                    'no_kk' => $request->no_kk,
+                    'alamat' => $request->alamat,
+                    'rtrw' => $request->rtrw,
+                    'kode_pos' => $request->kode_pos,
+                    'kelurahan' => 'Kampung Manggis',
+                    'kecamatan' => "Padang Panjang Barat",
+                    'jns_kelamin' => $request->jns_kelamin,
+                    'tempat_lahir' => $request->tempat_lahir,
+                    'tgl_lahir' => $request->tgl_lahir,
+                    'agama' => $request->agama,
+                    'pendidikan' => $request->pendidikan,
+                    'jenis_pekerjaan' => $request->jenis_pekerjaan,
+                    'gol_darah' => $request->gol_darah,
+                    'status_kawin' => $request->status_kawin,
+                    'tgl_kawin' => $request->tgl_kawin,
+                    'status_hub_keluarga' => $request->status_hub_keluarga,
+                    'detail_pekerjaan' => $request->detail_pekerjaan,
+                    'detail_hub_keluarga' => $request->detail_hub_keluarga,
+                    'domisili' => $request->domisili,
+                    'alamat_domisili' => $request->alamat_domisili,
+                    'kota' => "Padang Panjang",
+                    'provinsi' => "Sumatera Barat", 
+                    'nama' => $request->nama,
+                    'no_pasport' => $request->no_pasport,
+                    'no_kitap' => $request->no_kitap,
+                    'nama_ibu' => $request->nama_ibu,
+                    'nama_ayah' => $request->nama_ayah,                
+                    'gaji' => $request->gaji,                                 
+                    'kwn' =>$request->kwn,
+                    'created_at' => date('Y-m-d H:i:s')
+                  ]);
+            }
+            else if (Auth::User()->level == 'Admin Kelurahan Tanah Hitam') {
+                 $dokumen = $request->file('foto_profile');
+                $name = uniqid()."_".$dokumen->getClientOriginalName();
+                $dokumen->move(public_path() . "/public/warga", $name);
+                DB::table('kartu_keluarga')->insert([
+                    'nik' => $request->nik,
+                    'no_kk' => $request->no_kk,
+                    'alamat' => $request->alamat,
+                    'rtrw' => $request->rtrw,
+                    'kode_pos' => $request->kode_pos,
+                    'kelurahan' => 'Tanah Hitam',
+                    'kecamatan' => "Padang Panjang Barat",
+                    'jns_kelamin' => $request->jns_kelamin,
+                    'tempat_lahir' => $request->tempat_lahir,
+                    'tgl_lahir' => $request->tgl_lahir,
+                    'agama' => $request->agama,
+                    'pendidikan' => $request->pendidikan,
+                    'jenis_pekerjaan' => $request->jenis_pekerjaan,
+                    'gol_darah' => $request->gol_darah,
+                    'status_kawin' => $request->status_kawin,
+                    'tgl_kawin' => $request->tgl_kawin,
+                    'status_hub_keluarga' => $request->status_hub_keluarga,
+                    'detail_pekerjaan' => $request->detail_pekerjaan,
+                    'detail_hub_keluarga' => $request->detail_hub_keluarga,
+                    'domisili' => $request->domisili,
+                    'alamat_domisili' => $request->alamat_domisili,
+                    'kota' => "Padang Panjang",
+                    'provinsi' => "Sumatera Barat", 
+                    'nama' => $request->nama,
+                    'no_pasport' => $request->no_pasport,
+                    'no_kitap' => $request->no_kitap,
+                    'nama_ibu' => $request->nama_ibu,
+                    'nama_ayah' => $request->nama_ayah,                
+                    'gaji' => $request->gaji,                                 
+                    'kwn' =>$request->kwn,
+                    'created_at' => date('Y-m-d H:i:s')
+                  ]);
+            }
+            else if (Auth::User()->level == 'Admin Kelurahan Pasar Baru') {
+                $dokumen = $request->file('foto_profile');
+                $name = uniqid()."_".$dokumen->getClientOriginalName();
+                $dokumen->move(public_path() . "/public/warga", $name);
+                DB::table('kartu_keluarga')->insert([
+                    'nik' => $request->nik,
+                    'no_kk' => $request->no_kk,
+                    'alamat' => $request->alamat,
+                    'rtrw' => $request->rtrw,
+                    'kode_pos' => $request->kode_pos,
+                    'kelurahan' => 'Pasar Baru',
+                    'kecamatan' => "Padang Panjang Barat",
+                    'jns_kelamin' => $request->jns_kelamin,
+                    'tempat_lahir' => $request->tempat_lahir,
+                    'tgl_lahir' => $request->tgl_lahir,
+                    'agama' => $request->agama,
+                    'pendidikan' => $request->pendidikan,
+                    'jenis_pekerjaan' => $request->jenis_pekerjaan,
+                    'gol_darah' => $request->gol_darah,
+                    'status_kawin' => $request->status_kawin,
+                    'tgl_kawin' => $request->tgl_kawin,
+                    'status_hub_keluarga' => $request->status_hub_keluarga,
+                    'detail_pekerjaan' => $request->detail_pekerjaan,
+                    'detail_hub_keluarga' => $request->detail_hub_keluarga,
+                    'domisili' => $request->domisili,
+                    'alamat_domisili' => $request->alamat_domisili,
+                    'kota' => "Padang Panjang",
+                    'provinsi' => "Sumatera Barat", 
+                    'nama' => $request->nama,
+                    'no_pasport' => $request->no_pasport,
+                    'no_kitap' => $request->no_kitap,
+                    'nama_ibu' => $request->nama_ibu,
+                    'nama_ayah' => $request->nama_ayah,                
+                    'gaji' => $request->gaji,                                 
+                    'kwn' =>$request->kwn,
+                    'created_at' => date('Y-m-d H:i:s')
+                  ]);
+            }
+            else if (Auth::User()->level == 'Admin Kelurahan Pasar Usang') {
+                 $dokumen = $request->file('foto_profile');
+                $name = uniqid()."_".$dokumen->getClientOriginalName();
+                $dokumen->move(public_path() . "/public/warga", $name);
+                DB::table('kartu_keluarga')->insert([
+                    'nik' => $request->nik,
+                    'no_kk' => $request->no_kk,
+                    'alamat' => $request->alamat,
+                    'rtrw' => $request->rtrw,
+                    'kode_pos' => $request->kode_pos,
+                    'kelurahan' => 'Pasar Usang',
+                    'kecamatan' => "Padang Panjang Barat",
+                    'jns_kelamin' => $request->jns_kelamin,
+                    'tempat_lahir' => $request->tempat_lahir,
+                    'tgl_lahir' => $request->tgl_lahir,
+                    'agama' => $request->agama,
+                    'pendidikan' => $request->pendidikan,
+                    'jenis_pekerjaan' => $request->jenis_pekerjaan,
+                    'gol_darah' => $request->gol_darah,
+                    'status_kawin' => $request->status_kawin,
+                    'tgl_kawin' => $request->tgl_kawin,
+                    'status_hub_keluarga' => $request->status_hub_keluarga,
+                    'detail_pekerjaan' => $request->detail_pekerjaan,
+                    'detail_hub_keluarga' => $request->detail_hub_keluarga,
+                    'domisili' => $request->domisili,
+                    'alamat_domisili' => $request->alamat_domisili,
+                    'kota' => "Padang Panjang",
+                    'provinsi' => "Sumatera Barat", 
+                    'nama' => $request->nama,
+                    'no_pasport' => $request->no_pasport,
+                    'no_kitap' => $request->no_kitap,
+                    'nama_ibu' => $request->nama_ibu,
+                    'nama_ayah' => $request->nama_ayah,                
+                    'gaji' => $request->gaji,                                 
+                    'kwn' =>$request->kwn,
+                    'created_at' => date('Y-m-d H:i:s')
+                  ]);
+            }
+            else if (Auth::User()->level == 'Admin Kelurahan Silaing Atas') {
+                $dokumen = $request->file('foto_profile');
+                $name = uniqid()."_".$dokumen->getClientOriginalName();
+                $dokumen->move(public_path() . "/public/warga", $name);
+                DB::table('kartu_keluarga')->insert([
+                    'nik' => $request->nik,
+                    'no_kk' => $request->no_kk,
+                    'alamat' => $request->alamat,
+                    'rtrw' => $request->rtrw,
+                    'kode_pos' => $request->kode_pos,
+                    'kelurahan' => 'Silaing Atas',
+                    'kecamatan' => "Padang Panjang Barat",
+                    'jns_kelamin' => $request->jns_kelamin,
+                    'tempat_lahir' => $request->tempat_lahir,
+                    'tgl_lahir' => $request->tgl_lahir,
+                    'agama' => $request->agama,
+                    'pendidikan' => $request->pendidikan,
+                    'jenis_pekerjaan' => $request->jenis_pekerjaan,
+                    'gol_darah' => $request->gol_darah,
+                    'status_kawin' => $request->status_kawin,
+                    'tgl_kawin' => $request->tgl_kawin,
+                    'status_hub_keluarga' => $request->status_hub_keluarga,
+                    'detail_pekerjaan' => $request->detail_pekerjaan,
+                    'detail_hub_keluarga' => $request->detail_hub_keluarga,
+                    'domisili' => $request->domisili,
+                    'alamat_domisili' => $request->alamat_domisili,
+                    'kota' => "Padang Panjang",
+                    'provinsi' => "Sumatera Barat", 
+                    'nama' => $request->nama,
+                    'no_pasport' => $request->no_pasport,
+                    'no_kitap' => $request->no_kitap,
+                    'nama_ibu' => $request->nama_ibu,
+                    'nama_ayah' => $request->nama_ayah,                
+                    'gaji' => $request->gaji,                                 
+                    'kwn' =>$request->kwn,
+                    'created_at' => date('Y-m-d H:i:s')
+                  ]);
+            }
+            else if (Auth::User()->level == 'Admin Kelurahan Silaing Bawah') {
+                $dokumen = $request->file('foto_profile');
+                $name = uniqid()."_".$dokumen->getClientOriginalName();
+                $dokumen->move(public_path() . "/public/warga", $name);
+                DB::table('kartu_keluarga')->insert([
+                    'nik' => $request->nik,
+                    'no_kk' => $request->no_kk,
+                    'alamat' => $request->alamat,
+                    'rtrw' => $request->rtrw,
+                    'kode_pos' => $request->kode_pos,
+                    'kelurahan' => 'Silaing Bawah',
+                    'kecamatan' => "Padang Panjang Barat",
+                    'jns_kelamin' => $request->jns_kelamin,
+                    'tempat_lahir' => $request->tempat_lahir,
+                    'tgl_lahir' => $request->tgl_lahir,
+                    'agama' => $request->agama,
+                    'pendidikan' => $request->pendidikan,
+                    'jenis_pekerjaan' => $request->jenis_pekerjaan,
+                    'gol_darah' => $request->gol_darah,
+                    'status_kawin' => $request->status_kawin,
+                    'tgl_kawin' => $request->tgl_kawin,
+                    'status_hub_keluarga' => $request->status_hub_keluarga,
+                    'detail_pekerjaan' => $request->detail_pekerjaan,
+                    'detail_hub_keluarga' => $request->detail_hub_keluarga,
+                    'domisili' => $request->domisili,
+                    'alamat_domisili' => $request->alamat_domisili,
+                    'kota' => "Padang Panjang",
+                    'provinsi' => "Sumatera Barat", 
+                    'nama' => $request->nama,
+                    'no_pasport' => $request->no_pasport,
+                    'no_kitap' => $request->no_kitap,
+                    'nama_ibu' => $request->nama_ibu,
+                    'nama_ayah' => $request->nama_ayah,                
+                    'gaji' => $request->gaji,                                 
+                    'kwn' =>$request->kwn,
+                    'created_at' => date('Y-m-d H:i:s')
+                  ]);
+            }
+            else if (Auth::User()->level == 'Admin Kelurahan Balai-Balai') {
+                 $dokumen = $request->file('foto_profile');
+                $name = uniqid()."_".$dokumen->getClientOriginalName();
+                $dokumen->move(public_path() . "/public/warga", $name);
+                DB::table('kartu_keluarga')->insert([
+                    'nik' => $request->nik,
+                    'no_kk' => $request->no_kk,
+                    'alamat' => $request->alamat,
+                    'rtrw' => $request->rtrw,
+                    'kode_pos' => $request->kode_pos,
+                    'kelurahan' => 'Balai-Balai',
+                    'kecamatan' => "Padang Panjang Barat",
+                    'jns_kelamin' => $request->jns_kelamin,
+                    'tempat_lahir' => $request->tempat_lahir,
+                    'tgl_lahir' => $request->tgl_lahir,
+                    'agama' => $request->agama,
+                    'pendidikan' => $request->pendidikan,
+                    'jenis_pekerjaan' => $request->jenis_pekerjaan,
+                    'gol_darah' => $request->gol_darah,
+                    'status_kawin' => $request->status_kawin,
+                    'tgl_kawin' => $request->tgl_kawin,
+                    'status_hub_keluarga' => $request->status_hub_keluarga,
+                    'detail_pekerjaan' => $request->detail_pekerjaan,
+                    'detail_hub_keluarga' => $request->detail_hub_keluarga,
+                    'domisili' => $request->domisili,
+                    'alamat_domisili' => $request->alamat_domisili,
+                    'kota' => "Padang Panjang",
+                    'provinsi' => "Sumatera Barat", 
+                    'nama' => $request->nama,
+                    'no_pasport' => $request->no_pasport,
+                    'no_kitap' => $request->no_kitap,
+                    'nama_ibu' => $request->nama_ibu,
+                    'nama_ayah' => $request->nama_ayah,                
+                    'gaji' => $request->gaji,                                 
+                    'kwn' =>$request->kwn,
+                    'created_at' => date('Y-m-d H:i:s')
+                  ]);
+            }
+            else if (Auth::User()->level == 'Admin Kelurahan Bukit Surungan') {
+                $dokumen = $request->file('foto_profile');
+                $name = uniqid()."_".$dokumen->getClientOriginalName();
+                $dokumen->move(public_path() . "/public/warga", $name);
+                DB::table('kartu_keluarga')->insert([
+                    'nik' => $request->nik,
+                    'no_kk' => $request->no_kk,
+                    'alamat' => $request->alamat,
+                    'rtrw' => $request->rtrw,
+                    'kode_pos' => $request->kode_pos,
+                    'kelurahan' => 'Bukit Surungan',
+                    'kecamatan' => "Padang Panjang Barat",
+                    'jns_kelamin' => $request->jns_kelamin,
+                    'tempat_lahir' => $request->tempat_lahir,
+                    'tgl_lahir' => $request->tgl_lahir,
+                    'agama' => $request->agama,
+                    'pendidikan' => $request->pendidikan,
+                    'jenis_pekerjaan' => $request->jenis_pekerjaan,
+                    'gol_darah' => $request->gol_darah,
+                    'status_kawin' => $request->status_kawin,
+                    'tgl_kawin' => $request->tgl_kawin,
+                    'status_hub_keluarga' => $request->status_hub_keluarga,
+                    'detail_pekerjaan' => $request->detail_pekerjaan,
+                    'detail_hub_keluarga' => $request->detail_hub_keluarga,
+                    'domisili' => $request->domisili,
+                    'alamat_domisili' => $request->alamat_domisili,
+                    'kota' => "Padang Panjang",
+                    'provinsi' => "Sumatera Barat", 
+                    'nama' => $request->nama,
+                    'no_pasport' => $request->no_pasport,
+                    'no_kitap' => $request->no_kitap,
+                    'nama_ibu' => $request->nama_ibu,
+                    'nama_ayah' => $request->nama_ayah,                
+                    'gaji' => $request->gaji,                                 
+                    'kwn' =>$request->kwn,
+                    'created_at' => date('Y-m-d H:i:s')
+                  ]);
+            }
         }
-        else if (Auth::User()->level == 'Admin Kelurahan Tanah Hitam') {
-             $dokumen = $request->file('foto_profile');
-            $name = uniqid()."_".$dokumen->getClientOriginalName();
-            $dokumen->move(public_path() . "/public/warga", $name);
-            DB::table('kartu_keluarga')->insert([
-                'nik' => $request->nik,
-                'no_kk' => $request->no_kk,
-                'alamat' => $request->alamat,
-                'rtrw' => $request->rtrw,
-                'kode_pos' => $request->kode_pos,
-                'kelurahan' => 'Tanah Hitam',
-                'kecamatan' => "Padang Panjang Barat",
-                'jns_kelamin' => $request->jns_kelamin,
-                'tempat_lahir' => $request->tempat_lahir,
-                'tgl_lahir' => $request->tgl_lahir,
-                'agama' => $request->agama,
-                'pendidikan' => $request->pendidikan,
-                'jenis_pekerjaan' => $request->jenis_pekerjaan,
-                'gol_darah' => $request->gol_darah,
-                'status_kawin' => $request->status_kawin,
-                'tgl_kawin' => $request->tgl_kawin,
-                'status_hub_keluarga' => $request->status_hub_keluarga,
-                'detail_pekerjaan' => $request->detail_pekerjaan,
-                'detail_hub_keluarga' => $request->detail_hub_keluarga,
-                'domisili' => $request->domisili,
-                'alamat_domisili' => $request->alamat_domisili,
-                'kota' => "Padang Panjang",
-                'provinsi' => "Sumatera Barat", 
-                'nama' => $request->nama,
-                'no_pasport' => $request->no_pasport,
-                'no_kitap' => $request->no_kitap,
-                'nama_ibu' => $request->nama_ibu,
-                'nama_ayah' => $request->nama_ayah,                
-                'gaji' => $request->gaji,                
-                'foto_profile'=>$name,                 
-                'kwn' =>$request->kwn,
-                'created_at' => date('Y-m-d H:i:s')
-              ]);
-        }
-        else if (Auth::User()->level == 'Admin Kelurahan Pasar Baru') {
-            $dokumen = $request->file('foto_profile');
-            $name = uniqid()."_".$dokumen->getClientOriginalName();
-            $dokumen->move(public_path() . "/public/warga", $name);
-            DB::table('kartu_keluarga')->insert([
-                'nik' => $request->nik,
-                'no_kk' => $request->no_kk,
-                'alamat' => $request->alamat,
-                'rtrw' => $request->rtrw,
-                'kode_pos' => $request->kode_pos,
-                'kelurahan' => 'Pasar Baru',
-                'kecamatan' => "Padang Panjang Barat",
-                'jns_kelamin' => $request->jns_kelamin,
-                'tempat_lahir' => $request->tempat_lahir,
-                'tgl_lahir' => $request->tgl_lahir,
-                'agama' => $request->agama,
-                'pendidikan' => $request->pendidikan,
-                'jenis_pekerjaan' => $request->jenis_pekerjaan,
-                'gol_darah' => $request->gol_darah,
-                'status_kawin' => $request->status_kawin,
-                'tgl_kawin' => $request->tgl_kawin,
-                'status_hub_keluarga' => $request->status_hub_keluarga,
-                'detail_pekerjaan' => $request->detail_pekerjaan,
-                'detail_hub_keluarga' => $request->detail_hub_keluarga,
-                'domisili' => $request->domisili,
-                'alamat_domisili' => $request->alamat_domisili,
-                'kota' => "Padang Panjang",
-                'provinsi' => "Sumatera Barat", 
-                'nama' => $request->nama,
-                'no_pasport' => $request->no_pasport,
-                'no_kitap' => $request->no_kitap,
-                'nama_ibu' => $request->nama_ibu,
-                'nama_ayah' => $request->nama_ayah,                
-                'gaji' => $request->gaji,                
-                'foto_profile'=>$name,                 
-                'kwn' =>$request->kwn,
-                'created_at' => date('Y-m-d H:i:s')
-              ]);
-        }
-        else if (Auth::User()->level == 'Admin Kelurahan Pasar Usang') {
-             $dokumen = $request->file('foto_profile');
-            $name = uniqid()."_".$dokumen->getClientOriginalName();
-            $dokumen->move(public_path() . "/public/warga", $name);
-            DB::table('kartu_keluarga')->insert([
-                'nik' => $request->nik,
-                'no_kk' => $request->no_kk,
-                'alamat' => $request->alamat,
-                'rtrw' => $request->rtrw,
-                'kode_pos' => $request->kode_pos,
-                'kelurahan' => 'Pasar Usang',
-                'kecamatan' => "Padang Panjang Barat",
-                'jns_kelamin' => $request->jns_kelamin,
-                'tempat_lahir' => $request->tempat_lahir,
-                'tgl_lahir' => $request->tgl_lahir,
-                'agama' => $request->agama,
-                'pendidikan' => $request->pendidikan,
-                'jenis_pekerjaan' => $request->jenis_pekerjaan,
-                'gol_darah' => $request->gol_darah,
-                'status_kawin' => $request->status_kawin,
-                'tgl_kawin' => $request->tgl_kawin,
-                'status_hub_keluarga' => $request->status_hub_keluarga,
-                'detail_pekerjaan' => $request->detail_pekerjaan,
-                'detail_hub_keluarga' => $request->detail_hub_keluarga,
-                'domisili' => $request->domisili,
-                'alamat_domisili' => $request->alamat_domisili,
-                'kota' => "Padang Panjang",
-                'provinsi' => "Sumatera Barat", 
-                'nama' => $request->nama,
-                'no_pasport' => $request->no_pasport,
-                'no_kitap' => $request->no_kitap,
-                'nama_ibu' => $request->nama_ibu,
-                'nama_ayah' => $request->nama_ayah,                
-                'gaji' => $request->gaji,                
-                'foto_profile'=>$name,                 
-                'kwn' =>$request->kwn,
-                'created_at' => date('Y-m-d H:i:s')
-              ]);
-        }
-        else if (Auth::User()->level == 'Admin Kelurahan Silaing Atas') {
-            $dokumen = $request->file('foto_profile');
-            $name = uniqid()."_".$dokumen->getClientOriginalName();
-            $dokumen->move(public_path() . "/public/warga", $name);
-            DB::table('kartu_keluarga')->insert([
-                'nik' => $request->nik,
-                'no_kk' => $request->no_kk,
-                'alamat' => $request->alamat,
-                'rtrw' => $request->rtrw,
-                'kode_pos' => $request->kode_pos,
-                'kelurahan' => 'Silaing Atas',
-                'kecamatan' => "Padang Panjang Barat",
-                'jns_kelamin' => $request->jns_kelamin,
-                'tempat_lahir' => $request->tempat_lahir,
-                'tgl_lahir' => $request->tgl_lahir,
-                'agama' => $request->agama,
-                'pendidikan' => $request->pendidikan,
-                'jenis_pekerjaan' => $request->jenis_pekerjaan,
-                'gol_darah' => $request->gol_darah,
-                'status_kawin' => $request->status_kawin,
-                'tgl_kawin' => $request->tgl_kawin,
-                'status_hub_keluarga' => $request->status_hub_keluarga,
-                'detail_pekerjaan' => $request->detail_pekerjaan,
-                'detail_hub_keluarga' => $request->detail_hub_keluarga,
-                'domisili' => $request->domisili,
-                'alamat_domisili' => $request->alamat_domisili,
-                'kota' => "Padang Panjang",
-                'provinsi' => "Sumatera Barat", 
-                'nama' => $request->nama,
-                'no_pasport' => $request->no_pasport,
-                'no_kitap' => $request->no_kitap,
-                'nama_ibu' => $request->nama_ibu,
-                'nama_ayah' => $request->nama_ayah,                
-                'gaji' => $request->gaji,                
-                'foto_profile'=>$name,                 
-                'kwn' =>$request->kwn,
-                'created_at' => date('Y-m-d H:i:s')
-              ]);
-        }
-        else if (Auth::User()->level == 'Admin Kelurahan Silaing Bawah') {
-            $dokumen = $request->file('foto_profile');
-            $name = uniqid()."_".$dokumen->getClientOriginalName();
-            $dokumen->move(public_path() . "/public/warga", $name);
-            DB::table('kartu_keluarga')->insert([
-                'nik' => $request->nik,
-                'no_kk' => $request->no_kk,
-                'alamat' => $request->alamat,
-                'rtrw' => $request->rtrw,
-                'kode_pos' => $request->kode_pos,
-                'kelurahan' => 'Silaing Bawah',
-                'kecamatan' => "Padang Panjang Barat",
-                'jns_kelamin' => $request->jns_kelamin,
-                'tempat_lahir' => $request->tempat_lahir,
-                'tgl_lahir' => $request->tgl_lahir,
-                'agama' => $request->agama,
-                'pendidikan' => $request->pendidikan,
-                'jenis_pekerjaan' => $request->jenis_pekerjaan,
-                'gol_darah' => $request->gol_darah,
-                'status_kawin' => $request->status_kawin,
-                'tgl_kawin' => $request->tgl_kawin,
-                'status_hub_keluarga' => $request->status_hub_keluarga,
-                'detail_pekerjaan' => $request->detail_pekerjaan,
-                'detail_hub_keluarga' => $request->detail_hub_keluarga,
-                'domisili' => $request->domisili,
-                'alamat_domisili' => $request->alamat_domisili,
-                'kota' => "Padang Panjang",
-                'provinsi' => "Sumatera Barat", 
-                'nama' => $request->nama,
-                'no_pasport' => $request->no_pasport,
-                'no_kitap' => $request->no_kitap,
-                'nama_ibu' => $request->nama_ibu,
-                'nama_ayah' => $request->nama_ayah,                
-                'gaji' => $request->gaji,                
-                'foto_profile'=>$name,                 
-                'kwn' =>$request->kwn,
-                'created_at' => date('Y-m-d H:i:s')
-              ]);
-        }
-        else if (Auth::User()->level == 'Admin Kelurahan Balai-Balai') {
-             $dokumen = $request->file('foto_profile');
-            $name = uniqid()."_".$dokumen->getClientOriginalName();
-            $dokumen->move(public_path() . "/public/warga", $name);
-            DB::table('kartu_keluarga')->insert([
-                'nik' => $request->nik,
-                'no_kk' => $request->no_kk,
-                'alamat' => $request->alamat,
-                'rtrw' => $request->rtrw,
-                'kode_pos' => $request->kode_pos,
-                'kelurahan' => 'Balai-Balai',
-                'kecamatan' => "Padang Panjang Barat",
-                'jns_kelamin' => $request->jns_kelamin,
-                'tempat_lahir' => $request->tempat_lahir,
-                'tgl_lahir' => $request->tgl_lahir,
-                'agama' => $request->agama,
-                'pendidikan' => $request->pendidikan,
-                'jenis_pekerjaan' => $request->jenis_pekerjaan,
-                'gol_darah' => $request->gol_darah,
-                'status_kawin' => $request->status_kawin,
-                'tgl_kawin' => $request->tgl_kawin,
-                'status_hub_keluarga' => $request->status_hub_keluarga,
-                'detail_pekerjaan' => $request->detail_pekerjaan,
-                'detail_hub_keluarga' => $request->detail_hub_keluarga,
-                'domisili' => $request->domisili,
-                'alamat_domisili' => $request->alamat_domisili,
-                'kota' => "Padang Panjang",
-                'provinsi' => "Sumatera Barat", 
-                'nama' => $request->nama,
-                'no_pasport' => $request->no_pasport,
-                'no_kitap' => $request->no_kitap,
-                'nama_ibu' => $request->nama_ibu,
-                'nama_ayah' => $request->nama_ayah,                
-                'gaji' => $request->gaji,                
-                'foto_profile'=>$name,                 
-                'kwn' =>$request->kwn,
-                'created_at' => date('Y-m-d H:i:s')
-              ]);
-        }
-        else if (Auth::User()->level == 'Admin Kelurahan Bukit Surungan') {
-            $dokumen = $request->file('foto_profile');
-            $name = uniqid()."_".$dokumen->getClientOriginalName();
-            $dokumen->move(public_path() . "/public/warga", $name);
-            DB::table('kartu_keluarga')->insert([
-                'nik' => $request->nik,
-                'no_kk' => $request->no_kk,
-                'alamat' => $request->alamat,
-                'rtrw' => $request->rtrw,
-                'kode_pos' => $request->kode_pos,
-                'kelurahan' => 'Bukit Surungan',
-                'kecamatan' => "Padang Panjang Barat",
-                'jns_kelamin' => $request->jns_kelamin,
-                'tempat_lahir' => $request->tempat_lahir,
-                'tgl_lahir' => $request->tgl_lahir,
-                'agama' => $request->agama,
-                'pendidikan' => $request->pendidikan,
-                'jenis_pekerjaan' => $request->jenis_pekerjaan,
-                'gol_darah' => $request->gol_darah,
-                'status_kawin' => $request->status_kawin,
-                'tgl_kawin' => $request->tgl_kawin,
-                'status_hub_keluarga' => $request->status_hub_keluarga,
-                'detail_pekerjaan' => $request->detail_pekerjaan,
-                'detail_hub_keluarga' => $request->detail_hub_keluarga,
-                'domisili' => $request->domisili,
-                'alamat_domisili' => $request->alamat_domisili,
-                'kota' => "Padang Panjang",
-                'provinsi' => "Sumatera Barat", 
-                'nama' => $request->nama,
-                'no_pasport' => $request->no_pasport,
-                'no_kitap' => $request->no_kitap,
-                'nama_ibu' => $request->nama_ibu,
-                'nama_ayah' => $request->nama_ayah,                
-                'gaji' => $request->gaji,                
-                'foto_profile'=>$name,                 
-                'kwn' =>$request->kwn,
-                'created_at' => date('Y-m-d H:i:s')
-              ]);
-        }
-            return redirect('/kartu-keluarga');
+        return redirect('/kartu-keluarga');
    }
 
    public function createanggota(Request $request){
