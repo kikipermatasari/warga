@@ -453,9 +453,6 @@ class KepalakeluargaController extends Controller
             }
         } else {
             if(Auth::User()->level == 'Admin Camat' || Auth::User()->level == 'SuperAdmin'){
-                $dokumen = $request->file('foto_profile');
-                $name = uniqid()."_".$dokumen->getClientOriginalName();
-                $dokumen->move(public_path() . "/public/warga", $name);
                 DB::table('kartu_keluarga')->insert([
                     'nik' => $request->nik,
                     'no_kk' => $request->no_kk,
@@ -490,9 +487,6 @@ class KepalakeluargaController extends Controller
                     'created_at' => date('Y-m-d H:i:s')
                   ]);
             } else if (Auth::User()->level == 'Admin Kelurahan Kampung Manggis') {
-                 $dokumen = $request->file('foto_profile');
-                $name = uniqid()."_".$dokumen->getClientOriginalName();
-                $dokumen->move(public_path() . "/public/warga", $name);
                 DB::table('kartu_keluarga')->insert([
                     'nik' => $request->nik,
                     'no_kk' => $request->no_kk,
@@ -528,9 +522,6 @@ class KepalakeluargaController extends Controller
                   ]);
             }
             else if (Auth::User()->level == 'Admin Kelurahan Tanah Hitam') {
-                 $dokumen = $request->file('foto_profile');
-                $name = uniqid()."_".$dokumen->getClientOriginalName();
-                $dokumen->move(public_path() . "/public/warga", $name);
                 DB::table('kartu_keluarga')->insert([
                     'nik' => $request->nik,
                     'no_kk' => $request->no_kk,
@@ -566,9 +557,6 @@ class KepalakeluargaController extends Controller
                   ]);
             }
             else if (Auth::User()->level == 'Admin Kelurahan Pasar Baru') {
-                $dokumen = $request->file('foto_profile');
-                $name = uniqid()."_".$dokumen->getClientOriginalName();
-                $dokumen->move(public_path() . "/public/warga", $name);
                 DB::table('kartu_keluarga')->insert([
                     'nik' => $request->nik,
                     'no_kk' => $request->no_kk,
@@ -604,9 +592,7 @@ class KepalakeluargaController extends Controller
                   ]);
             }
             else if (Auth::User()->level == 'Admin Kelurahan Pasar Usang') {
-                 $dokumen = $request->file('foto_profile');
-                $name = uniqid()."_".$dokumen->getClientOriginalName();
-                $dokumen->move(public_path() . "/public/warga", $name);
+
                 DB::table('kartu_keluarga')->insert([
                     'nik' => $request->nik,
                     'no_kk' => $request->no_kk,
@@ -642,9 +628,6 @@ class KepalakeluargaController extends Controller
                   ]);
             }
             else if (Auth::User()->level == 'Admin Kelurahan Silaing Atas') {
-                $dokumen = $request->file('foto_profile');
-                $name = uniqid()."_".$dokumen->getClientOriginalName();
-                $dokumen->move(public_path() . "/public/warga", $name);
                 DB::table('kartu_keluarga')->insert([
                     'nik' => $request->nik,
                     'no_kk' => $request->no_kk,
@@ -680,9 +663,6 @@ class KepalakeluargaController extends Controller
                   ]);
             }
             else if (Auth::User()->level == 'Admin Kelurahan Silaing Bawah') {
-                $dokumen = $request->file('foto_profile');
-                $name = uniqid()."_".$dokumen->getClientOriginalName();
-                $dokumen->move(public_path() . "/public/warga", $name);
                 DB::table('kartu_keluarga')->insert([
                     'nik' => $request->nik,
                     'no_kk' => $request->no_kk,
@@ -718,9 +698,7 @@ class KepalakeluargaController extends Controller
                   ]);
             }
             else if (Auth::User()->level == 'Admin Kelurahan Balai-Balai') {
-                 $dokumen = $request->file('foto_profile');
-                $name = uniqid()."_".$dokumen->getClientOriginalName();
-                $dokumen->move(public_path() . "/public/warga", $name);
+
                 DB::table('kartu_keluarga')->insert([
                     'nik' => $request->nik,
                     'no_kk' => $request->no_kk,
@@ -756,9 +734,6 @@ class KepalakeluargaController extends Controller
                   ]);
             }
             else if (Auth::User()->level == 'Admin Kelurahan Bukit Surungan') {
-                $dokumen = $request->file('foto_profile');
-                $name = uniqid()."_".$dokumen->getClientOriginalName();
-                $dokumen->move(public_path() . "/public/warga", $name);
                 DB::table('kartu_keluarga')->insert([
                     'nik' => $request->nik,
                     'no_kk' => $request->no_kk,
