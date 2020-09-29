@@ -52,7 +52,6 @@ Route::get('/data-warga/delete/{id}', 'WargaController@delete');
 
 Route::get('/data-keluarga', 'KeluargaController@keluarga');
 
-
 Route::get('/kegiatan', 'KegiatanController@kegiatan');
 Route::get('/kegiatan/tambah', 'KegiatanController@tambah');
 Route::post('/kegiatan/create', 'KegiatanController@create');
