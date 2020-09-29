@@ -493,7 +493,7 @@
               <div class="col-md-6">
                 <div class="form-group">
                     <label for="example-search-input" class="form-control-label">Foto Profile</label>
-                    <input class="form-control" type="file" onchange="loadFile(event)" class="form-control-file" required="" placeholder="Masukan No. Pasport ... " required name="foto_profile" >
+                    <input class="form-control" type="file" onchange="loadFile(event)" class="form-control-file" placeholder="Masukan No. Pasport ... " required name="foto_profile" >
                 </div>
               </div>
              </div>
