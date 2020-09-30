@@ -94,8 +94,8 @@
                           <th class="th-md text-center">Tanggal</th>
                           <th class="th-md text-center">Pukul</th>
                           <th class="th-md text-center">Aktivitas</th>
-                          <th class="th-md text-center">Action</th>
-                        </tr>
+<!--                           <th class="th-md text-center">Action</th>
+ -->                        </tr>
                         </tr>
                       </thead>
                       <tbody>
@@ -107,11 +107,11 @@
                           <td class="th-md text-center">{{ \Carbon\Carbon::parse($data->created_at)->format('d M Y')}}</td>
                           <td class="th-md text-center">{{ \Carbon\Carbon::parse($data->created_at)->format('H:i')}} WIB</td>
                           <td>Kelurahan {{$data->kelurahan}} Menambahkan Data Kepala Keluarga Baru</td>
-                          <td class="text-center">
+                          <!-- <td class="text-center">
                             <a href="/kartu-keluarga/detail/{{$data->id}}"
                                   data-toggle="tooltip" style="margin-left: 10px; color: black;" data-original-title="Lihat Aktivitas"><i class="fa fa-eye"></i>
                             </a>
-                          </td>             
+                          </td> -->             
                         </tr>
                         @endforeach
                         @foreach($log_penduduk_updated as $data)
@@ -121,11 +121,11 @@
                           <td class="th-md text-center">{{ \Carbon\Carbon::parse($data->updated_at)->format('d M Y')}}</td>
                           <td class="th-md text-center">{{ \Carbon\Carbon::parse($data->updated_at)->format('H:i')}} WIB</td>
                           <td>Kelurahan {{$data->kelurahan}} Mengupdate Data Kepala Keluarga Baru</td>
-                          <td class="text-center">
+                          <!-- <td class="text-center">
                             <a href="/kartu-keluarga/detail/{{$data->id}}"
                                   data-toggle="tooltip" style="margin-left: 10px; color: black;" data-original-title="Lihat Aktivitas"><i class="fa fa-eye"></i>
                             </a>
-                          </td>             
+                          </td>    -->          
                         </tr>
                         @endforeach
                         @foreach($log_anggota_created as $data)
@@ -134,12 +134,12 @@
                           <td class="text-center">{{$no}}</td>
                           <td class="th-md text-center">{{ \Carbon\Carbon::parse($data->created_at)->format('d M Y')}}</td>
                           <td class="th-md text-center">{{ \Carbon\Carbon::parse($data->created_at)->format('H:i')}} WIB</td>
-                          <td>Kelurahan {{$data->kelurahan}} Menambahkan Data Anggota Keluarga Baru</td>
+                          <!-- <td>Kelurahan {{$data->kelurahan}} Menambahkan Data Anggota Keluarga Baru</td>
                           <td class="text-center">
                             <a href="/kartu-keluarga/detail/{{$data->id}}"
                                   data-toggle="tooltip" style="margin-left: 10px; color: black;" data-original-title="Lihat Aktivitas"><i class="fa fa-eye"></i>
                             </a>
-                          </td>             
+                          </td>     -->         
                         </tr>
                         @endforeach
                         @foreach($log_anggota_updated as $data)
@@ -149,11 +149,11 @@
                           <td class="th-md text-center">{{ \Carbon\Carbon::parse($data->updated_at)->format('d M Y')}}</td>
                           <td class="th-md text-center">{{ \Carbon\Carbon::parse($data->updated_at)->format('H:i')}} WIB</td>
                           <td>Kelurahan {{$data->kelurahan}} Mengupdate Data Anggota Keluarga Baru</td>
-                          <td class="text-center">
+                          <!-- <td class="text-center">
                             <a href="/kartu-keluarga/detail/{{$data->id}}"
                                   data-toggle="tooltip" style="margin-left: 10px; color: black;" data-original-title="Lihat Aktivitas"><i class="fa fa-eye"></i>
                             </a>
-                          </td>             
+                          </td>   -->           
                         </tr>
                         @endforeach
                       </tbody>
