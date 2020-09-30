@@ -247,7 +247,11 @@
                         </div>
                         <div class="col-md-3 text-right mt-4">
                             <br>
-                            <img src="{{ public_path('public/warga') }}/{{ $kepala_keluarga->foto_profile}}" width="125px" height="125px">
+                            @if($kepala_keluarga->foto_profile == "")
+                            <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" id="output" class="gambar" alt="" width="125px" height="125px">
+                            @else
+                            <img src="{{url('public/warga')}}/{{ $kepala_keluarga->foto_profile}}" width="125px" height="125px">
+                            @endif
                         </div>
                     </div>
     </div>

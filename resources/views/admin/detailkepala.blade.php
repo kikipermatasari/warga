@@ -228,9 +228,12 @@
                             </table> 
                         </div>
                         <div class="col-md-3">
+                            @if($kepala_keluarga->foto_profile == "")
+                            <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" id="output" class="gambar" alt="" width="70%" >
+                            @else
                             <img src="{{url('public/warga')}}/{{ $kepala_keluarga->foto_profile}}" width="70%" >
+                            @endif
                         </div>
-
                             </div>    
                             <hr>    
                                 <br>

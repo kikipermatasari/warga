@@ -221,10 +221,6 @@
                                 </tr>
                             </table> 
                         </div>
-                        <div class="col-md-3">
-                            <img src="{{url('public/warga')}}/{{ $anggota->foto_profile}}" width="70%" >
-                        </div>
-                
                         </div>    
                       <hr>    
                     <br>

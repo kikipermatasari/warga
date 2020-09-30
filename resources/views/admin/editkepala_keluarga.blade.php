@@ -459,7 +459,11 @@
                 <div class="form-group">
                     <label for="example-search-input" class="form-control-label">Foto Profile</label>
                     <input class="form-control" type="file" onchange="loadFile(event)" class="form-control-file" placeholder="Masukan No. Pasport ... "  name="foto_profile" >
+                    @if($kepala_keluarga->foto_profile == "")
+                    <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" id="output" class="gambar" alt="" width="125px" height="125px">
+                    @else
                     <img src="{{url('public/warga')}}/{{ $kepala_keluarga->foto_profile}}" id="output" class="gambar" alt="" style="max-height:100px;max-width:150px;margin-top:10px" >
+                    @endif
                 </div>
               </div>
              </div>

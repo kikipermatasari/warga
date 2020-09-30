@@ -29,7 +29,6 @@
             <div class="wrap-login100 p-t-190 p-b-30">
                 <form class="login100-form validate-form" method="POST" action="{{ route('login') }}">
                     @csrf
-                   
                     <span class="login100-form-title p-t-20 p-b-45">
                     </span>
 
