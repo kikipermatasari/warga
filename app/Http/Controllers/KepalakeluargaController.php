@@ -822,13 +822,13 @@ class KepalakeluargaController extends Controller
     public function updatekepala(Request $request, $id) {
           date_default_timezone_set('Asia/Jakarta');
           $kepala_keluarga= DB::table('kartu_keluarga')->find($id);        
-            if ($request->hasFile('foto_profile') ) {
+        if ($request->hasFile('foto_profile') ) {
             if($kepala_keluarga->foto_rumah != ""){
             unlink(public_path() . '/public/warga/' . $kepala_keluarga->foto_profile);
             $dokumen = $request->file('foto_profile');
             $name    = uniqid()."_".$dokumen->getClientOriginalName();
             $dokumen->move(public_path() . "/public/warga", $name);
-       $update = DB::table('kartu_keluarga')->where('id',$id)->update([
+            $update = DB::table('kartu_keluarga')->where('id',$id)->update([
                 'nik' => $request->nik,
                 'no_kk' => $request->no_kk,
                 'alamat' => $request->alamat,
@@ -862,11 +862,11 @@ class KepalakeluargaController extends Controller
                 'updated_at' => date('Y-m-d H:i:s'),
                 'created_at' => null
               ]);
-    } else {
-        $dokumen = $request->file('foto_profile');
-        $name    = uniqid()."_".$dokumen->getClientOriginalName();
-        $dokumen->move(public_path() . "/public/warga", $name);
-        $update =  DB::table('kartu_keluarga')->where('id',$id)->update([
+            } else {
+                $dokumen = $request->file('foto_profile');
+                $name    = uniqid()."_".$dokumen->getClientOriginalName();
+                $dokumen->move(public_path() . "/public/warga", $name);
+                $update =  DB::table('kartu_keluarga')->where('id',$id)->update([
                 'nik' => $request->nik,
                 'no_kk' => $request->no_kk,
                 'alamat' => $request->alamat,
@@ -899,10 +899,43 @@ class KepalakeluargaController extends Controller
                 'foto_profile' => $name,                
                 'updated_at' => date('Y-m-d H:i:s'),
                 'created_at' => null
-            ]);
+                    ]);
+            }
+    } else {
+            $update = DB::table('kartu_keluarga')->where('id',$id)->update([
+                'nik' => $request->nik,
+                'no_kk' => $request->no_kk,
+                'alamat' => $request->alamat,
+                'rtrw' => $request->rtrw,
+                'kode_pos' => $request->kode_pos,
+                'kelurahan' => $request->kelurahan,
+                'jns_kelamin' => $request->jns_kelamin,
+                'tempat_lahir' => $request->tempat_lahir,
+                'tgl_lahir' => $request->tgl_lahir,
+                'agama' => $request->agama,
+                'pendidikan' => $request->pendidikan,
+                'jenis_pekerjaan' => $request->jenis_pekerjaan,
+                'gol_darah' => $request->gol_darah,
+                'status_kawin' => $request->status_kawin,
+                'tgl_kawin' => $request->tgl_kawin,
+                'status_hub_keluarga' => $request->status_hub_keluarga,
+                'detail_pekerjaan' => $request->detail_pekerjaan,
+                'detail_hub_keluarga' => $request->detail_hub_keluarga,
+                'domisili' => $request->domisili,
+                'alamat_domisili' => $request->alamat_domisili,
+                'kota' => "Padang Panjang",
+                'provinsi' => "Sumatera Barat", 
+                'nama' => $request->nama,
+                'no_pasport' => $request->no_pasport,
+                'no_kitap' => $request->no_kitap,
+                'nama_ibu' => $request->nama_ibu,
+                'nama_ayah' => $request->nama_ayah,                
+                'gaji' => $request->gaji,                
+                'kwn' =>$request->kwn,
+                'updated_at' => date('Y-m-d H:i:s'),
+                'created_at' => null
+              ]);    
         }
-
-    }
         return redirect()->back();
      }
 

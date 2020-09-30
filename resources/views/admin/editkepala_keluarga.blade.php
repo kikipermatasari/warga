@@ -42,7 +42,7 @@
                 <div class="col-md-6">
                 <div class="form-group">
                     <label for="example-text-input" class="form-control-label">Nama Lengkap</label>
-                    <input class="form-control" type="text"  name="nama" placeholder="Masukkan Nama Lengkap" value="{{$kepala_keluarga->nama}}" id="nama">
+                    <input class="form-control" type="text"  name="nama" placeholder="Masukkan Nama Lengkap" value="{{$kepala_keluarga->nama}}" >
                 </div>
                 </div>
             <div class="col-md-6">
